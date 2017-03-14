@@ -6,5 +6,6 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('Recruteur', {
 	first_name : {type : String, default: ''},
 	last_name : {type : String, default: ''},
+	enterprise_name : {type : String, default: ''},
 	age : {type : Number, default: 18}
 });
