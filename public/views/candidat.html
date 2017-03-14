@@ -7,18 +7,48 @@
 </div>
 
 <!-- Candidat Profile compltetion -->
-<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="70"
-  aria-valuemin="0" aria-valuemax="100" style="width:70%">
-    <span class="sr-only">70% Complete</span>
-  </div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Votre Profil<span class="badge pull-right">0%</span></h3>
+	</div>
+	<div class="panel-body">
+		<p>Niveau de votre profil :</p>
+		<div class="progress">
+			<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;"></div>
+		</div>
+		<a href="/myprofile"><button type="button" class="btn btn-default">Compléter</button></a>
+	</div>
 </div>
 
+
 <!-- Available events -->
-<div class="container">
-	<div class="row">
-		<ul class="thumbnails">
-			{{ candidatEvents }}
-		</ul>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Evènements en cours<span class="badge pull-right">5</span></h3>
+	</div>
+	<div class="panel-body">
+		<div class="container">
+			<div class="row">
+				<ul class="thumbnails">
+					{{ candidatEvents }}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Upcoming events -->
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title">Evènements à venir<span class="badge pull-right">3</span></h3>
+	</div>
+	<div class="panel-body">
+		<div class="container">
+			<div class="row">
+				<ul class="thumbnails">
+					{{ upcomingEvents }}
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>

@@ -11,6 +11,7 @@ module.exports = function(app) {
 	});
 
 	// Make an API to get data into JSON format / interact with DB
+
 	// candidats
     app.get('/candidats', function(req, res) {
         res.JSON(); // returns all candidats list
@@ -24,6 +25,7 @@ module.exports = function(app) {
     app.delete('/candidat:cid', function(req, res) {
         // delete candidat from db
     });
+
     // recruteurs
     app.get('/recruteurs', function(req, res) {
         res.JSON(); // returns all recruteurs list
