@@ -10,4 +10,6 @@ module.exports = function(app) {
 		res.sendfile('./public/index.html');
 	});
 
+	// Make an API to get data
+
 };

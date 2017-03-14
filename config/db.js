@@ -1,3 +1,4 @@
+// MongoDB configuration
 module.exports = {
-	url : 'mongodb://<user>:<pass>@mongo.onmodulus.net:27017/uw45mypu'
+	url : 'hire-me://hireMeAdmin:root@localhost:27017/hire-me'
 }
