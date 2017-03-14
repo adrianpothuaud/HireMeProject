@@ -8,29 +8,39 @@
 
 <div class="panel-group">
 
-  <div class="panel panel-primary">
-    <div class="panel-heading">Formulaire d'inscription</div>
-    <div class="panel-body">
-		<p>{{ messageForNewCandidats }}</p>
-			<button type="button" class="btn btn-primary">Inscription</button>
-		</div>
-  </div>
+	<div class="row">
 
-	<div class="panel panel-success">
-		<div class="panel-heading">Panneau de connection</div>
-		<div class="panel-body">
-			<p>Si vous êtes déjà inscrit, connectez-vous ici !</p>
-			<form method="POST" action="/login">
-			<div class="form-group">
-				<label for="exampleInputEmail1">Addresse Email</label>
-				<input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre addresse mail">
+		<div class="col-sm-6 col-md-6">
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">Formulaire d'inscription</div>
+				<div class="panel-body">
+					<p>{{ messageForNewCandidats }}</p>
+					<a href="/signin"><button type="button" class="btn btn-primary">Inscription</button></a>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Mot de passe</label>
-				<input type="password" required class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
-				<input type="submit" class="form-control" value="Connection">
-			</div>
-			</form>
+
 		</div>
-	</div>
+
+		<div class="col-sm-6 col-md-6">
+
+			<div class="panel panel-success">
+				<div class="panel-heading">Identité</div>
+				<div class="panel-body">
+					<p>Si vous êtes déjà inscrit, connectez-vous ici !</p>
+					<form method="POST" action="/login" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="user_email">Addresse Email</label>
+							<input type="email" required class="form-control" id="user_email" aria-describedby="emailHelp" placeholder="Entrez votre addresse mail">
+						</div>
+						<div class="form-group">
+							<label for="user_password">Mot de passe</label>
+							<input type="password" required class="form-control" id="user_password" placeholder="Mot de passe">
+						</div>
+						<button type="submit" class="btn btn-success">Submit</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
 </div>

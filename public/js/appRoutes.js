@@ -8,6 +8,21 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MainController'
 		})
 
+		.when('/recruteurs', {
+            templateUrl: 'views/recruteurs.html',
+            controller: 'RecruteursController'
+        })
+
+        .when('/candidats', {
+            templateUrl: 'views/candidats.html',
+            controller: 'CandidatsController'
+        })
+
+        .when('/signin', {
+            templateUrl: 'views/signin.html',
+            controller: 'SigninController'
+        })
+
 		.when('/recruteur', {
 			templateUrl: 'views/recruteur.html',
 			controller: 'RecruteurController'
@@ -16,16 +31,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		.when('/candidat', {
 			templateUrl: 'views/candidat.html',
 			controller: 'CandidatController'
-		})
-
-		.when('/recruteurs', {
-			templateUrl: 'views/recruteurs.html',
-			controller: 'RecruteursController'
-		})
-
-		.when('/candidats', {
-			templateUrl: 'views/candidats.html',
-			controller: 'CandidatsController'
 		});
 
 	$locationProvider.html5Mode(true);

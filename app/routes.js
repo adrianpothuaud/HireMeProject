@@ -1,8 +1,12 @@
 module.exports = function(app) {
 
 	// server routes ===========================================================
-	// handle things like api calls
 	// authentication routes
+	app.post('/login', function(req, res) {
+        console.log("Login POST request for user with address:");
+        console.log(req.body);
+        // verify user in db and pw match
+	});
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
@@ -10,8 +14,7 @@ module.exports = function(app) {
 		res.sendfile('./public/index.html');
 	});
 
-	// Make an API to get data into JSON format / interact with DB
-
+	// API calls ===============================================================
 	// candidats
     app.get('/candidats', function(req, res) {
         res.JSON(); // returns all candidats list
