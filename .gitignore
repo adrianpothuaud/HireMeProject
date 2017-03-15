@@ -11,9 +11,10 @@ pids
 logs
 results
 data
+data/db
 
 npm-debug.log
 node_modules
 .idea/
-app/tests/
+
 public/libs/
