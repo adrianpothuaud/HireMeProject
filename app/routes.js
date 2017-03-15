@@ -3,15 +3,19 @@ module.exports = function(app) {
 	// server routes ===========================================================
 	// signin routes
 	app.post('/signin', function(req, res) {
-        console.log("Signin POST request for new user with address:");
-        console.log(req.body.email);
-        // verify user in db and pw match
+        console.log("Signin POST request");
+        var  newUser = req.body;
+        console.log(newUser);
+        // verify email not already used
     });
 	// authentication routes
 	app.post('/login', function(req, res) {
-        console.log("Login POST request for user with address:");
-        console.log(req.body.email);
+        console.log("Login POST request");
+        var  userToVerify = req.body;
+        console.log(userToVerify);
         // verify user in db and pw match
+        // get user account type
+        // redirect to candidat or recruteur
 	});
 
 	// frontend routes =========================================================
