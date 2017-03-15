@@ -1,12 +1,37 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
 
-// define our nerd model
-// module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model('Recruteur', {
-	first_name : {type : String, default: ''},
-	last_name : {type : String, default: ''},
-	email : {type : String, default: ''},
-	enterprise_name : {type : String, default: ''},
-	age : {type : Number, default: 18}
+// define our Candidat model
+var RecruteurSchema = mongoose.Schema({
+    lastName: String,
+    firstName: String,
+    email: String,
+    password: String
 });
+
+// define Candidat's methods
+RecruteurSchema.methods.getLastName = function () {
+  return this.lastName;
+}
+
+RecruteurSchema.methods.getFirstName = function () {
+  return this.firstName;
+}
+
+RecruteurSchema.methods.getEmail = function () {
+  return this.email;
+}
+
+RecruteurSchema.methods.getHashedPassword = function () {
+  return this.password;
+}
+
+RecruteurSchema.methods.showInfo = function () {
+  console.log("Recruteur's Informations:");
+  console.log("Last name : " + this.lastName);
+  console.log("First name : " + this.FirstName);
+  console.log("Email : " + this.email);
+}
+
+// module.exports allows us to pass this to other files when it is called
+module.exports = mongoose.model('Recruteur', RecruteurSchema);

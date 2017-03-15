@@ -1,0 +1,1 @@
+angular.module('mainApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'CandidatCtrl', 'CandidatService', 'RecruteurCtrl', 'RecruteurService', 'AdminCtrl', 'AdminService', 'SigninCtrl', 'SigninService', 'LoginCtrl', 'LoginService']);

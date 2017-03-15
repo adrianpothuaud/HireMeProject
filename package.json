@@ -2,10 +2,11 @@
   "name": "starter-node-angular",
   "main": "server.js",
   "dependencies": {
-    "express" : "*",
-	"mongoose" : "*",
-	"body-parser" : "*",
-	"method-override" : "*",
-    "connect" : "*"
+    "body-parser": "*",
+    "connect": "*",
+    "express": "*",
+    "method-override": "*",
+    "mongoose": "*",
+    "password-hash": "*"
   }
 }

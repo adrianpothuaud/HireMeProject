@@ -11,7 +11,6 @@ var methodOverride = require('method-override');
 var db = require('./config/db');
 
 var port = process.env.PORT || 8080; // set our port
-mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 
 // parse various different custom JSON types as JSON
 app.use(bodyParser.urlencoded());
@@ -22,7 +21,14 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 // routes ==================================================
 require('./app/routes')(app); // pass our application into our routes
 
-// start app ===============================================
-app.listen(port);	
-console.log('Magic happens on port ' + port); 			// shoutout to the user
-exports = module.exports = app; 						// expose app
+mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log("DataBase Connected !")
+  // start app ===============================================
+  app.listen(port);
+  console.log('Magic happens on port ' + port); 			// shoutout to the user
+  exports = module.exports = app; 						// expose app
+});
