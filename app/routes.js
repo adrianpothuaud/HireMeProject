@@ -14,7 +14,8 @@ module.exports = function(app) {
         var newUser;
         if (formRes.accounttype === "candidat") {
             console.log("Creation of a Candidat");
-            newUser = new Candidat(formRes);
+            newUser = new Candidat(
+                              formRes);
         }
         else {
             console.log("Creation of a Recruteur");

@@ -3,19 +3,19 @@ var mongoose = require('mongoose');
 
 // define our Candidat model
 var CandidatSchema = mongoose.Schema({
-    lastName: String,
-    firstName: String,
+    lastname: String,
+    firstname: String,
     email: String,
     password: String
 });
 
 // define Candidat's methods
 CandidatSchema.methods.getLastName = function () {
-  return this.lastName;
+  return this.lastname;
 }
 
 CandidatSchema.methods.getFirstName = function () {
-  return this.firstName;
+  return this.firstname;
 }
 
 CandidatSchema.methods.getEmail = function () {
@@ -28,8 +28,8 @@ CandidatSchema.methods.getHashedPassword = function () {
 
 CandidatSchema.methods.showInfo = function () {
   console.log("Candidat's Informations:");
-  console.log("Last name : " + this.lastName);
-  console.log("First name : " + this.FirstName);
+  console.log("Last name : " + this.lastname);
+  console.log("First name : " + this.firstname);
   console.log("Email : " + this.email);
 }
 
