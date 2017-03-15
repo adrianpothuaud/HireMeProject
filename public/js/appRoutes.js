@@ -8,19 +8,13 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MainController'
 		})
 
-		.when('/recruteurs', {
-            templateUrl: 'views/recruteurs.html',
-            controller: 'RecruteursController'
-        })
-
-        .when('/candidats', {
-            templateUrl: 'views/candidats.html',
-            controller: 'CandidatsController'
-        })
-
         .when('/signin', {
             templateUrl: 'views/signin.html',
             controller: 'SigninController'
+        })
+
+        .when('/login', {
+            templateUrl: 'views/login.html'
         })
 
 		.when('/recruteur', {

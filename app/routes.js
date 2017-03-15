@@ -1,10 +1,16 @@
 module.exports = function(app) {
 
 	// server routes ===========================================================
+	// signin routes
+	app.post('/signin', function(req, res) {
+        console.log("Signin POST request for new user with address:");
+        console.log(req.body.email);
+        // verify user in db and pw match
+    });
 	// authentication routes
 	app.post('/login', function(req, res) {
         console.log("Login POST request for user with address:");
-        console.log(req.body);
+        console.log(req.body.email);
         // verify user in db and pw match
 	});
 
