@@ -6,3 +6,6 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('Recruteur', {
 	pseudo : {type : String, default: ''}
 });
+
+
+// TEST COMMIT & PUSH
