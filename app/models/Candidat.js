@@ -6,7 +6,8 @@ var CandidatSchema = mongoose.Schema({
     lastname: String,
     firstname: String,
     email: String,
-    password: String
+    password: String,
+    accounttype: String
 });
 
 // define Candidat's methods
