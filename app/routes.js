@@ -50,27 +50,26 @@ function lookForAccount(usrmail, pw, response) {
     console.log('Looking for account with email');
     console.log('Looking into Candidats...');
     Candidat.findOne({ email : usrmail}, function(err, thing)
-    {       
-        getAccount(err, thing, pw, response);
-    });
-    console.log('Looking into Recruteurs...');
-    Recruteur.findOne({ email : usrmail}, function(err, thing)
-    {       
-        getAccount(err, thing, pw, response);
+    {      
+        if(thing) {
+            getAccount(err, thing, pw, response);
+        } 
+        else {
+            console.log('Looking into Recruteurs...');
+            Recruteur.findOne({ email : usrmail}, function(err, thing)
+            {       
+                getAccount(err, thing, pw, response);
+            });
+        }
     });
 }
 
 function myDispatcher(myObject, res) {
-    if(myObject.isPwOK){
-        if(myObject.type === 'candidat'){
-            res.redirect('/candidat');
-        }
-        else{
-            res.redirect('recruteur');
-        }
+    if(myObject.type === 'candidat'){
+        res.redirect('/candidat');
     }
     else{
-        res.redirect('/login');
+        res.redirect('/recruteur');
     }
 }
 
@@ -78,6 +77,10 @@ function getAccount(err, thing, pw, response) {
     console.log('Getting Account');
     if(thing){
         myDispatcher({'type':thing.accounttype, 'isPwOK':thing.password === pw}, response);
+    }
+    else {
+        console.log("user is undefined");
+        response.redirect('/login');
     }
 }
 

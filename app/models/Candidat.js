@@ -1,5 +1,6 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
+var extend = require('mongoose-schema-extend');
 
 // define our Candidat model
 var CandidatSchema = mongoose.Schema({
@@ -8,7 +9,7 @@ var CandidatSchema = mongoose.Schema({
     email: String,
     password: String,
     accounttype: String
-});
+}, { collection : 'candidats'});
 
 // define Candidat's methods
 CandidatSchema.methods.getLastName = function () {
