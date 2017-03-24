@@ -1,8 +1,4 @@
-// grab the mongoose module
 var mongoose = require('mongoose');
+var AdminSchema = require('./AdminSchema.js')
 
-// define our nerd model
-// module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model('Recruteur', {
-	pseudo : {type : String, default: ''}
-});
+module.exports = mongoose.model('Admin', AdminSchema);

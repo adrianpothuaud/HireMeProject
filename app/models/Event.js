@@ -1,7 +1,7 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
-var ExperienceSchema = require('./ExperienceSchema.js');
+var EventSchema = require('./EventSchema.js');
 
 // define our nerd model
 // module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model('Experience', ExperienceSchema);
+module.exports = mongoose.model('Event', EventSchema);
