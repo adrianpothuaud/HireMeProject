@@ -9,6 +9,7 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="libs/bootstrap-social/bootstrap-social.css">
 	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
 
 	<!-- JS -->
@@ -30,6 +31,8 @@
 	<script src="js/services/CandidatService.js"></script>
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
+
+	<link rel="icon" href="./res/imgs/hireme_logo1.png">
 </head>
 <body ng-app="mainApp" ng-controller="MainController">
 <div class="container">
@@ -37,7 +40,7 @@
 	<!-- HEADER -->
 	<nav class="navbar navbar-inverse">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Projet</a>
+			<a class="navbar-brand" href="/">Home</a>
 		</div>
 		<ul class="nav navbar-nav pull-right">
 			<li><a href="/signin">Inscription</a></li>
@@ -49,9 +52,21 @@
 	<div ng-view></div>
 
 	<footer class="footer">
-    <div class="container">
-      <p class="text-muted">Place sticky footer content here.</p>
-    </div>
+		<!--<div class="span12 text-center">
+			<a href="https://github.com/lipis" onclick="_gaq.push(['_trackEvent', 'exit', 'footer', 'GitHub']);"><span class="fa fa-github"></span> GitHub</a>
+			<a href="https://twitter.com/hireme" onclick="_gaq.push(['_trackEvent', 'exit', 'footer', 'Twitter']);"><span class="fa fa-twitter"></span> Twitter</a>
+			<a href="https://google.com/+PanayiotisLipiridis" onclick="_gaq.push(['_trackEvent', 'exit', 'footer', 'Google+']);"><span class="glyphicon glyphicon-thumbs-up
+"></span> Google+</a>
+		</div>-->
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<!-- // -->
+        <div class="text-center center-block">
+                <a href="https://www.facebook.com/hireme"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+	            <a href="https://twitter.com/hireme"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+	            <a href="https://plus.google.com/+hireme-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+	            <a href="mailto:hireme@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+		</div>
   </footer>
 
 </div>
