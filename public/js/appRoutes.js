@@ -30,6 +30,16 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		.when('/admin', {
 		    templateUrl: 'views/admin.html',
             controller: 'AdminController'
+		})
+		
+		.when('/candidat/profile', {
+			templateUrl: 'views/candidatProfile.html',
+			controller: 'CandidatProfileController'
+		})
+		
+		.when('/recruteur/profile', {
+			templateUrl: 'views/recruteurProfile.html',
+			controller: 'RecruteurProfileController'
 		});
 
 	$locationProvider.html5Mode(true);

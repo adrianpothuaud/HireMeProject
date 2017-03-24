@@ -65,6 +65,10 @@ function lookForAccount(usrmail, pw, response) {
 }
 
 function myDispatcher(myObject, res) {
+
+    res.session.userId = myObject.user._id;
+    res.session.accountType = myObject.type;
+
     if(myObject.type === 'candidat'){
         res.redirect('/candidat');
     }
@@ -76,7 +80,7 @@ function myDispatcher(myObject, res) {
 function getAccount(err, thing, pw, response) {
     console.log('Getting Account');
     if(thing){
-        myDispatcher({'type':thing.accounttype, 'isPwOK':thing.password === pw}, response);
+        myDispatcher({'type':thing.accountType, 'isPwOK':thing.password === pw, 'user':thing}, response);
     }
     else {
         console.log("user is undefined");
@@ -86,7 +90,6 @@ function getAccount(err, thing, pw, response) {
 
 function isPasswordCorrect(user, response) {
     console.log("Verifying account for login");
-    var check;
     lookForAccount(user.email, user.password, response);
 }
 
@@ -109,37 +112,101 @@ module.exports = function(app, db) {
 	});
 
 	// frontend routes =========================================================
-	// route to handle all angular requests
-	app.get('*', function(req, res) {
-		res.sendfile('./public/index.html');
-	});
+	// route to handle all angular requests disabled to enable API calls
+	// app.get('*', function(req, res) {
+	// 	res.sendfile('./public/index.html');
+	// });
+
+    app.get('/candidat', function(req, res) {
+        console.log("Controling acces to candidat home page");
+        accountType = req.session.accountType;
+        if(!accountType){
+            res.redirect('/login');
+            console.log("Access not granted to candidat home page");
+        }
+        else {
+            if (!accountType === "candidat"){
+                res.redirect('/login');
+                console.log("Access not granted to candidat home page for recruteur");
+            }
+        }
+    });
+
+    app.get('/recruteur', function(req, res) {
+        console.log("Controling acces to recruteur home page");
+        accountType = req.session.accountType;
+        if(!accountType){
+            res.redirect('/login');
+            console.log("Access not granted to recruteur home page");
+        }
+        else {
+            if (!accountType === "recruteur"){
+                res.redirect('/login');
+                console.log("Access not granted to recruteur home page for candidat");
+            }
+        }
+    });
 
 	// API calls ===============================================================
 	// candidats
-    app.get('/candidats', function(req, res) {
-        res.JSON(); // returns all candidats list
+    app.get('/api/candidats', function(req, res) {
+        console.log("candidats");
+        Candidat.find(function(err, thing) {
+            if(err){
+                console.log(err);
+            }
+            console.log(thing);
+            res.json(thing);
+        }); // returns all candidats list
     });
-    app.post('/candidats', function(req, res) {
+    app.post('/api/candidats', function(req, res) {
         // add data to candidats in db
     });
-    app.get('/candidat:cid', function(req, res) {
-        res.JSON(); // returns candidat with ID informations
+    app.get('/api/candidat:id', function(req, res) {
+        console.log("candidat with id " + req.params.id);
+        Candidat.findOne({ _id : req.params.id}, function(err, thing) {
+            if(err){
+                console.log(err);
+            }
+            console.log(thing);
+            res.json(thing);
+        }); // returns all candidats list
     });
-    app.delete('/candidat:cid', function(req, res) {
-        // delete candidat from db
+    app.get('/api/candidat/byemail:email', function(req, res) {
+        console.log("candidat with email " + req.params.email);
+        Candidat.findOne({ email : req.params.email}, function(err, thing) {
+            if(err){
+                console.log(err);
+            }
+            console.log(thing);
+            res.json(thing);
+        }); // returns all candidats list
     });
 
     // recruteurs
-    app.get('/recruteurs', function(req, res) {
-        res.JSON(); // returns all recruteurs list
+    app.get('/api/recruteurs', function(req, res) {
+        console.log("recruteurs");
+        Recruteur.find(function(err, thing) {
+            if(err){
+                console.log(err);
+            }
+            console.log(thing);
+            res.json(thing);
+        }); // returns all candidats list
     });
-    app.post('/recruteurs', function(req, res) {
+    app.post('/api/recruteurs', function(req, res) {
         // add data to recruteurs in db
     });
-    app.get('/recruteur:rid', function(req, res) {
+    app.get('/api/recruteur:id', function(req, res) {
         res.JSON(); // returns recruteur with ID informations
     });
-    app.delete('/recruteur:rid', function(req, res) {
+    app.get('/api/recruteur:email', function(req, res) {
+        res.JSON(); // returns recruteur with ID informations
+    });
+    app.delete('/api/recruteur:id', function(req, res) {
+        // delete recruteur from db
+    });
+    app.delete('/api/recruteur:email', function(req, res) {
         // delete recruteur from db
     });
 };

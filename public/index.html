@@ -20,7 +20,9 @@
 	<!-- ANGULAR CUSTOM -->
 	<script src="js/controllers/MainCtrl.js"></script>
 	<script src="js/controllers/CandidatCtrl.js"></script>
+	<script src="js/controllers/CandidatProfileCtrl.js"></script>
 	<script src="js/controllers/RecruteurCtrl.js"></script>
+	<script src="js/controllers/RecruteurProfileCtrl.js"></script>
 	<script src="js/controllers/AdminCtrl.js"></script>
 	<script src="js/controllers/SigninCtrl.js"></script>
 	<script src="js/controllers/LoginCtrl.js"></script>
@@ -29,6 +31,8 @@
 	<script src="js/services/AdminService.js"></script>
 	<script src="js/services/RecruteurService.js"></script>
 	<script src="js/services/CandidatService.js"></script>
+	<script src="js/services/RecruteurProfileService.js"></script>
+	<script src="js/services/CandidatProfileService.js"></script>
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
 
@@ -43,6 +47,11 @@
 			<a class="navbar-brand" href="/">Home</a>
 		</div>
 		<ul class="nav navbar-nav pull-right">
+			<!--<div ng-view>
+				to improve:
+				display signin/login if no session
+				display logout if session
+			</div>-->
 			<li><a href="/signin">Inscription</a></li>
 			<li><a href="/login">Login</a></li>
 		</ul>

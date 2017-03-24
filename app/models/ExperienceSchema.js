@@ -5,7 +5,7 @@ var ExperienceSchema = mongoose.Schema({
 	enterpriseName : {type : String, default: ''},
 	dateBegin : {type : Date, default: undefined},
     dateEnd : {type : Date, default: undefined}
-});
+}, {collection: "experiences"});
 
 ExperienceSchema.methods.getJobName = function () {
     return this.jobName;

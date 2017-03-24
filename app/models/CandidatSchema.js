@@ -10,7 +10,7 @@ var CandidatSchema = mongoose.Schema({
     firstname: String,
     email: String,
     password: String,
-    accounttype: String,
+    accountType: String,
     experiences: [ExperienceSchema],
     connaissances: [ConnaissanceSchema]
 }, { collection : 'candidats'});

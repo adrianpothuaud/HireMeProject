@@ -7,9 +7,9 @@ var RecruteurSchema = mongoose.Schema({
     firstname: String,
     email: String,
     password: String,
-    accounttype: String,
+    accountType: String,
     enterprisename: String
-});
+}, {collection: "recruteurs"});
 
 // define Candidat's methods
 RecruteurSchema.methods.getLastName = function () {

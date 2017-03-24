@@ -5,9 +5,10 @@
     "body-parser": "*",
     "connect": "*",
     "express": "*",
+    "express-session": "*",
     "method-override": "*",
     "mongoose": "*",
-    "password-hash": "*",
-    "mongoose-schema-extend": "*"
+    "mongoose-schema-extend": "*",
+    "password-hash": "*"
   }
 }
