@@ -1,17 +1,10 @@
 {
   "name": "starter-node-angular",
-  "version": "0.0.1",
   "description": "MEAN Stack Application. Search and apply for jobs in the same place ! (A student project)",
   "author": "Pothuaud Adrian & ROUX Geoffrey",
-  "homepage": "",
   "main": "server.js",
   "scripts": {
-    "test": "",
     "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adrianpothuaud/HireMeProject"
   },
   "dependencies": {
     "body-parser": "*",
@@ -22,8 +15,5 @@
     "mongoose": "*",
     "mongoose-schema-extend": "*",
     "password-hash": "*"
-  },
-  "devDependencies": {
-    "nodemon": "*"
   }
 }
