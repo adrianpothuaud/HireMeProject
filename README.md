@@ -21,7 +21,7 @@ Hire-ME is a web Application intended to allow searching for a job and go to the
 
 # New Features!
 
-  ...
+  - Authentication system communicate with DB (not optimal, ongoing improvements)
 
 ### Tech
 
@@ -30,13 +30,10 @@ Hire Me uses a number of open source projects to work properly:
 * [AngularJS] - HTML enhanced for web apps!
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [jQuery] - duh
-* [MongoLab] - mongo db 
-* [heroku]
-
-And of course HireMe itself is open source with a [public repository][dill]
- on GitHub.
+* [Express] - fast node.js network app framework
+* [jQuery] - HTML DOM element selector
+* [MongoLab] - JSON & Object oriented database
+* [heroku] - Web application deployment service for Node.js / Ruby / ...
 
 ### Installation
 
@@ -56,13 +53,12 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
 
 ### Todos
 
- - Write Tests
- - ...
+ - [Write Tests]
+ - Finish the views
+ - Add api key to api routes
+ - Password encryption method
 
-License
-----
+### Authors
 
-No Licenses
-
-
-**Free Software, Hell Yeah!**
+ - Adrian Pothuaud(https://github.com/adrianpothuaud/)
+ - Geoffrey Roux(https://github.com/geo2fois)
