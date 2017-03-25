@@ -15,23 +15,19 @@ var session = require('express-session');
 
 // Look for account with same email in both candidats and recruteurs collections
 // hacked witch callback for synch
-function lookForEmail(usr, res, callback)
-{
+function lookForEmail(usr, res, callback) {
     console.log('Looking for email into collections');
     var Account;
     if (usr.accountType === 'candidat') {
         console.log('Looking for Candidat');
         Account = Candidat;
-    }
-    else if (usr.accountType === 'recruteur') {
+    } else if (usr.accountType === 'recruteur') {
         console.log('Looking for Recruteur');
         Account = Recruteur;
-    }
-    else {
+    } else {
         console.log("ERROR Undefined accountType");
     }
-    Account.findOne({ email : usr.email}, function(err, thing)
-    {       
+    Account.findOne({ email: usr.email }, function(err, thing) {
         callback(err, thing, usr, res);
     });
 }
@@ -42,13 +38,12 @@ function lookForEmail(usr, res, callback)
 // else save data and go to login
 function signCheck(err, thing, usr, res) {
     console.log('Checking signin');
-    if(thing){
+    if (thing) {
         console.log('Email already found in db');
         res.redirect('/signin');
-    }
-    else {
+    } else {
         console.log("Saving new user in db");
-        if (usr.accountType === "candidat"){
+        if (usr.accountType === "candidat") {
             usr.experiences = new Array();
             usr.connaissances = new Array();
 
@@ -56,45 +51,40 @@ function signCheck(err, thing, usr, res) {
             console.log(usr);
 
             newUsr = new Candidat(usr);
-            
+
             console.log("New Candidat : ");
             console.log(newUsr);
             newUsr.save();
             res.redirect('/login');
-        }
-        else if (usr.accountType === "recruteur"){
+        } else if (usr.accountType === "recruteur") {
             usr.enterprisename = undefined;
 
             console.log("usr : ");
             console.log(usr);
 
             newUsr = new Recruteur(usr);
-            
+
             console.log("New Recruteur : ");
             console.log(newUsr);
             newUsr.save();
             res.redirect('/login');
-        }
-        else {
+        } else {
             console.log("Problem incompatible accountType");
             res.redirect("/signin");
         }
-        
+
     }
 }
 
 function lookForAccount(usrmail, pw, response) {
     console.log('Looking for account with email');
     console.log('Looking into Candidats...');
-    Candidat.findOne({ email : usrmail}, function(err, thing)
-    {      
-        if(thing) {
+    Candidat.findOne({ email: usrmail }, function(err, thing) {
+        if (thing) {
             getAccount(err, thing, pw, response);
-        } 
-        else {
+        } else {
             console.log('Looking into Recruteurs...');
-            Recruteur.findOne({ email : usrmail}, function(err, thing)
-            {       
+            Recruteur.findOne({ email: usrmail }, function(err, thing) {
                 getAccount(err, thing, pw, response);
             });
         }
@@ -106,11 +96,10 @@ function myDispatcher(myObject, res) {
     // res.session.userId = myObject.user._id;
     // res.session.accountType = myObject.type;
 
-    if(myObject.type === 'candidat'){
+    if (myObject.type === 'candidat') {
         console.log("Dispatching to candidat home page");
         res.redirect('/candidat');
-    }
-    else{
+    } else {
         console.log("Dispatching to recruteur home page");
         res.redirect('/recruteur');
     }
@@ -118,10 +107,9 @@ function myDispatcher(myObject, res) {
 
 function getAccount(err, thing, pw, response) {
     console.log('Getting Account');
-    if(thing){
-        myDispatcher({'type':thing.accountType, 'isPwOK':thing.password === pw, 'user':thing}, response);
-    }
-    else {
+    if (thing) {
+        myDispatcher({ 'type': thing.accountType, 'isPwOK': thing.password === pw, 'user': thing }, response);
+    } else {
         console.log("user is undefined");
         response.sendFile('index.html', { root: "public" });
     }
@@ -152,30 +140,30 @@ module.exports = function(app, db) {
         res.sendFile('index.html', { root: "public" });
     });
 
-	// server routes ===========================================================
-	// signin routes
+    // server routes ===========================================================
+    // signin routes
     app.get('/signin', function(req, res) {
         console.log("GET request in signin page...");
         res.sendFile('index.html', { root: "public" });
     });
-	app.post('/signin', function(req, res) {
+    app.post('/signin', function(req, res) {
         console.log("Signin POST request");
-        var  formRes = req.body;
+        var formRes = req.body;
         console.log('POST body:');
         console.log(formRes);
         lookForEmail(formRes, res, signCheck);
     });
-	// authentication routes
+    // authentication routes
     app.get('/login', function(req, res) {
         console.log("GET request in login page...");
         res.sendFile('index.html', { root: "public" });
     });
-	app.post('/login', function(req, res) {
+    app.post('/login', function(req, res) {
         console.log("Login POST request");
-        var  formRes = req.body;
+        var formRes = req.body;
         isPasswordCorrect(formRes, res);
-	});
-    
+    });
+
     app.get('/candidat', function(req, res) {
         console.log("GET request in candidat page...");
         res.sendFile('index.html', { root: "public" });
@@ -194,24 +182,24 @@ module.exports = function(app, db) {
         res.sendFile('index.html', { root: "public" });
     });
 
-	// frontend routes =========================================================
-	// route to handle all angular requests disabled to enable API calls
-	// app.get('*', function(req, res) {
-	// 	res.sendfile('./public/index.html');
-	// });
+    // frontend routes =========================================================
+    // route to handle all angular requests disabled to enable API calls
+    // app.get('*', function(req, res) {
+    // 	res.sendfile('./public/index.html');
+    // });
 
-	// API calls ===============================================================
-	// candidats
-    
+    // API calls ===============================================================
+    // candidats
+
     app.post('/api/candidats', function(req, res) {
         // add data to candidats in db
     });
-    
+
     // recruteurs
     app.get('/api/recruteurs', function(req, res) {
         console.log("recruteurs");
         Recruteur.find(function(err, thing) {
-            if(err){
+            if (err) {
                 console.log(err);
             }
             console.log(thing);
