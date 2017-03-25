@@ -8,22 +8,22 @@ Accessed should be restreined by login with a Recruteur User-->
         <div class="navbar-header">
             <a class="navbar-brand" href="/home">HireMe</a>
         </div>
-		<ul class="nav navbar-nav navbar-right">
-			<!--<div ng-view>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<div ng-view>
 				to improve:
 				display signin/login if no session
 				display logout if session
 			</div>-->
-			<li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-		</ul>
+            <li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
     </div>
 </nav>
 
 <div class="jumbotron text-center">
 
-	<h1>Acceuil Recruteur</h1>
+    <h1>Acceuil Recruteur</h1>
 
-	<p>{{ msgWelcomeRecruteur }}</p>
+    <p>{{ msgWelcomeRecruteur }}</p>
 
 </div>
 
@@ -46,3 +46,71 @@ EVENT CREATION
 + Ongoing event
 + Upcoming event(s)
 + Launch Event-->
+<!-- OnGoing events -->
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
+    </div>
+    <div class="panel-body">
+        <!--<div class="row">
+				<ul class="thumbnails">
+					{{ candidatEvents }}
+				</ul>
+			</div>-->
+        <!--Examples-->
+        <div class="col-4 col-md-4 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <a href="#" class="btn btn-primary pull-left" role="button">À propos</a>
+                <a href="#" class="btn btn-warning pull-right" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p><span class="pull-left"><a href="#" class="btn btn-primary" role="button">À propos</a></span>
+                    <span class="pull-right"><a href="#" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Upcoming events -->
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
+    </div>
+    <div class="panel-body">
+        <!--<div class="row">
+                <ul class="thumbnails">
+                    {{ upcomingEvents }}
+                </ul>
+            </div>-->
+        <div class="col-4 col-md-4 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p><span class="pull-left"><a href="#" class="btn btn-primary" role="button">À propos</a></span>
+                    <span class="pull-right"><a href="#" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a></span></p>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p><span class="pull-left"><a href="#" class="btn btn-primary" role="button">À propos</a></span>
+                    <span class="pull-right"><a href="#" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a></span></p>
+            </div>
+        </div>
+    </div>
+</div>

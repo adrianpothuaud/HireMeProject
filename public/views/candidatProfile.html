@@ -29,10 +29,52 @@ and add/remove Experiences/Connaissances-->
 </div>
 
 <!--Print user information with the possibility to update them-->
+<div class="panel panel-default">
 
-<!--lastname-->
-<!--firstname-->
-<!--email-->
+    <div class="panel-heading">
+        <h3>Informations utilisateur</h3>
+    </div>
+
+    <div class="panel-body">
+
+        <!--lastname-->
+        <!--firstname-->
+        <!--email-->
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default">First name</span> {{candidat_firstname}}
+                <br/><br/>
+                <input type="text" class="form-control" placeholder="firstname" name="firstname">
+                <br/>
+                <button class="btn btn-default" type="submit">Go!</button>
+            </li>
+            <li class="list-group-item">
+                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default">Last name</span> {{candidat_lastname}}
+                <br/><br/>
+                <input type="text" class="form-control" placeholder="lastname" name="lastname">
+                <br/>
+                <button class="btn btn-default" type="submit">Go!</button>
+            </li>
+            <li class="list-group-item">
+                <span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default">Email</span> {{candidat_email}}
+                <br/><br/>
+                <input type="text" class="form-control" placeholder="email" name="email">
+                <br/>
+                <button class="btn btn-default" type="submit">Go!</button>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="panel-footer">
+        <p>Vous pouvez modifier vos informations personnelles autant que vous le souhaitez.</p>
+    </div>
+
+</div>
 <!--Button change password-->
 <!--View connaissances-->
 <!--Form add connaissance-->
