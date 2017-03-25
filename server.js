@@ -19,11 +19,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
 // session management
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
-}))
+app.use(session({secret: "This is a secret"}));
 
 mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 var db = mongoose.connection;

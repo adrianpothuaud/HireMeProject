@@ -3,6 +3,7 @@ var passwordHash = require('password-hash');
 // DB Models ==================================================
 var Candidat = require('./models/Candidat.js');
 var Recruteur = require('./models/Recruteur.js');
+var session = require('express-session');
 
 // Look for account with same email in both candidats and recruteurs collections
 // hacked witch callback for synch
@@ -66,13 +67,15 @@ function lookForAccount(usrmail, pw, response) {
 
 function myDispatcher(myObject, res) {
 
-    res.session.userId = myObject.user._id;
-    res.session.accountType = myObject.type;
+    // res.session.userId = myObject.user._id;
+    // res.session.accountType = myObject.type;
 
     if(myObject.type === 'candidat'){
+        console.log("Dispatching to candidat home page");
         res.redirect('/candidat');
     }
     else{
+        console.log("Dispatching to recruteur home page");
         res.redirect('/recruteur');
     }
 }
@@ -84,7 +87,7 @@ function getAccount(err, thing, pw, response) {
     }
     else {
         console.log("user is undefined");
-        response.redirect('/login');
+        response.sendFile('index.html', { root: "public" });
     }
 }
 
@@ -95,8 +98,33 @@ function isPasswordCorrect(user, response) {
 
 module.exports = function(app, db) {
 
+    //require('./app/apiroutes_delete.js')(app, db); // pass our application into our routes
+    require('./apiroutes_get.js')(app, db); // pass our application into our routes
+    //require('./app/apiroutes_insert.js')(app, db); // pass our application into our routes
+    //require('./app/apiroutes_post.js')(app, db); // pass our application into our routes
+    //require('./app/onboardingroutes.js')(app, db); // pass our application into our routes
+
+    app.get('/', function(req, res) {
+        console.log("GET request in  '/' ...");
+        res.sendFile('index.html', { root: "public" });
+    });
+
+    app.get('/home', function(req, res) {
+        console.log("GET request in home page...");
+        res.sendFile('index.html', { root: "public" });
+    });
+
+    app.get('/about', function(req, res) {
+        console.log("GET request in about page...");
+        res.sendFile('index.html', { root: "public" });
+    });
+
 	// server routes ===========================================================
 	// signin routes
+    app.get('/signin', function(req, res) {
+        console.log("GET request in signin page...");
+        res.sendFile('index.html', { root: "public" });
+    });
 	app.post('/signin', function(req, res) {
         console.log("Signin POST request");
         var  formRes = req.body;
@@ -105,11 +133,24 @@ module.exports = function(app, db) {
         lookForEmail(formRes, res, signCheck);
     });
 	// authentication routes
+    app.get('/login', function(req, res) {
+        console.log("GET request in login page...");
+        res.sendFile('index.html', { root: "public" });
+    });
 	app.post('/login', function(req, res) {
         console.log("Login POST request");
         var  formRes = req.body;
         isPasswordCorrect(formRes, res);
 	});
+    
+    app.get('/candidat', function(req, res) {
+        console.log("GET request in candidat page...");
+        res.sendFile('index.html', { root: "public" });
+    });
+    app.get('/recruteur', function(req, res) {
+        console.log("GET request in recruteur page...");
+        res.sendFile('index.html', { root: "public" });
+    });
 
 	// frontend routes =========================================================
 	// route to handle all angular requests disabled to enable API calls
@@ -117,72 +158,13 @@ module.exports = function(app, db) {
 	// 	res.sendfile('./public/index.html');
 	// });
 
-    app.get('/candidat', function(req, res) {
-        console.log("Controling acces to candidat home page");
-        accountType = req.session.accountType;
-        if(!accountType){
-            res.redirect('/login');
-            console.log("Access not granted to candidat home page");
-        }
-        else {
-            if (!accountType === "candidat"){
-                res.redirect('/login');
-                console.log("Access not granted to candidat home page for recruteur");
-            }
-        }
-    });
-
-    app.get('/recruteur', function(req, res) {
-        console.log("Controling acces to recruteur home page");
-        accountType = req.session.accountType;
-        if(!accountType){
-            res.redirect('/login');
-            console.log("Access not granted to recruteur home page");
-        }
-        else {
-            if (!accountType === "recruteur"){
-                res.redirect('/login');
-                console.log("Access not granted to recruteur home page for candidat");
-            }
-        }
-    });
-
 	// API calls ===============================================================
 	// candidats
-    app.get('/api/candidats', function(req, res) {
-        console.log("candidats");
-        Candidat.find(function(err, thing) {
-            if(err){
-                console.log(err);
-            }
-            console.log(thing);
-            res.json(thing);
-        }); // returns all candidats list
-    });
+    
     app.post('/api/candidats', function(req, res) {
         // add data to candidats in db
     });
-    app.get('/api/candidat:id', function(req, res) {
-        console.log("candidat with id " + req.params.id);
-        Candidat.findOne({ _id : req.params.id}, function(err, thing) {
-            if(err){
-                console.log(err);
-            }
-            console.log(thing);
-            res.json(thing);
-        }); // returns all candidats list
-    });
-    app.get('/api/candidat/byemail:email', function(req, res) {
-        console.log("candidat with email " + req.params.email);
-        Candidat.findOne({ email : req.params.email}, function(err, thing) {
-            if(err){
-                console.log(err);
-            }
-            console.log(thing);
-            res.json(thing);
-        }); // returns all candidats list
-    });
-
+    
     // recruteurs
     app.get('/api/recruteurs', function(req, res) {
         console.log("recruteurs");
