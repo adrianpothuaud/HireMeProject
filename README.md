@@ -6,10 +6,6 @@
 
 [![Heroku hosting](https://camo.githubusercontent.com/0114f89fa7abb867b1ce24bbcb83594bace70ac5/687474703a2f2f692e696d6775722e636f6d2f304962665275522e6a7067)](https://www.heroku.com/)
 
-### About the authors
-
-Adrian Pothuaud & Geoffrey Roux, students @ ESILV, Paris La Défense
-
 ### About the Application
 
 Hire-ME is a web Application intended to allow searching for a job and go to the job interview @ the same place, from home, or in travel through web live video stream between candidates and human resources of great enterprises.
