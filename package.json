@@ -1,19 +1,20 @@
 {
-  "name": "starter-node-angular",
-  "description": "MEAN Stack Application. Search and apply for jobs in the same place ! (A student project)",
-  "author": "Pothuaud Adrian & ROUX Geoffrey",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "body-parser": "*",
-    "connect": "*",
-    "express": "*",
-    "express-session": "*",
-    "method-override": "*",
-    "mongoose": "*",
-    "mongoose-schema-extend": "*",
-    "password-hash": "*"
-  }
+    "name": "starter-node-angular",
+    "description": "MEAN Stack Application. Search and apply for jobs in the same place ! (A student project)",
+    "author": "Pothuaud Adrian & ROUX Geoffrey",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "body-parser": "*",
+        "connect": "*",
+        "express": "*",
+        "express-prettify": "*",
+        "express-session": "*",
+        "method-override": "*",
+        "mongoose": "*",
+        "mongoose-schema-extend": "*",
+        "password-hash": "*"
+    }
 }
