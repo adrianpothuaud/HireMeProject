@@ -1,5 +1,12 @@
-/*Main CSS StyleSheet for Application*/
+body {
+    padding-top: 30px;
+}
 
-/*IDEAS:
-    - ...
-*/
+.pres-img {
+    max-height: 300px;
+    max-width: 300px;
+    width: 40%;
+    height: 40%;
+    margin: 25px;
+    padding: 25px;
+}

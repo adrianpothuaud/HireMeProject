@@ -4,73 +4,160 @@ Accessed should be restreined by login with a Candidat User-->
 
 <!--Nav bar-->
 <nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/home">HireMe</a>
-		</div>
-		<ul class="nav navbar-nav navbar-right">
-		<!--<div ng-view>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">HireMe</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<div ng-view>
 		to improve:
 		display signin/login if no session
 		display logout if session
 		</div>-->
-			<li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-		</ul>
-	</div>
+            <li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
 </nav>
 
 
 <div class="jumbotron text-center jumbo-candidat">
 
-	<h1>Acceuil Candidat</h1>
+    <h1>Acceuil Candidat</h1>
 
-	<p>{{ msgWelcomeCandidat }}</p>
+    <p>{{ msgWelcomeCandidat }}</p>
 
 </div>
 
 <!-- Candidat Profile progress view + profile button -->
 <div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3 class="panel-title">Votre Profil<span class="badge pull-right">{{ profile_progressbar_valuenow }}%</span></h3>
-	</div>
-	<div class="panel-body">
-		<p>Niveau de votre profil :</p>
-		<div class="progress">
-			<div class="{{profile_progressbar_class}}" role="progressbar" aria-valuenow="{{profile_progressbar_valuenow_string}}" aria-valuemin="0" aria-valuemax="100" style="{{profile_progressbar_style}}"></div>
-		</div>
-		<a href="/candidat/profile"><button type="button" class="btn btn-default">Compléter</button></a>
-	</div>
+    <div class="panel-heading">
+        <h3 class="panel-title">Votre Profil<span class="badge pull-right">{{ profile_progressbar_valuenow }}%</span></h3>
+    </div>
+    <div class="panel-body">
+        <p>Niveau de votre profil :</p>
+        <div class="progress">
+            <div class="{{profile_progressbar_class}}" role="progressbar" aria-valuenow="{{profile_progressbar_valuenow_string}}" aria-valuemin="0" aria-valuemax="100" style="{{profile_progressbar_style}}"></div>
+        </div>
+        <a href="/candidat/profile"><button type="button" class="btn btn-default">Compléter</button></a>
+    </div>
 </div>
 
 
 <!-- Available events -->
 <div class="panel panel-success">
-	<div class="panel-heading">
-		<h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
-	</div>
-	<div class="panel-body">
-		<div class="container">
-			<div class="row">
+    <div class="panel-heading">
+        <h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
+    </div>
+    <div class="panel-body">
+        <!--<div class="row">
 				<ul class="thumbnails">
 					{{ candidatEvents }}
 				</ul>
-			</div>
-		</div>
-	</div>
+			</div>-->
+        <!--Examples-->
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Upcoming events -->
 <div class="panel panel-info">
-	<div class="panel-heading">
-		<h3 class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
-	</div>
-	<div class="panel-body">
-		<div class="container">
-			<div class="row">
-				<ul class="thumbnails">
-					{{ upcomingEvents }}
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="panel-heading">
+        <h3 class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
+    </div>
+    <div class="panel-body">
+        <!--<div class="row">
+                <ul class="thumbnails">
+                    {{ upcomingEvents }}
+                </ul>
+            </div>-->
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-4">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h3>Event Sample</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
+                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+            </div>
+        </div>
+    </div>
 </div>
