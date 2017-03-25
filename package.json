@@ -4,7 +4,7 @@
   "author": "Pothuaud Adrian & ROUX Geoffrey",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "*",
