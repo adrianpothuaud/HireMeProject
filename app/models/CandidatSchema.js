@@ -58,3 +58,5 @@ CandidatSchema.methods.showInfo = function () {
   console.log("First name : " + this.firstname);
   console.log("Email : " + this.email);
 }
+
+module.exports = CandidatSchema;

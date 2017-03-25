@@ -11,13 +11,16 @@ function lookForEmail(usr, res, callback)
 {
     console.log('Looking for email into collections');
     var Account;
-    if (usr.accounttype === 'candidat') {
+    if (usr.accountType === 'candidat') {
         console.log('Looking for Candidat');
         Account = Candidat;
     }
-    else {
+    else if (usr.accountType === 'recruteur') {
         console.log('Looking for Recruteur');
         Account = Recruteur;
+    }
+    else {
+        console.log("ERROR Undefined accountType");
     }
     Account.findOne({ email : usr.email}, function(err, thing)
     {       
@@ -37,13 +40,38 @@ function signCheck(err, thing, usr, res) {
     }
     else {
         console.log("Saving new user in db");
-        if (usr.accounttype === 'candidat'){
-            new Candidat(usr).save();
+        if (usr.accountType === "candidat"){
+            usr.experiences = new Array();
+            usr.connaissances = new Array();
+
+            console.log("usr : ");
+            console.log(usr);
+
+            newUsr = new Candidat(usr);
+            
+            console.log("New Candidat : ");
+            console.log(newUsr);
+            newUsr.save();
+            res.redirect('/login');
         }
-        else{
-            new Recruteur(usr).save();
+        else if (usr.accountType === "recruteur"){
+            usr.enterprisename = undefined;
+
+            console.log("usr : ");
+            console.log(usr);
+
+            newUsr = new Recruteur(usr);
+            
+            console.log("New Recruteur : ");
+            console.log(newUsr);
+            newUsr.save();
+            res.redirect('/login');
         }
-        res.redirect('/login');
+        else {
+            console.log("Problem incompatible accountType");
+            res.redirect("/signin");
+        }
+        
     }
 }
 
