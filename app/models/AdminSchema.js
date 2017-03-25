@@ -1,31 +1,30 @@
-// grab the mongoose module
+// MongoDB Schema for Admin User
+
+// Dependencies ==================
 var mongoose = require('mongoose');
 
-// define our nerd model
-// module.exports allows us to pass this to other files when it is called
+// Basic Schema with attributes and collection spec
 var AdminSchema = mongoose.Schema({
     email: String,
     password: String
 }, { collection : 'admins'});
 
-// define Admin's methods
-// GETTERS
+// Schema's methods =================================
+// Getters ==========================================
 AdminSchema.methods.getEmail = function () {
     return this.email;
 }
-
 AdminSchema.methods.getHashedPassword = function () {
     return this.password;
 }
-
-// SETTERS
+// Setterrs ====================================
 AdminSchema.methods.setEmail = function (n) {
     this.email = n;
 }
-
 AdminSchema.methods.setPassword = function (n) {
     // encryption
     this.password = n;
 }
 
+// Export ==================
 module.exports = AdminSchema;

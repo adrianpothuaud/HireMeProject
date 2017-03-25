@@ -1,9 +1,17 @@
-// Node packages ==============================================
+// Define http routes for our application
+
+// Dependencies ==============================================
 var passwordHash = require('password-hash');
-// DB Models ==================================================
+// DB Models =================================================
 var Candidat = require('./models/Candidat.js');
 var Recruteur = require('./models/Recruteur.js');
 var session = require('express-session');
+
+// ToDo 
+// modules for all routes
+// comments
+// improvements
+// make DB actions within the API
 
 // Look for account with same email in both candidats and recruteurs collections
 // hacked witch callback for synch
@@ -126,11 +134,8 @@ function isPasswordCorrect(user, response) {
 
 module.exports = function(app, db) {
 
-    //require('./app/apiroutes_delete.js')(app, db); // pass our application into our routes
-    require('./apiroutes_get.js')(app, db); // pass our application into our routes
-    //require('./app/apiroutes_insert.js')(app, db); // pass our application into our routes
-    //require('./app/apiroutes_post.js')(app, db); // pass our application into our routes
-    //require('./app/onboardingroutes.js')(app, db); // pass our application into our routes
+    require('./routes/api/candidats/get.js')(app, db); // pass our application into our routes
+    require('./routes/api/recruteurs/get.js')(app, db); // pass our application into our routes
 
     app.get('/', function(req, res) {
         console.log("GET request in  '/' ...");

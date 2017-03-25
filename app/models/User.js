@@ -1,4 +1,8 @@
+// exports mongoDB User Model
+
+// Dependencies ===================================
 var mongoose = require('mongoose');
 var UserSchema = require('./UserSchema');
 
-module.exports = mongoose.model('Recruteur', UserSchema);
+// Export =================================================
+module.exports = mongoose.model('User', UserSchema);

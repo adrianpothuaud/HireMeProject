@@ -1,6 +1,7 @@
-// grab the mongoose module
+// exports mongoDB Connaissance Model
+
+// Dependencies ===================================
 var mongoose = require('mongoose');
 
-// define our nerd model
-// module.exports allows us to pass this to other files when it is called
+// Export =================================================
 module.exports = mongoose.model('Connaissance', ConnaissanceSchema);

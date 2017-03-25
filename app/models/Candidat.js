@@ -1,6 +1,8 @@
-// grab the mongoose module
+// exports mongoDB Candidat Model
+
+// Dependencies ===================================
 var mongoose = require('mongoose');
 var CandidatSchema = require('./CandidatSchema.js');
 
-// module.exports allows us to pass this to other files when it is called
+// Export =================================================
 module.exports = mongoose.model('Candidat', CandidatSchema);

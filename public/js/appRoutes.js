@@ -1,3 +1,6 @@
+// Angular Single Page Application view-router
+// Define all accessible routes and corresponding html template + view controller
+
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
 	$routeProvider
@@ -7,45 +10,41 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/home.html',
 			controller: 'MainController'
 		})
-
 		.when('/home', {
 			templateUrl: 'views/home.html',
 			controller: 'MainController'
 		})
-
+		// about 
 		.when('/about', {
 			templateUrl: 'views/about.html'
 		})
-
+		// onboarding routes
         .when('/signin', {
             templateUrl: 'views/signin.html',
             controller: 'SigninController'
         })
-
         .when('/login', {
             templateUrl: 'views/login.html'
         })
-
+		// user home page
 		.when('/recruteur', {
 			templateUrl: 'views/recruteur.html',
 			controller: 'RecruteurController'
 		})
-
 		.when('/candidat', {
 			templateUrl: 'views/candidat.html',
 			controller: 'CandidatController'
 		})
-
+		// admin connection
 		.when('/admin', {
 		    templateUrl: 'views/admin.html',
             controller: 'AdminController'
 		})
-		
+		// user profile page
 		.when('/candidat/profile', {
 			templateUrl: 'views/candidatProfile.html',
 			controller: 'CandidatProfileController'
 		})
-		
 		.when('/recruteur/profile', {
 			templateUrl: 'views/recruteurProfile.html',
 			controller: 'RecruteurProfileController'

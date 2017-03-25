@@ -1,25 +1,28 @@
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/home">HireMe</a>
+<!--HTML Template for Admin's login panel
+Accessed only by typing '/admin' into the webbrowser address bar-->
+    
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">HireMe</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+        <!--<div ng-view>
+            to improve:
+            display signin/login if no session
+            display logout if session
+        </div>-->
+            <li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
     </div>
-		<ul class="nav navbar-nav navbar-right">
-			<!--<div ng-view>
-				to improve:
-				display signin/login if no session
-				display logout if session
-			</div>-->
-			<li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
-			<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		</ul>
-		</div>
-	</nav>
+</nav>
 
 <div class="container">
+
     <div class="col-sm-3 col-md-3"></div>
 
     <div class="col-sm-6 col-md-6">
-
         <div class="panel">
             <form method="POST" action="/login" enctype="multipart/form-data">
                 <div class="form-group">
@@ -33,7 +36,8 @@
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
         </div>
-
     </div>
+
     <div class="col-sm-3 col-md-3"></div>
+
 </div>

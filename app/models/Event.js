@@ -1,7 +1,8 @@
-// grab the mongoose module
+// exports mongoDB Event Model
+
+// Dependencies ===================================
 var mongoose = require('mongoose');
 var EventSchema = require('./EventSchema.js');
 
-// define our nerd model
-// module.exports allows us to pass this to other files when it is called
+// Export =================================================
 module.exports = mongoose.model('Event', EventSchema);

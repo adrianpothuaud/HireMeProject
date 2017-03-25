@@ -1,3 +1,5 @@
+// Initialize all Angular Modules 
+
 angular.module('mainApp', ['ngRoute', 'appRoutes', 'MainCtrl', 
 'CandidatCtrl', 'CandidatProfileCtrl', 'CandidatService', 'CandidatProfileService', 
 'RecruteurCtrl', 'RecruteurProfileCtrl', 'RecruteurService', 'RecruteurProfileService',
