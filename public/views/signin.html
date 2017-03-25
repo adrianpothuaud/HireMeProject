@@ -1,59 +1,61 @@
-<!-- HEADER -->
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/home">HireMe</a>
-    </div>
-		<ul class="nav navbar-nav navbar-right">
-			<!--<div ng-view>
-				to improve:
-				display signin/login if no session
-				display logout if session
-			</div>-->
-			<li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
-			<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		</ul>
-		</div>
-	</nav>
+<!--Signin page with signin form-->
 
+<!-- Nav bar -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">HireMe</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<div ng-view>
+                to improve:
+                display signin/login if no session
+                display logout if session
+            </div>-->
+            <li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!--Signin form-->
 <form enctype='application/json' method="POST" action="/signin">
 
-            <div class="panel panel-primary">
-                <div class="panel-body">
+    <div class="panel panel-primary">
+        <div class="panel-body">
 
-                    <div class="form-group">
-                        <label for="lastname">Nom</label>
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="nom de famille">
-                    </div>
+            <div class="form-group">
+                <label for="lastname">Nom</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="nom de famille">
+            </div>
 
-                    <div class="form-group">
-                        <label for="firstname">Prénom</label>
-                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="prénom">
-                    </div>
+            <div class="form-group">
+                <label for="firstname">Prénom</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="prénom">
+            </div>
 
-                    <div class="form-group">
-                        <label for="email">Adresse email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                    </div>
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
 
-                    <div class="form-group">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="********">
-                    </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="********">
+            </div>
 
-                    <label for="accountType">Type de compte</label>
-                    <div class="form-group" id="accountType">
-                        <div class="radio">
-                            <label><input type="radio" name="accountType" value="candidat">Candidat</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" name="accountType" value="recruteur">Recruteur</label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-success">Envoyer</button>
-
+            <label for="accountType">Type de compte</label>
+            <div class="form-group" id="accountType">
+                <div class="radio">
+                    <label><input type="radio" name="accountType" value="candidat">Candidat</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="accountType" value="recruteur">Recruteur</label>
                 </div>
             </div>
 
+            <button type="submit" class="btn btn-success">Envoyer</button>
+
+        </div>
+    </div>
 </form>
