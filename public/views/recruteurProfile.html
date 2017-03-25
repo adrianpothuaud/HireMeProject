@@ -5,24 +5,24 @@ and add/remove Enterprise-->
 
 <!--Nav bar-->
 <nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/home">HireMe</a>
-		</div>
-		<ul class="nav navbar-nav navbar-right">
-			<!--<div ng-view>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">HireMe</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<div ng-view>
 				to improve:
 				display signin/login if no session
 				display logout if session
 			</div>-->
-			<li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-		</ul>
-	</div>
+            <li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
 </nav>
 
 <div class="jumbotron text-center">
 
-	<h1>Profil Recruteur</h1>
+    <h1>Profil Recruteur</h1>
 
 </div>
 
@@ -30,6 +30,53 @@ and add/remove Enterprise-->
 <!--lastname-->
 <!--firstname-->
 <!--email-->
+<!--Print user information with the possibility to update them-->
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3>Informations utilisateur</h3>
+    </div>
+
+    <div class="panel-body">
+
+        <!--lastname-->
+        <!--firstname-->
+        <!--email-->
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default">First name</span> {{candidat_firstname}}
+                <br/><br/>
+                <input type="text" class="form-control" placeholder="firstname" name="firstname">
+                <br/>
+                <button class="btn btn-default" type="submit">Go!</button>
+            </li>
+            <li class="list-group-item">
+                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default">Last name</span> {{candidat_lastname}}
+                <br/><br/>
+                <input type="text" class="form-control" placeholder="lastname" name="lastname">
+                <br/>
+                <button class="btn btn-default" type="submit">Go!</button>
+            </li>
+            <li class="list-group-item">
+                <span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default">Email</span> {{candidat_email}}
+                <br/><br/>
+                <input type="text" class="form-control" placeholder="email" name="email">
+                <br/>
+                <button class="btn btn-default" type="submit">Go!</button>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="panel-footer">
+        <p>Vous pouvez modifier vos informations personnelles autant que vous le souhaitez.</p>
+    </div>
+
+</div>
 <!--Button change password-->
 <!--View enterprise-->
 <!--Change enterprise-->

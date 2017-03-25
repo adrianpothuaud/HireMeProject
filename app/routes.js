@@ -181,6 +181,10 @@ module.exports = function(app, db) {
         console.log("GET request in recruteur profile page...");
         res.sendFile('index.html', { root: "public" });
     });
+    app.get('/event/createform', function(req, res) {
+        console.log("GET request in event creation page");
+        res.sendFile('index.html', { root: "public" });
+    });
 
     // frontend routes =========================================================
     // route to handle all angular requests disabled to enable API calls
