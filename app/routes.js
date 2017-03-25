@@ -180,6 +180,15 @@ module.exports = function(app, db) {
         res.sendFile('index.html', { root: "public" });
     });
 
+    app.get('/candidat/profile', function(req, res) {
+        console.log("GET request in candidat profile page...");
+        res.sendFile('index.html', { root: "public" });
+    });
+    app.get('/recruteur/profile', function(req, res) {
+        console.log("GET request in recruteur profile page...");
+        res.sendFile('index.html', { root: "public" });
+    });
+
 	// frontend routes =========================================================
 	// route to handle all angular requests disabled to enable API calls
 	// app.get('*', function(req, res) {
