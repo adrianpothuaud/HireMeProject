@@ -21,10 +21,10 @@ module.exports = function(app, db) {
         });
     });
     // get 1-event informations by id
-    app.get('/api:key/event:id', function(req, res) {
+    app.get('/api:key/events/:ev_id', function(req, res) {
         verifyAPIKey(req.params.key, req, res, function(req, res) {
-            console.log("event with id " + req.params.id);
-            Event.findOne({ _id: req.params.id }, function(err, thing) {
+            console.log("event with id " + req.params.ev_id);
+            Event.findOne({ _id: req.params.ev_id }, function(err, thing) {
                 if (err) {
                     console.log(err);
                 }

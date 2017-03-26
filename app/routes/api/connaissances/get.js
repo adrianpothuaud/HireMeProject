@@ -21,10 +21,10 @@ module.exports = function(app, db) {
         });
     });
     // get 1-connaissance informations by id
-    app.get('/api:key/connaissance:id', function(req, res) {
+    app.get('/api:key/connaissances/:con_id', function(req, res) {
         verifyAPIKey(req.params.key, req, res, function(req, res) {
-            console.log("connaissance with id " + req.params.id);
-            Connaissance.findOne({ _id: req.params.id }, function(err, thing) {
+            console.log("connaissance with id " + req.params.con_id);
+            Connaissance.findOne({ _id: req.params.con_id }, function(err, thing) {
                 if (err) {
                     console.log(err);
                 }

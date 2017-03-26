@@ -30,8 +30,4 @@ module.exports = function(app, db) {
             }
         });
     });
-    // update 1-candidat informations by id
-
-    // update 1-candidat informations by email
-
 };

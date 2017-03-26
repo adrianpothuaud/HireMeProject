@@ -21,7 +21,7 @@ module.exports = function(app, db) {
         });
     });
     // get 1-experience informations by id
-    app.get('/api:key/experience:id', function(req, res) {
+    app.get('/api:key/experienceS/:id', function(req, res) {
         verifyAPIKey(req.params.key, req, res, function(req, res) {
             console.log("experience with id " + req.params.id);
             Experience.findOne({ _id: req.params.id }, function(err, thing) {

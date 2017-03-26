@@ -22,23 +22,10 @@ module.exports = function(app, db) {
         });
     });
     // get 1-candidat informations by id
-    app.get('/api:key/candidat:id', function(req, res) {
+    app.get('/api:key/candidats/:candidat_id', function(req, res) {
         verifyAPIKey(req.params.key, req, res, function(req, res) {
-            console.log("candidat with id " + req.params.id);
-            Candidat.findOne({ _id: req.params.id }, function(err, thing) {
-                if (err) {
-                    console.log(err);
-                }
-                console.log(thing);
-                res.json(thing); // prints candidat infos in json format to the response page
-            });
-        });
-    });
-    // get 1-candidat informations by email
-    app.get('/api:key/candidat/byemail:email', function(req, res) {
-        verifyAPIKey(req.params.key, req, res, function(req, res) {
-            console.log("candidat with email " + req.params.email);
-            Candidat.findOne({ email: req.params.email }, function(err, thing) {
+            console.log("candidat with id " + req.params.candidat_id);
+            Candidat.findOne({ _id: req.params.candidat_id }, function(err, thing) {
                 if (err) {
                     console.log(err);
                 }
