@@ -10,6 +10,7 @@ var session = require('express-session');
 var pretty = require('express-prettify');
 
 // configuration ===========================================
+process.setMaxListeners(0);
 var db = require('./config/db');
 var port = process.env.PORT || 8080; // set our port
 // parse various different custom JSON types as JSON
@@ -27,6 +28,7 @@ app.use(session({
 app.use(pretty({ query: 'pretty' }));
 
 // db connection
+mongoose.Promise = global.Promise;
 mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

@@ -122,9 +122,6 @@ function isPasswordCorrect(user, response) {
 
 module.exports = function(app, db) {
 
-    require('./routes/api/candidats/get.js')(app, db); // pass our application into our routes
-    require('./routes/api/recruteurs/get.js')(app, db); // pass our application into our routes
-
     app.get('/', function(req, res) {
         console.log("GET request in  '/' ...");
         res.sendFile('index.html', { root: "public" });
@@ -194,14 +191,19 @@ module.exports = function(app, db) {
 
     // API calls ===============================================================
     // candidats
-    require('./routes/api/candidats/get.js')(app, db); // pass our application into our routes
+    require('./routes/api/candidats/get.js')(app, db); // GET methods
+    require('./routes/api/candidats/post.js')(app, db); // POST methods
     // recruteurs
-    require('./routes/api/recruteurs/get.js')(app, db); // pass our application into our routes
+    require('./routes/api/recruteurs/get.js')(app, db); // GET methods
+    require('./routes/api/recruteurs/post.js')(app, db); // POST methods
     // events
-    require('./routes/api/events/get.js')(app, db); // pass our application into our routes
+    require('./routes/api/events/get.js')(app, db); // GET methods
+    require('./routes/api/events/post.js')(app, db); // POST methods
     // connaissances
-    require('./routes/api/connaissances/get.js')(app, db); // pass our application into our routes
+    require('./routes/api/connaissances/get.js')(app, db); // GET methods
+    require('./routes/api/connaissances/post.js')(app, db); // POST methods
     // experiences
-    require('./routes/api/experiences/get.js')(app, db); // pass our application into our routes
+    require('./routes/api/experiences/get.js')(app, db); // GET methods
+    require('./routes/api/experiences/post.js')(app, db); // POST methods
 
 };
