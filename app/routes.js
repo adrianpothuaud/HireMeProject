@@ -194,21 +194,26 @@ module.exports = function(app, db) {
     require('./routes/api/candidats/get.js')(app, db); // GET methods
     require('./routes/api/candidats/post.js')(app, db); // POST methods
     require('./routes/api/candidats/put.js')(app, db); // PUT methods
+    require('./routes/api/candidats/delete.js')(app, db); // DELETE methods
     // recruteurs
     require('./routes/api/recruteurs/get.js')(app, db); // GET methods
     require('./routes/api/recruteurs/post.js')(app, db); // POST methods
     require('./routes/api/recruteurs/put.js')(app, db); // PUT methods
+    require('./routes/api/recruteurs/delete.js')(app, db); // DELETE methods
     // events
     require('./routes/api/events/get.js')(app, db); // GET methods
     require('./routes/api/events/post.js')(app, db); // POST methods
     require('./routes/api/events/put.js')(app, db); // PUT methods
+    require('./routes/api/events/delete.js')(app, db); // DELETE methods
     // connaissances
     require('./routes/api/connaissances/get.js')(app, db); // GET methods
     require('./routes/api/connaissances/post.js')(app, db); // POST methods
     require('./routes/api/connaissances/put.js')(app, db); // PUT methods
+    require('./routes/api/connaissances/delete.js')(app, db); // DELETE methods
     // experiences
     require('./routes/api/experiences/get.js')(app, db); // GET methods
     require('./routes/api/experiences/post.js')(app, db); // POST methods
     require('./routes/api/experiences/put.js')(app, db); // PUT methods
+    require('./routes/api/experiences/delete.js')(app, db); // DELETE methods
 
 };
