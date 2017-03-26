@@ -15,6 +15,7 @@
         "method-override": "*",
         "mongoose": "*",
         "mongoose-schema-extend": "*",
-        "password-hash": "*"
+        "password-hash": "*",
+        "ejs": "*"
     }
 }

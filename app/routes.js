@@ -76,25 +76,31 @@ function signCheck(err, thing, usr, res) {
     }
 }
 
-function lookForAccount(usrmail, pw, response) {
+function lookForAccount(usrmail, pw, request, response) {
     console.log('Looking for account with email');
     console.log('Looking into Candidats...');
     Candidat.findOne({ email: usrmail }, function(err, thing) {
         if (thing) {
-            getAccount(err, thing, pw, response);
+            getAccount(err, thing, pw, request, response);
         } else {
             console.log('Looking into Recruteurs...');
             Recruteur.findOne({ email: usrmail }, function(err, thing) {
-                getAccount(err, thing, pw, response);
+                getAccount(err, thing, pw, request, response);
             });
         }
     });
 }
 
-function myDispatcher(myObject, res) {
+function myDispatcher(myObject, request, res) {
 
-    // res.session.userId = myObject.user._id;
-    // res.session.accountType = myObject.type;
+    var sess
+
+    if (request.session) sess = request.session;
+    else sess = new Object();
+
+    sess._id = myObject.user._id;
+
+    console.log("Session with _id : " + sess._id);
 
     if (myObject.type === 'candidat') {
         console.log("Dispatching to candidat home page");
@@ -105,19 +111,20 @@ function myDispatcher(myObject, res) {
     }
 }
 
-function getAccount(err, thing, pw, response) {
+function getAccount(err, thing, pw, request, response) {
     console.log('Getting Account');
     if (thing) {
-        myDispatcher({ 'type': thing.accountType, 'isPwOK': thing.password === pw, 'user': thing }, response);
+        console.log("Dispatching...");
+        myDispatcher({ 'type': thing.accountType, 'isPwOK': thing.password === pw, 'user': thing }, request, response);
     } else {
         console.log("user is undefined");
         response.sendFile('index.html', { root: "public" });
     }
 }
 
-function isPasswordCorrect(user, response) {
+function isPasswordCorrect(user, request, response) {
     console.log("Verifying account for login");
-    lookForAccount(user.email, user.password, response);
+    lookForAccount(user.email, user.password, request, response);
 }
 
 module.exports = function(app, db) {
@@ -151,42 +158,78 @@ module.exports = function(app, db) {
         lookForEmail(formRes, res, signCheck);
     });
     // authentication routes
-    app.get('/login', function(req, res) {
+    app.get('/login', function(request, response) {
         console.log("GET request in login page...");
-        res.sendFile('index.html', { root: "public" });
+        response.sendFile('index.html', { root: "public" });
     });
     app.post('/login', function(req, res) {
         console.log("Login POST request");
         var formRes = req.body;
-        isPasswordCorrect(formRes, res);
+        isPasswordCorrect(formRes, req, res);
     });
 
     app.get('/candidat', function(req, res) {
-        console.log("GET request in candidat page...");
-        res.sendFile('index.html', { root: "public" });
+        if (req.session) {
+            console.log("GET request in candidat page...");
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            console.log("Session not loaded when trying to access candidat home page..");
+            res.redirect("/home");
+        }
     });
     app.get('/recruteur', function(req, res) {
-        console.log("GET request in recruteur page...");
-        res.sendFile('index.html', { root: "public" });
+        if (req.session) {
+            console.log("GET request in recuteur page...");
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            console.log("Session not loaded when trying to access recruteur home page..");
+            res.redirect("/home");
+        }
     });
 
     app.get('/candidat/profile', function(req, res) {
-        console.log("GET request in candidat profile page...");
-        res.sendFile('index.html', { root: "public" });
+        if (req.session) {
+            console.log("GET request in candidat profile page...");
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            console.log("Session not loaded when trying to access candidat profile page..");
+            res.redirect("/home");
+        }
     });
     app.get('/recruteur/profile', function(req, res) {
-        console.log("GET request in recruteur profile page...");
-        res.sendFile('index.html', { root: "public" });
+        if (req.session) {
+            console.log("GET request in recruteur profile page...");
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            console.log("Session not loaded when trying to access recruteur profile page..");
+            res.redirect("/home");
+        }
     });
     app.get('/event/createform', function(req, res) {
-        console.log("GET request in event creation page");
-        res.sendFile('index.html', { root: "public" });
+        if (req.session) {
+            console.log("GET request in recruteur event creation page...");
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            console.log("Session not loaded when trying to access recruteur event creation page..");
+            res.redirect("/home");
+        }
+    });
+
+    app.get('/logout', function(req, res) {
+        req.session.destroy(function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Session killed !");
+                res.redirect('/');
+            }
+        });
     });
 
     // frontend routes =========================================================
     // route to handle all angular requests disabled to enable API calls
     // app.get('*', function(req, res) {
-    // 	res.sendfile('./public/index.html');
+    //     res.sendfile('./public/index.html');
     // });
 
     // API calls ===============================================================

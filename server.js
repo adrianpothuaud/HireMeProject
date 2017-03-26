@@ -1,5 +1,8 @@
 // Main server script
 
+// ENVIRONMENT
+process.env['API_KEY'] = 'onsiteactionskey4YHTE7';
+
 // Dependencies =================================================
 var express = require('express');
 var app = express();
