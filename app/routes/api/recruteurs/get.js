@@ -9,7 +9,7 @@ module.exports = function(app, db) {
     // RECRUTEURS ========================================================================
     // get a list of all recruteurs
     app.get('/api:key/recruteurs', function(req, res) {
-        verifyAPIKey(key, res);
+        verifyAPIKey(req.params.key, res);
         // ToDo : hide password
         console.log("recruteurs");
         Recruteur.find(function(err, thing) {
@@ -22,7 +22,7 @@ module.exports = function(app, db) {
     });
     // get 1-recruteur informations by id
     app.get('/api:key/recruteur:id', function(req, res) {
-        verifyAPIKey(key, res);
+        verifyAPIKey(req.params.key, res);
         console.log("recruteur with id " + req.params.id);
         Recruteur.findOne({ _id: req.params.id }, function(err, thing) {
             if (err) {
@@ -34,7 +34,7 @@ module.exports = function(app, db) {
     });
     // get 1-recruteur informations by email
     app.get('/api:key/recruteur/byemail:email', function(req, res) {
-        verifyAPIKey(key, res);
+        verifyAPIKey(req.params.key, res);
         console.log("recruteur with email " + req.params.email);
         Recruteur.findOne({ email: req.params.email }, function(err, thing) {
             if (err) {

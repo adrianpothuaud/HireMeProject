@@ -9,7 +9,7 @@ module.exports = function(app, db) {
     // Event ========================================================================
     // get a list of all Events
     app.get('/api:key/events', function(req, res) {
-        verifyAPIKey(key, res);
+        verifyAPIKey(req.params.key, res);
         console.log("events");
         Event.find(function(err, thing) {
             if (err) {
@@ -21,7 +21,7 @@ module.exports = function(app, db) {
     });
     // get 1-event informations by id
     app.get('/api:key/event:id', function(req, res) {
-        verifyAPIKey(key, res);
+        verifyAPIKey(req.params.key, res);
         console.log("event with id " + req.params.id);
         Event.findOne({ _id: req.params.id }, function(err, thing) {
             if (err) {
