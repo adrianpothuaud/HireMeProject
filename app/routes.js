@@ -194,35 +194,14 @@ module.exports = function(app, db) {
 
     // API calls ===============================================================
     // candidats
-
-    app.post('/api/candidats', function(req, res) {
-        // add data to candidats in db
-    });
-
+    require('./routes/api/candidats/get.js')(app, db); // pass our application into our routes
     // recruteurs
-    app.get('/api/recruteurs', function(req, res) {
-        console.log("recruteurs");
-        Recruteur.find(function(err, thing) {
-            if (err) {
-                console.log(err);
-            }
-            console.log(thing);
-            res.json(thing);
-        }); // returns all candidats list
-    });
-    app.post('/api/recruteurs', function(req, res) {
-        // add data to recruteurs in db
-    });
-    app.get('/api/recruteur:id', function(req, res) {
-        res.JSON(); // returns recruteur with ID informations
-    });
-    app.get('/api/recruteur:email', function(req, res) {
-        res.JSON(); // returns recruteur with ID informations
-    });
-    app.delete('/api/recruteur:id', function(req, res) {
-        // delete recruteur from db
-    });
-    app.delete('/api/recruteur:email', function(req, res) {
-        // delete recruteur from db
-    });
+    require('./routes/api/recruteurs/get.js')(app, db); // pass our application into our routes
+    // events
+    require('./routes/api/events/get.js')(app, db); // pass our application into our routes
+    // connaissances
+    require('./routes/api/connaissances/get.js')(app, db); // pass our application into our routes
+    // experiences
+    require('./routes/api/experiences/get.js')(app, db); // pass our application into our routes
+
 };

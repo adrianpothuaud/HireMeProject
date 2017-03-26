@@ -13,12 +13,16 @@ var pretty = require('express-prettify');
 var db = require('./config/db');
 var port = process.env.PORT || 8080; // set our port
 // parse various different custom JSON types as JSON
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // static files on server
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 // session management
-app.use(session({ secret: "This is a secret" }));
+app.use(session({
+    secret: "This is a secret",
+    resave: true,
+    saveUninitialized: true
+}));
 // app.locals.pretty = true; // pretty json printing for API 
 app.use(pretty({ query: 'pretty' }));
 
