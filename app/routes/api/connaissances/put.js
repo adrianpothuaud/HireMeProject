@@ -13,10 +13,8 @@ module.exports = function(app, db) {
             // ToDo : find and update a connaissance
             Connaissance.findOne({ _id: req.params.con_id }, function(err, thing) {
                 if (err) res.send(err);
-                thing.name = req.body.name;
-                if (req.body.level) {
-                    thing.level = req.body.level;
-                }
+                if (req.body.name) thing.name = req.body.name;
+                if (req.body.level) thing.level = req.body.level;
                 thing.save(function(err) {
                     if (err) res.Send(err);
                     res.json({ message: 'Connaissance updated!' });

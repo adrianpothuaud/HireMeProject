@@ -197,9 +197,11 @@ module.exports = function(app, db) {
     // recruteurs
     require('./routes/api/recruteurs/get.js')(app, db); // GET methods
     require('./routes/api/recruteurs/post.js')(app, db); // POST methods
+    require('./routes/api/recruteurs/put.js')(app, db); // PUT methods
     // events
     require('./routes/api/events/get.js')(app, db); // GET methods
     require('./routes/api/events/post.js')(app, db); // POST methods
+    require('./routes/api/events/put.js')(app, db); // PUT methods
     // connaissances
     require('./routes/api/connaissances/get.js')(app, db); // GET methods
     require('./routes/api/connaissances/post.js')(app, db); // POST methods
@@ -207,5 +209,6 @@ module.exports = function(app, db) {
     // experiences
     require('./routes/api/experiences/get.js')(app, db); // GET methods
     require('./routes/api/experiences/post.js')(app, db); // POST methods
+    require('./routes/api/experiences/put.js')(app, db); // PUT methods
 
 };

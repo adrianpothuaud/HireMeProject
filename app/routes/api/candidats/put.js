@@ -13,9 +13,10 @@ module.exports = function(app, db) {
             // ToDo : find and update a Candidat
             Candidat.findOne({ _id: req.params.candidat_id }, function(err, thing) {
                 if (err) res.send(err);
-                thing.lastname = req.body.lastname;
-                thing.firstname = req.body.firstname;
-                thing.email = req.body.email;
+                if (req.body.lastname) thing.lastname = req.body.lastname;
+                if (req.body.firstname) thing.firstname = req.body.firstname;
+                if (req.body.email) thing.email = req.body.email;
+                if (req.body.password) thing.password = req.body.password;
                 // thing.password = req.body.password;
                 thing.save(function(err) {
                     if (err) res.Send(err);
