@@ -1,6 +1,8 @@
 // View Controller for candidat.html HTML Template
 
-angular.module('CandidatCtrl', []).controller('CandidatController', function($scope, $http) {
+angular.module('CandidatCtrl', []).controller('CandidatController', function($scope, $http, $location) {
+
+    console.log($scope);
 
     // Profile progress bar configuration
 
@@ -11,7 +13,7 @@ angular.module('CandidatCtrl', []).controller('CandidatController', function($sc
     $scope.$watch($http.get("http://localhost:8080/api" +
             "onsiteactionskey4YHTE7" +
             "/candidats/" +
-            "58d7da87a43807c788d07e6a")
+            $location.search().id)
         .then(function(response) {
             console.log("Response arrived !");
             console.log(response);

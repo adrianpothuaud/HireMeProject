@@ -7,6 +7,8 @@ var Candidat = require('./models/Candidat.js');
 var Recruteur = require('./models/Recruteur.js');
 var session = require('express-session');
 
+var sess
+
 // ToDo 
 // modules for all routes
 // comments
@@ -93,8 +95,6 @@ function lookForAccount(usrmail, pw, request, response) {
 
 function myDispatcher(myObject, request, res) {
 
-    var sess
-
     if (request.session) sess = request.session;
     else sess = new Object();
 
@@ -104,10 +104,10 @@ function myDispatcher(myObject, request, res) {
 
     if (myObject.type === 'candidat') {
         console.log("Dispatching to candidat home page");
-        res.redirect('/candidat');
+        res.redirect('/candidat?id=' + sess._id);
     } else {
         console.log("Dispatching to recruteur home page");
-        res.redirect('/recruteur');
+        res.redirect('/recruteur?id=' + sess._id);
     }
 }
 
