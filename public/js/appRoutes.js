@@ -16,7 +16,8 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         })
         // about 
         .when('/about', {
-            templateUrl: 'views/about.html'
+            templateUrl: 'views/about.html',
+            controller: 'AboutController'
         })
         // onboarding routes
         .when('/signin', {
