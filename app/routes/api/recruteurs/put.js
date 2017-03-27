@@ -17,6 +17,7 @@ module.exports = function(app, db) {
                 if (req.body.firstname) thing.firstname = req.body.firstname;
                 if (req.body.email) thing.email = req.body.email;
                 if (req.body.password) thing.password = req.body.password;
+                if (req.body.enterpriseName) thing.enterpriseName = req.body.enterpriseName;
                 thing.save(function(err) {
                     if (err) res.Send(err);
                     res.json({ message: 'Recruteur updated!' });

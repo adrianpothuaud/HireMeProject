@@ -3,7 +3,7 @@
 angular.module('RecruteurCtrl', []).controller('RecruteurController', function($scope, $http, $location) {
 
     // Request the API to get user informations
-    $scope.$watch($http.get("http://localhost:8080/api" +
+    $scope.$watch($http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +
             "onsiteactionskey4YHTE7" +
             "/recruteurs/" +
             $location.search().id)
@@ -12,7 +12,7 @@ angular.module('RecruteurCtrl', []).controller('RecruteurController', function($
             $scope.userResponse = response;
         }).then(function() {
             // Request the API to get Events informations
-            $http.get("http://localhost:8080/api" +
+            $http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +
                     "onsiteactionskey4YHTE7" +
                     "/events")
                 .then(function(response) {
@@ -62,20 +62,22 @@ angular.module('RecruteurCtrl', []).controller('RecruteurController', function($
                             // ToDo ===================
                             // if enterprise name match
                             // ========================
-                            var beginD = new Date(element.dateBegin).getTime(),
-                                endD = new Date(element.dateEnd).getTime();
-                            // MongoDB -> String -> JavaScript Objects
-                            element.dateBegin = new Date(element.dateBegin);
-                            element.dateEnd = new Date(element.dateEnd);
-                            if (beginD <= now.getTime() && now.getTime() <= endD) {
-                                $scope.onGoingEventsCpt += 1;
-                                $scope.onGoingEvents = $scope.onGoingEvents.concat(element);
-                            } else if (now.getTime() <= beginD) {
-                                $scope.upComingEventsCpt += 1;
-                                $scope.upComingEvents = $scope.upComingEvents.concat(element);
-                            } else {
-                                $scope.passedEventsCpt += 1;
-                                $scope.passedEvents = $scope.passedEvents.concat(element);
+                            if ($scope.userResponse.data.enterpriseName == element.enterpriseName) {
+                                var beginD = new Date(element.dateBegin).getTime(),
+                                    endD = new Date(element.dateEnd).getTime();
+                                // MongoDB -> String -> JavaScript Objects
+                                element.dateBegin = new Date(element.dateBegin);
+                                element.dateEnd = new Date(element.dateEnd);
+                                if (beginD <= now.getTime() && now.getTime() <= endD) {
+                                    $scope.onGoingEventsCpt += 1;
+                                    $scope.onGoingEvents = $scope.onGoingEvents.concat(element);
+                                } else if (now.getTime() <= beginD) {
+                                    $scope.upComingEventsCpt += 1;
+                                    $scope.upComingEvents = $scope.upComingEvents.concat(element);
+                                } else {
+                                    $scope.passedEventsCpt += 1;
+                                    $scope.passedEvents = $scope.passedEvents.concat(element);
+                                }
                             }
                         }, this);
 

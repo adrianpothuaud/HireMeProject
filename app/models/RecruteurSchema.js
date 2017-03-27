@@ -10,48 +10,48 @@ var RecruteurSchema = mongoose.Schema({
     email: String,
     password: String,
     accountType: String,
-    enterprisename: String
-}, {collection: "recruteurs"});
+    enterpriseName: String
+}, { collection: "recruteurs" });
 
 // Schema's methods =================================
 // Getters ==========================================
-RecruteurSchema.methods.getLastName = function () {
+RecruteurSchema.methods.getLastName = function() {
     return this.lastname;
 }
-RecruteurSchema.methods.getFirstName = function () {
+RecruteurSchema.methods.getFirstName = function() {
     return this.firstname;
 }
-RecruteurSchema.methods.getEmail = function () {
+RecruteurSchema.methods.getEmail = function() {
     return this.email;
 }
-RecruteurSchema.methods.getPassword = function () {
+RecruteurSchema.methods.getPassword = function() {
     return this.password;
 }
-RecruteurSchema.methods.getEnterpriseName = function () {
-    return this.enterprisename;
-}
-// Setters ==========================================
-RecruteurSchema.methods.setLastName = function (n) {
+RecruteurSchema.methods.getEnterpriseName = function() {
+        return this.enterprisename;
+    }
+    // Setters ==========================================
+RecruteurSchema.methods.setLastName = function(n) {
     this.lastname = n;
 }
-RecruteurSchema.methods.setFirstName = function (n) {
+RecruteurSchema.methods.setFirstName = function(n) {
     this.firstname = n;
 }
-RecruteurSchema.methods.setEmail = function (n) {
+RecruteurSchema.methods.setEmail = function(n) {
     this.email = n;
 }
-RecruteurSchema.methods.setPassword = function (n) {
+RecruteurSchema.methods.setPassword = function(n) {
     this.password = n;
 }
-RecruteurSchema.methods.setEnterpriseName = function (n) {
-    this.enterprisename = n;
-}
-// Show Info method for logs ==================
-RecruteurSchema.methods.showInfo = function () {
-  console.log("Recruteur's Informations:");
-  console.log("Last name : " + this.lastname);
-  console.log("First name : " + this.firstname);
-  console.log("Email : " + this.email);
+RecruteurSchema.methods.setEnterpriseName = function(n) {
+        this.enterprisename = n;
+    }
+    // Show Info method for logs ==================
+RecruteurSchema.methods.showInfo = function() {
+    console.log("Recruteur's Informations:");
+    console.log("Last name : " + this.lastname);
+    console.log("First name : " + this.firstname);
+    console.log("Email : " + this.email);
 }
 
 // Export =====================

@@ -17,6 +17,7 @@ module.exports = function(app, db) {
                 if (req.body.description) thing.description = req.body.description;
                 if (req.body.dateBegin) thing.dateBegin = req.body.dateBegin;
                 if (req.body.dateEnd) thing.dateEnd = req.body.dateEnd;
+                if (req.body.enterpriseName) thing.enterpriseName = req.body.enterpriseName;
                 thing.save(function(err) {
                     if (err) res.Send(err);
                     res.json({ message: 'Event updated!' });

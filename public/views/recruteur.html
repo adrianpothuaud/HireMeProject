@@ -44,7 +44,7 @@ Accessed should be restreined by login with a Recruteur User-->
     <p>Complétez encore votre profil pour contrôler des évènements !</p>
 </div>
 
-<div ng-if="profile_progressbar_valuenow >= 40">
+<div ng-if="profile_progressbar_valuenow >= 80">
 
     <p><a href="/event/createform"><button class="btn btn-default">Créer un event</button></a></p>
 
@@ -59,10 +59,11 @@ Accessed should be restreined by login with a Recruteur User-->
                 </div>
                 <div class="caption">
                     <h4>{{event.name}}</h4>
-                    <div class="text-center">
+                    <p class="text-center">
                         <a href="#" class="btn btn-primary" role="button">À propos</a>
+                        <a href="#" class="btn btn-success" role="button">Rejoindre</a>
                         <a href="#" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>
@@ -80,10 +81,28 @@ Accessed should be restreined by login with a Recruteur User-->
                 </div>
                 <div class="caption">
                     <h4>{{event.name}}</h4>
-                    <div class="text-center">
+                    <p class="text-center">
                         <a href="#" class="btn btn-primary" role="button">À propos</a>
+                        <a href="#" class="btn btn-success" role="button">Rejoindre</a>
                         <a href="#" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
-                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Passed events -->
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">Evènements passés<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
+        </div>
+        <div class="panel-body">
+            <div ng-repeat="event in passedEvents" class="col-4 col-md-4 col-sm-4">
+                <div class="thumbnail">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+                </div>
+                <div class="caption">
+                    <h4>{{event.name}}</h4>
                 </div>
             </div>
         </div>

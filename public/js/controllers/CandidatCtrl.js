@@ -3,7 +3,7 @@
 angular.module('CandidatCtrl', []).controller('CandidatController', function($scope, $http, $location) {
 
     // Request the API to get user informations
-    $scope.$watch($http.get("http://localhost:8080/api" +
+    $scope.$watch($http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +
             "onsiteactionskey4YHTE7" +
             "/candidats/" +
             $location.search().id)
@@ -12,7 +12,7 @@ angular.module('CandidatCtrl', []).controller('CandidatController', function($sc
             $scope.userResponse = response;
         }).then(function() {
             // Request the API to get Events informations
-            $http.get("http://localhost:8080/api" +
+            $http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +
                     "onsiteactionskey4YHTE7" +
                     "/events")
                 .then(function(response) {
