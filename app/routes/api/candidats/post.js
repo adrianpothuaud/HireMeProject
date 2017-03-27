@@ -20,12 +20,10 @@ module.exports = function(app, db) {
                         console.log(err);
                         res.send(err);
                     } else {
-                        console.log("Candidat added to DB");
                         res.json(newUser);
                     }
                 });
             } else {
-                console.log("Required attribute(s) not found");
                 res.send("Required attribute(s) not found");
             }
         });

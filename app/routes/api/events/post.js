@@ -21,7 +21,6 @@ module.exports = function(app, db) {
                         console.log(err);
                         res.send(err);
                     } else {
-                        console.log("newEvent added to DB");
                         res.json(newEvent);
                     }
                 });

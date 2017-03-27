@@ -20,7 +20,6 @@ module.exports = function(app, db) {
                         console.log(err);
                         res.send(err);
                     } else {
-                        console.log("Recruteur added to DB");
                         res.json(newUser);
                     }
                 });

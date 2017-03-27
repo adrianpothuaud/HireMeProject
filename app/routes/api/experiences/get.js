@@ -10,12 +10,10 @@ module.exports = function(app, db) {
     // get a list of all connaissances
     app.get('/api:key/experiences', function(req, res) {
         verifyAPIKey(req.params.key, req, res, function(req, res) {
-            console.log("experiences");
             Experience.find(function(err, thing) {
                 if (err) {
                     console.log(err);
                 }
-                console.log(thing);
                 res.json(thing); // prints all experiences in json format to the response page
             });
         });
@@ -23,12 +21,10 @@ module.exports = function(app, db) {
     // get 1-experience informations by id
     app.get('/api:key/experienceS/:id', function(req, res) {
         verifyAPIKey(req.params.key, req, res, function(req, res) {
-            console.log("experience with id " + req.params.id);
             Experience.findOne({ _id: req.params.id }, function(err, thing) {
                 if (err) {
                     console.log(err);
                 }
-                console.log(thing);
                 res.json(thing); // prints experience infos in json format to the response page
             });
         });

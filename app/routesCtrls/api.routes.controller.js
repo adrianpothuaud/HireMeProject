@@ -7,10 +7,8 @@ module.exports = function(apiKey, req, res, callback) {
             response.redirect('/');
         } else {
             if (thing) {
-                console.log("API Key match !");
                 callback(req, res);
             } else {
-                console.log("No API Key matched");
                 res.send("No API KEy matching");
             }
         }

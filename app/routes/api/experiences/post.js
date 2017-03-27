@@ -19,7 +19,6 @@ module.exports = function(app, db) {
                         console.log(err);
                         res.send(err);
                     } else {
-                        console.log("newExp added to DB");
                         res.json(newExp);
                     }
                 });
