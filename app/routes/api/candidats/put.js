@@ -16,6 +16,7 @@ module.exports = function(app, db) {
                 if (req.body.lastname) thing.lastname = req.body.lastname;
                 if (req.body.firstname) thing.firstname = req.body.firstname;
                 if (req.body.email) thing.email = req.body.email;
+                if (req.body.accountType) thing.accountType = req.body.accountType;
                 if (req.body.password) thing.password = req.body.password;
                 // thing.password = req.body.password;
                 thing.save(function(err) {

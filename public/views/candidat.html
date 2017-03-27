@@ -37,7 +37,7 @@ Accessed should be restreined by login with a Candidat User-->
         <div class="progress">
             <div class="{{profile_progressbar_class}}" role="progressbar" aria-valuenow="{{profile_progressbar_valuenow_string}}" aria-valuemin="0" aria-valuemax="100" style="{{profile_progressbar_style}}"></div>
         </div>
-        <a href="/candidat/profile"><button type="button" class="btn btn-default">Compléter</button></a>
+        <a href="/candidat/profile?id={{userResponse.data._id}}"><button type="button" class="btn btn-default">Compléter</button></a>
     </div>
 </div>
 

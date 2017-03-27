@@ -10,22 +10,14 @@ and add/remove Experiences/Connaissances-->
             <a class="navbar-brand" href="/home">HireMe</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <!--<div ng-view>
-				to improve:
-				display signin/login if no session
-				display logout if session
-			</div>-->
             <li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
 
 <div class="jumbotron text-center">
-
     <h1>Profil Candidat</h1>
-
     <p>Complétez votre profil pour accéder aux évènements !</p>
-
 </div>
 
 <!--Print user information with the possibility to update them-->
@@ -41,34 +33,41 @@ and add/remove Experiences/Connaissances-->
         <!--firstname-->
         <!--email-->
 
-        <ul class="list-group">
-            <li class="list-group-item">
-                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="label label-default">First name</span> {{candidat_firstname}}
-                <br/><br/>
-                <input type="text" class="form-control" placeholder="firstname" name="firstname">
-                <br/>
-                <button class="btn btn-default" type="submit">Go!</button>
-            </li>
-            <li class="list-group-item">
-                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="label label-default">Last name</span> {{candidat_lastname}}
-                <br/><br/>
-                <input type="text" class="form-control" placeholder="lastname" name="lastname">
-                <br/>
-                <button class="btn btn-default" type="submit">Go!</button>
-            </li>
-            <li class="list-group-item">
-                <span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="label label-default">Email</span> {{candidat_email}}
-                <br/><br/>
-                <input type="text" class="form-control" placeholder="email" name="email">
-                <br/>
-                <button class="btn btn-default" type="submit">Go!</button>
-            </li>
-        </ul>
+        <form enctype='application/json' method="POST" action="{{post_url}}">
+            <input type="hidden" name="_method" value="put" />
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default">First name</span>
+                    <span class="text-center">{{userResponse.data.firstname}}</span>
+                    <br/><br/>
+                    <input type="text" class="form-control" placeholder="firstname" name="firstname">
+                    <br/>
+                </li>
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default">Last name</span>
+                    <span class="text-center">{{userResponse.data.lastname}}</span>
+                    <br/><br/>
+                    <input type="text" class="form-control" placeholder="lastname" name="lastname">
+                    <br/>
+                </li>
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default">Email</span>
+                    <span class="text-center">{{userResponse.data.email}}</span>
+                    <br/><br/>
+                    <input type="text" class="form-control" placeholder="email" name="email">
+                    <br/>
+                </li>
+            </ul>
 
-        <a href="#"><button class="btn btn-warning pull-right">Change password</button></a>
+            <span class=" pull-right">
+                <button class="btn btn-default" type="submit">Change informations</button>
+                <a href="#"><button class="btn btn-warning">Change password</button></a>
+            </span>
+
+        </form>
 
     </div>
 
@@ -91,8 +90,9 @@ and add/remove Experiences/Connaissances-->
             </div>
 
             <div class="panel-body">
+                <div ng-repeat="connaissance in userResponse.data.connaissances">
 
-
+                </div>
             </div>
 
             <div class="panel-footer">
@@ -109,7 +109,9 @@ and add/remove Experiences/Connaissances-->
             </div>
 
             <div class="panel-body">
+                <div ng-repeat="experience in userResponse.data.experiences">
 
+                </div>
 
             </div>
 
