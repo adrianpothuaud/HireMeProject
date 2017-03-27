@@ -46,8 +46,34 @@ Accessed should be restreined by login with a Candidat User-->
 </div>
 
 <div ng-if="profile_progressbar_valuenow >= 80">
-    <!-- Available events -->
+
+    <!-- First choice events -->
     <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Evènements selectionnés pour vous<span class="badge pull-right">{{ selectedEventsCpt }}</span></h3>
+            <p>Des évènements qui collent à votre profil !</p>
+        </div>
+        <div class="panel-body">
+            <div ng-repeat="event in selectedEvents">
+                <div class="col-6 col-md-6 col-sm-4">
+                    <div class="thumbnail">
+                        <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+                    </div>
+                    <div class="caption">
+                        <h4>{{event.name}}</h4>
+                        <p>{{event.description}}</p>
+                        <p class="text-center">
+                            <a href="#"><button class="btn btn-info">En savoir plus</button></a>
+                            <a href="#"><button class="btn btn-success">Rejoindre</button></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Available events -->
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
         </div>

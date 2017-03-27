@@ -5,10 +5,10 @@ var mongoose = require('mongoose');
 
 // Basic Schema with attributes and collection spec
 var ExperienceSchema = mongoose.Schema({
-    jobName: { type: String, default: '' },
-    enterpriseName: { type: String, default: '' },
-    dateBegin: { type: Date, default: undefined },
-    dateEnd: { type: Date, default: undefined }
+    jobName: { type: String, required: true, unique: true },
+    enterpriseName: { type: String, default: undefined, required: false },
+    dateBegin: { type: Date, default: undefined, required: false },
+    dateEnd: { type: Date, default: undefined, required: false }
 }, { collection: "experiences" });
 
 // Schema's methods =================================

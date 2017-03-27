@@ -54,12 +54,15 @@ angular.module('CandidatCtrl', []).controller('CandidatController', function($sc
                         $scope.onGoingEventsCpt = 0;
                         $scope.upComingEventsCpt = 0;
                         $scope.passedEventsCpt = 0;
+                        $scope.selectedEventsCpt = 0;
                         $scope.onGoingEvents = [];
                         $scope.upComingEvents = [];
                         $scope.passedEvents = [];
+                        $scope.selectedEvents = [];
                         // loop on events and set $scope
                         var now = new Date();
                         $scope.eventsResponse.data.forEach(function(element) {
+                            // Compare Event dates and store events in the appropriate categorie
                             var beginD = new Date(element.dateBegin).getTime(),
                                 endD = new Date(element.dateEnd).getTime();
                             // MongoDB -> String -> JavaScript Objects
@@ -75,6 +78,10 @@ angular.module('CandidatCtrl', []).controller('CandidatController', function($sc
                                 $scope.passedEventsCpt += 1;
                                 $scope.passedEvents = $scope.passedEvents.concat(element);
                             }
+
+                            // Compare Event required skills and user's ones
+                            // store selected events to put them in front of the candidat page
+                            // ............ ToDo ......................
                         }, this);
 
                         // use events in ng-repeat on HTML template candidat.html
