@@ -14,7 +14,7 @@ Accessed should be restreined by login with a Candidat User-->
 		display signin/login if no session
 		display logout if session
 		</div>-->
-            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li><a href="/"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -22,9 +22,8 @@ Accessed should be restreined by login with a Candidat User-->
 
 <div class="jumbotron text-center jumbo-candidat">
 
-    <h1>Acceuil Candidat</h1>
-
-    <p>{{ msgWelcomeCandidat }}</p>
+    <h3>{{ msgWelcomeCandidat }}</h3>
+    <p>Vous devriez surveiller les évènements en cours ...</p>
 
 </div>
 
@@ -42,121 +41,71 @@ Accessed should be restreined by login with a Candidat User-->
     </div>
 </div>
 
-
-<!-- Available events -->
-<div class="panel panel-success">
-    <div class="panel-heading">
-        <h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
-    </div>
-    <div class="panel-body">
-        <!--<div class="row">
-				<ul class="thumbnails">
-					{{ candidatEvents }}
-				</ul>
-			</div>-->
-        <!--Examples-->
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
-            </div>
-        </div>
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
-            </div>
-        </div>
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
-            </div>
-        </div>
-    </div>
+<div ng-if="profile_progressbar_valuenow < 80" class="alert alert-warning">
+    <p>Complétez encore votre profil pour accéder aux évènements !</p>
 </div>
 
-<!-- Upcoming events -->
-<div class="panel panel-info">
-    <div class="panel-heading">
-        <h3 class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
+<div ng-if="profile_progressbar_valuenow >= 80">
+    <!-- Available events -->
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
+        </div>
+        <div class="panel-body">
+            <div ng-repeat="event in onGoingEvents">
+                <div class="col-6 col-md-6 col-sm-4">
+                    <div class="thumbnail">
+                        <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+                    </div>
+                    <div class="caption">
+                        <h4>{{event.name}}</h4>
+                        <p>{{event.description}}</p>
+                        <div class="text-center">
+                            <a href="#"><button class="btn btn-info">En savoir plus</button></a>
+                            <a href="#"><button class="btn btn-success">Rejoindre</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="panel-body">
-        <!--<div class="row">
-                <ul class="thumbnails">
-                    {{ upcomingEvents }}
-                </ul>
-            </div>-->
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+
+    <!-- Upcoming events -->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
+        </div>
+        <div class="panel-body">
+            <div ng-repeat="event in upComingEvents">
+                <div class="col-6 col-md-6 col-sm-4">
+                    <div class="thumbnail">
+                        <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+                    </div>
+                    <div class="caption">
+                        <h4>{{event.name}}</h4>
+                        <p>{{event.description}}</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
-            </div>
+    </div>
+
+    <!-- Passed events -->
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Evènements passés<span class="badge pull-right">{{ passedEventsCpt }}</span></h3>
         </div>
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
-            </div>
-        </div>
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
-            </div>
-        </div>
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
-            </div>
-        </div>
-        <div class="col-6 col-md-6 col-sm-4">
-            <div class="thumbnail">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-            </div>
-            <div class="caption">
-                <h3>Event Sample</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit augue et cursus feugiat. Vivamus condimentum feugiat leo, sit amet tincidunt eros aliquam id. Morbi libero lorem, condimentum at turpis vehicula, interdum laoreet
-                    ipsum. Morbi elit dui, iaculis in faucibus vulputate, tempor non ex. Class aptent taciti sociosqu ad litora.</p>
+        <div class="panel-body">
+            <div ng-repeat="event in passedEvents">
+                <div class="col-6 col-md-6 col-sm-4">
+                    <div class="thumbnail">
+                        <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+                    </div>
+                    <div class="caption">
+                        <h4>{{event.name}}</h4>
+                        <p>{{event.description}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
