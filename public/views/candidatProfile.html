@@ -33,45 +33,45 @@ and add/remove Experiences/Connaissances-->
         <!--firstname-->
         <!--email-->
 
-        <form enctype='application/json' method="POST" action="{{post_url}}">
-            <input type="hidden" name="_method" value="put" />
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="label label-default">First name</span>
-                    <span class="text-center">{{userResponse.data.firstname}}</span>
+        <form enctype="application/json" method="POST" action=" {{post_url}} ">
+            <input type="hidden" name="_METHOD" value="PUT" />
+            <ul class="list-group ">
+                <li class="list-group-item ">
+                    <span class="glyphicon glyphicon-user "></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default ">First name</span>
+                    <span class="text-center ">{{userResponse.data.firstname}}</span>
                     <br/><br/>
-                    <input type="text" class="form-control" placeholder="firstname" name="firstname">
+                    <input type="text " class="form-control " placeholder="firstname " name="firstname ">
                     <br/>
                 </li>
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="label label-default">Last name</span>
-                    <span class="text-center">{{userResponse.data.lastname}}</span>
+                <li class="list-group-item ">
+                    <span class="glyphicon glyphicon-user "></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default ">Last name</span>
+                    <span class="text-center ">{{userResponse.data.lastname}}</span>
                     <br/><br/>
-                    <input type="text" class="form-control" placeholder="lastname" name="lastname">
+                    <input type="text " class="form-control " placeholder="lastname " name="lastname ">
                     <br/>
                 </li>
-                <li class="list-group-item">
-                    <span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="label label-default">Email</span>
-                    <span class="text-center">{{userResponse.data.email}}</span>
+                <li class="list-group-item ">
+                    <span class="glyphicon glyphicon-envelope "></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default ">Email</span>
+                    <span class="text-center ">{{userResponse.data.email}}</span>
                     <br/><br/>
-                    <input type="text" class="form-control" placeholder="email" name="email">
+                    <input type="text " class="form-control " placeholder="email " name="email ">
                     <br/>
                 </li>
             </ul>
 
-            <span class=" pull-right">
-                <button class="btn btn-default" type="submit">Change informations</button>
-                <a href="#"><button class="btn btn-warning">Change password</button></a>
+            <span class=" pull-right ">
+                <button class="btn btn-default " type="submit ">Change informations</button>
+                <a href="# "><button class="btn btn-warning ">Change password</button></a>
             </span>
 
         </form>
 
     </div>
 
-    <div class="panel-footer">
+    <div class="panel-footer ">
         <p>Vous pouvez modifier vos informations personnelles autant que vous le souhaitez.</p>
     </div>
 
@@ -81,41 +81,41 @@ and add/remove Experiences/Connaissances-->
 <!--View experiences-->
 <!--Form add experiences-->
 <!--Print user information with the possibility to update them-->
-<div class="row">
-    <div class="col-6 col-md-6 col-sm-4">
-        <div class="panel panel-default">
+<div class="row ">
+    <div class="col-6 col-md-6 col-sm-4 ">
+        <div class="panel panel-default ">
 
-            <div class="panel-heading">
+            <div class="panel-heading ">
                 <h3>Connaissances</h3>
             </div>
 
-            <div class="panel-body">
-                <div ng-repeat="connaissance in userResponse.data.connaissances">
+            <div class="panel-body ">
+                <div ng-repeat="connaissance in userResponse.data.connaissances ">
 
                 </div>
             </div>
 
-            <div class="panel-footer">
+            <div class="panel-footer ">
 
             </div>
 
         </div>
     </div>
-    <div class="col-6 col-md-6 col-sm-4">
-        <div class="panel panel-default">
+    <div class="col-6 col-md-6 col-sm-4 ">
+        <div class="panel panel-default ">
 
-            <div class="panel-heading">
+            <div class="panel-heading ">
                 <h3>Experiences</h3>
             </div>
 
-            <div class="panel-body">
-                <div ng-repeat="experience in userResponse.data.experiences">
+            <div class="panel-body ">
+                <div ng-repeat="experience in userResponse.data.experiences ">
 
                 </div>
 
             </div>
 
-            <div class="panel-footer">
+            <div class="panel-footer ">
 
             </div>
 
