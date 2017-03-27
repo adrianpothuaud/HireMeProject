@@ -38,32 +38,27 @@ and add/remove Experiences/Connaissances-->
             <ul class="list-group ">
                 <li class="list-group-item ">
                     <span class="glyphicon glyphicon-user "></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="label label-default ">First name</span>
+                    <span class="label label-default ">First name</span> &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="text-center ">{{userResponse.data.firstname}}</span>
-                    <br/><br/>
-                    <input type="text " class="form-control " placeholder="firstname " name="firstname ">
-                    <br/>
                 </li>
                 <li class="list-group-item ">
                     <span class="glyphicon glyphicon-user "></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="label label-default ">Last name</span>
+                    <span class="label label-default ">Last name</span> &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="text-center ">{{userResponse.data.lastname}}</span>
-                    <br/><br/>
-                    <input type="text " class="form-control " placeholder="lastname " name="lastname ">
-                    <br/>
                 </li>
                 <li class="list-group-item ">
                     <span class="glyphicon glyphicon-envelope "></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="label label-default ">Email</span>
+                    <span class="label label-default ">Email</span> &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="text-center ">{{userResponse.data.email}}</span>
                     <br/><br/>
-                    <input type="text " class="form-control " placeholder="email " name="email ">
+                    <input type="text " class="form-control " placeholder="modify email " name="email ">
                     <br/>
+                    <button class="btn btn-success " type="submit ">Change </button>
                 </li>
+
             </ul>
 
             <span class=" pull-right ">
-                <button class="btn btn-default " type="submit ">Change informations</button>
                 <a href="# "><button class="btn btn-warning ">Change password</button></a>
             </span>
 
@@ -91,8 +86,23 @@ and add/remove Experiences/Connaissances-->
 
             <div class="panel-body ">
                 <div ng-repeat="connaissance in userResponse.data.connaissances ">
-
+                    <p><strong>{{connaissance.name}}</strong> <span ng-if="connaissance.level">: {{connaissance.level}}</span></p>
                 </div>
+
+                <form enctype='application/json' method="POST" action="{{addConnaissanceURL}}">
+                    <fieldset>
+                        <br/><br/>Ajouter une connaissance<br/><br/>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="lastname">Nom </label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="nom de la connaissance">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Niveau de compétence </label>
+                        <input type="number" min="3" max="10" class="form-control" id="level" name="level" placeholder="niveau">
+                    </div>
+                    <button class="btn btn-info" type="submit">Envoyer </button>
+                </form>
             </div>
 
             <div class="panel-footer ">
@@ -110,8 +120,23 @@ and add/remove Experiences/Connaissances-->
 
             <div class="panel-body ">
                 <div ng-repeat="experience in userResponse.data.experiences ">
-
+                    <p><strong>{{experience.jobName}}</strong><span ng-if="experience.enterpriseName"> @ {{experience.enterpriseName}}</span></p>
                 </div>
+
+                <form enctype='application/json' method="POST" action="{{addExperienceURL}}">
+                    <fieldset>
+                        <br/><br/>Ajouter une expérience<br/><br/>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="lastname">Nom du job </label>
+                        <input type="text" class="form-control" id="jobName" name="jobName" placeholder="nom du poste">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Nom de l'entreprise </label>
+                        <input type="text" class="form-control" id="enterpriseName" name="enterpriseName" placeholder="nom de l'entreprise'">
+                    </div>
+                    <button class="btn btn-info" type="submit">Envoyer </button>
+                </form>
 
             </div>
 
