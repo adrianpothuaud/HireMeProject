@@ -9,11 +9,6 @@ Accessed by "Learn more" button @ Home page-->
             <a class="navbar-brand" href="/home">HireMe</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <!--<div ng-view>
-		to improve:
-		display signin/login if no session
-		display logout if session
-		</div>-->
             <li><a href="/signin"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
             <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
@@ -51,15 +46,28 @@ Kind of jobs offered-->
         <h3 class="panel-title">Statistics</h3>
     </div>
     <div class="panel-body">
-        <div class="col-6 col-md-6 col-sm-6">
+        <div class="col-4 col-md-4 col-sm-4">
+            <p>Quelques chiffres...</p>
+            <br/><br/><br/>
             <div class="text-center">
-                <p>Candidats <span class="badge">5</span></p><br>
-                <p>Recruteurs <span class="badge">10</span></p><br>
-                <p>Évènements <span class="badge">2</span></p>
+                <p><span class="badge">{{nbCandidats}}</span> Candidats </p><br>
+                <p><span class="badge">{{nbRecruteurs}}</span> Recruteurs </p><br>
+                <p><span class="badge">{{nbEvents}} </span> Évènements </p>
             </div>
         </div>
-        <div class="col-6 col-md-6 col-sm-6">
-
+        <div class="col-4 col-md-4 col-sm-4">
+            <p>Quelques noms d'entreprise</p>
+            <br/><br/><br/>
+            <div class="text-center" ng-repeat="enterprise in Enterprises">
+                <p>{{enterprise}}</p>
+            </div>
+        </div>
+        <div class="col-4 col-md-4 col-sm-4">
+            <p>Quelques exemples de postes</p>
+            <br/><br/><br/>
+            <div class="text-center" ng-repeat="job in Jobs">
+                <p>{{job}}</p>
+            </div>
         </div>
     </div>
 </div>
