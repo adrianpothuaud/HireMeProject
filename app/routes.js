@@ -230,6 +230,31 @@ module.exports = function(app, db) {
         }
     });
 
+    app.post('/candidat/change/email', function(req, res) {
+        if (req.session) {
+            // récupérer les données du formulaires edit candidat email
+            var newEmail = req.body.userNewEmail;
+            var userId = req.body._id;
+            // récupérer le bon candidat avec son userID
+            Candidat.findOne({ "_id": userId }, function(err, thing) {
+                if (err) console.log(err);
+                if (thing) {
+                    // mettre à jour l'email du candidat
+                    thing.email = newEmail;
+                    thing.save(function(err) {
+                        if (err) console.log(err);
+                        // rediriger sur la page recruteur avec son id
+                        res.redirect('/candidat?id=' + userId + "&emailChanged=true");
+                    })
+                } else {
+                    console.log("No Candidat found with _id : " + eventId);
+                }
+            });
+        } else {
+            res.redirect("/home");
+        }
+    });
+
     app.get('/logout', function(req, res) {
         req.session.destroy(function(err) {
             if (err) {

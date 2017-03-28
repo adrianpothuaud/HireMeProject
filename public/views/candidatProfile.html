@@ -23,19 +23,15 @@ and add/remove Experiences/Connaissances-->
 
 <!--Print user information with the possibility to update them-->
 <div class="panel panel-default">
-
     <div class="panel-heading">
         <h3>Informations utilisateur</h3>
     </div>
-
     <div class="panel-body">
-
         <!--lastname-->
         <!--firstname-->
         <!--email-->
-
-        <form enctype="application/json" method="POST" action=" {{post_url}} ">
-            <input type="hidden" name="_METHOD" value="PUT" />
+        <form enctype="application/json" method="POST" action="candidat/change/email">
+            <input type="hidden" name="_id" value="{{userResponse.data._id}}" />
             <ul class="list-group ">
                 <li class="list-group-item ">
                     <span class="glyphicon glyphicon-user "></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -52,26 +48,21 @@ and add/remove Experiences/Connaissances-->
                     <span class="label label-default ">Email</span> &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="text-center ">{{userResponse.data.email}}</span>
                     <br/><br/>
-                    <input type="text " class="form-control " placeholder="modify email " name="email ">
+                    <input type="text " class="form-control " placeholder="modify email " name="userNewEmail" id="userNewEmail">
                     <br/>
                     <button class="btn btn-success " type="submit ">Change </button>
                 </li>
-
             </ul>
-
-            <span class=" pull-right ">
-                <a href="#"><button class="btn btn-warning ">Change password</button></a>
-            </span>
-
         </form>
-
+        <span class=" pull-right ">
+            <a href="#"><button class="btn btn-warning ">Change password</button></a>
+        </span>
     </div>
-
     <div class="panel-footer ">
         <p>Vous pouvez modifier vos informations personnelles autant que vous le souhaitez.</p>
     </div>
-
 </div>
+
 <!--View connaissances-->
 <!--Form add connaissance-->
 <!--View experiences-->
