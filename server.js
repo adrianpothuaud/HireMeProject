@@ -15,7 +15,7 @@ var pretty = require('express-prettify');
 // configuration ===========================================
 process.setMaxListeners(0);
 var db = require('./config/db');
-var port = process.env.PORT || 8080; // set our port
+var port = process.env.PORT || 3000; // set our port
 // parse various different custom JSON types as JSON
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
