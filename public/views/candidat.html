@@ -30,6 +30,9 @@ Accessed should be restreined by login with a Candidat User-->
 <div ng-if="onEmailChange" class="alert alert-success">
     <p>Email mis à jour avec succès !</p>
 </div>
+<div ng-if="onConAdded" class="alert alert-success">
+    <p>Une connaissance ajoutée avec succès !</p>
+</div>
 
 <!-- Candidat Profile progress view + profile button -->
 <div class="panel panel-primary">
@@ -58,88 +61,85 @@ Accessed should be restreined by login with a Candidat User-->
             <p>Des évènements qui collent à votre profil !</p>
         </div>
         <div class="panel-body">
-            <div ng-repeat="event in selectedEvents">
-                <div class="col-6 col-md-6 col-sm-6">
-                    <div class="thumbnail">
-                        <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-                    </div>
-                    <div class="caption">
-                        <h4>{{event.name}}</h4>
-                        <p>{{event.description}}</p>
-                        <p class="text-center">
-                            <a href="/eventViewCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
-                            <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
-                        </p>
-                    </div>
+            <div ng-repeat="event in selectedEvents" class="col-6">
+                <div class="thumbnail">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+                </div>
+                <div class="caption">
+                    <h4>{{event.name}}</h4>
+                    <p>{{event.description.substring( 0, 160)}}...</p>
+                    <p class="text-center">
+                        <a href="/eventViewCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                        <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Available events -->
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
-        </div>
-        <div class="panel-body">
-            <div ng-repeat="event in onGoingEvents">
-                <div class="col-6 col-md-6 col-sm-6">
-                    <div class="thumbnail">
-                        <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-                    </div>
-                    <div class="caption">
-                        <h4>{{event.name}}</h4>
-                        <p>{{event.description}}</p>
-                        <p class="text-center">
-                            <a href="/eventView?type=candidat&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
-                            <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
-                        </p>
-                    </div>
-                </div>
+<!-- Available events -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
+    </div>
+    <div class="panel-body">
+        <div ng-repeat="event in onGoingEvents" class="col-6 col-md-6 col-sm-6">
+            <div class="thumbnail">
+                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            </div>
+            <div class="caption">
+                <h4>{{event.name}}</h4>
+                <p>{{event.description.substring( 0, 160)}}...</p>
+                <p class="text-center">
+                    <a href="/eventView?type=candidat&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                    <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
+                </p>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Upcoming events -->
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
-        </div>
-        <div class="panel-body">
-            <div ng-repeat="event in upComingEvents">
-                <div class="col-6 col-md-6 col-sm-6">
-                    <div class="thumbnail">
-                        <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-                    </div>
-                    <div class="caption">
-                        <h4>{{event.name}}</h4>
-                        <p>{{event.description}}</p>
-                        <p class="text-center">
-                            <a href="/eventView?type=candidat&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
-                        </p>
-                    </div>
+<!-- Upcoming events -->
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
+    </div>
+    <div class="panel-body">
+        <div ng-repeat="event in upComingEvents">
+            <div class="col-6 col-md-6 col-sm-6">
+                <div class="thumbnail">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+                </div>
+                <div class="caption">
+                    <h4>{{event.name}}</h4>
+                    <p>{{event.description.substring( 0, 160)}}...</p>
+                    <p class="text-center">
+                        <a href="/eventView?type=candidat&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Passed events -->
-    <div class="panel panel-warning">
-        <div class="panel-heading">
-            <h3 class="panel-title">Evènements passés<span class="badge pull-right">{{ passedEventsCpt }}</span></h3>
-        </div>
-        <div class="panel-body">
-            <div ng-repeat="event in passedEvents">
-                <div class="col-6 col-md-6 col-sm-6">
-                    <div class="thumbnail">
-                        <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
-                    </div>
-                    <div class="caption">
-                        <h4>{{event.name}}</h4>
-                        <p>{{event.description}}</p>
-                    </div>
+<!-- Passed events -->
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title">Evènements passés<span class="badge pull-right">{{ passedEventsCpt }}</span></h3>
+    </div>
+    <div class="panel-body">
+        <div ng-repeat="event in passedEvents">
+            <div class="col-6 col-md-6 col-sm-6">
+                <div class="thumbnail">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+                </div>
+                <div class="caption">
+                    <h4>{{event.name}}</h4>
+                    <p>{{event.description}}</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

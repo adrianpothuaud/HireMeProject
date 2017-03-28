@@ -244,11 +244,62 @@ module.exports = function(app, db) {
                     thing.save(function(err) {
                         if (err) console.log(err);
                         // rediriger sur la page recruteur avec son id
-                        res.redirect('/candidat?id=' + userId + "&emailChanged=true");
+                        res.redirect('/candidat/profile?id=' + userId + "&emailChanged=true");
                     })
                 } else {
                     console.log("No Candidat found with _id : " + eventId);
                 }
+            });
+        } else {
+            res.redirect("/home");
+        }
+    });
+
+    app.get('/resetpassword', function(req, res) {
+        if (req.session) {
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            res.redirect("/home");
+        }
+    });
+
+    app.post('/candidat/add/connaissance', function(req, res) {
+        if (req.session) {
+            var level = "Débutant";
+            if (req.body.level > 5) level = "Bon"
+            if (req.body.level > 8) level = "Très bon"
+            if (req.body.level == 10) level = "Master"
+            Candidat.findOne({ "_id": req.body._id }, function(err, thing) {
+                if (err) console.log(err)
+                if (!thing) console.log("No Candidat with _id : " + req.body._id)
+                thing.connaissances = thing.connaissances.concat([{ "name": req.body.name, "level": level }])
+                console.log(thing)
+                thing.save(function(err) {
+                    if (err) console.log(err)
+                    res.redirect('/candidat/profile?id=' + req.body._id + '&conAdded=true')
+                })
+            });
+        } else {
+            res.redirect("/home");
+        }
+    });
+
+    app.post('/candidat/add/experience', function(req, res) {
+        if (req.session) {
+            var newExp = new Object();
+            newExp.jobName = req.body.jobName;
+            newExp.enterpriseName = req.body.enterpriseName;
+            if (req.body.dateBegin) newExp.dateBegin = new Date(req.body.dateBegin)
+            if (req.body.dateEnd) newExp.dateEnd = new Date(req.body.dateEnd)
+            Candidat.findOne({ "_id": req.body._id }, function(err, thing) {
+                if (err) console.log(err)
+                if (!thing) console.log("No Candidat with _id : " + req.body._id)
+                thing.experiences = thing.experiences.concat([newExp])
+                console.log(thing)
+                thing.save(function(err) {
+                    if (err) console.log(err)
+                    res.redirect('/candidat/profile?id=' + req.body._id + '&conAdded=true')
+                })
             });
         } else {
             res.redirect("/home");

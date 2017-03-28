@@ -4,7 +4,7 @@ module.exports = function(apiKey, req, res, callback) {
     APIKey.findOne({ 'key': apiKey }, function(err, thing) {
         if (err) {
             console.log(err);
-            response.redirect('/');
+            res.redirect('/');
         } else {
             if (thing) {
                 callback(req, res);

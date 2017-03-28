@@ -61,6 +61,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         .when('/eventView', {
             templateUrl: 'views/eventView.html',
             controller: 'EventViewController'
+        })
+        .when('/resetpassword', {
+            templateUrl: 'views/resetPassword.html',
+            controller: 'ResetPWController'
         });
 
     $locationProvider.html5Mode(true);
