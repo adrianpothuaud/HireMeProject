@@ -195,12 +195,15 @@ module.exports = function(app, db) {
             // console.log(newEventName);
 
             // récupérer le bon event avec son eventId
-            Event.findOne({"_id": eventId}, function(err, thing) {
-                if(err) console.log(err);
-                if(thing){
+            Event.findOne({ "_id": eventId }, function(err, thing) {
+                if (err) console.log(err);
+                if (thing) {
                     // mettre à jour l'event avec les données
                     // console.log(thing);
-                    thing.name = newEventName;
+                    if (req.body.newEventName) thing.name = req.body.newEventName;
+                    if (req.body.newEventDescription) thing.description = req.body.newEventDescription;
+                    if (req.body.newEventDateBegin) thing.dateBegin = new Date(req.body.newEventDateBegin);
+                    if (req.body.newEventDateEnd) thing.dateEnd = new Date(req.body.newEventDateEnd);
                     console.log("new event name : " + thing.name);
                     thing.save(function(err) {
                         if (err) console.log(err);
@@ -209,13 +212,20 @@ module.exports = function(app, db) {
                         res.redirect('/recruteur?id=' + recruteurId);
                     })
 
-                }
-                else{
+                } else {
                     console.log("No Event found with _id : " + eventId);
                 }
             });
         } else {
             console.log("Session not loaded when trying to access recruteur event creation page..");
+            res.redirect("/home");
+        }
+    });
+
+    app.get('/eventView', function(req, res) {
+        if (req.session) {
+            res.sendFile('index.html', { root: "public" });
+        } else {
             res.redirect("/home");
         }
     });

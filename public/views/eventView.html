@@ -1,0 +1,63 @@
+<!--Add a controller
+Display event's details
+Button to launch live stream session
+...-->
+
+<!--Nav bar-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">HireMe</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/{{accountType}}?id={{id}}"><span class="glyphicon glyphicon-menu-left"></span> Retour</a></li>
+            <li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!--Print user information with the possibility to update them-->
+<div class="panel panel-info">
+
+    <div class="panel-heading">
+        <h3>Informations Évènement</h3>
+    </div>
+
+    <div class="panel-body">
+
+        <ul class="list-group ">
+            <li class="list-group-item ">
+                <span class="glyphicon glyphicon-info-sign"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default ">Nom</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text-center ">{{eventResponse.data.name}}</span>
+            </li>
+            <li class="list-group-item ">
+                <span class="glyphicon glyphicon-info-sign"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default ">Description</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text-center ">{{eventResponse.data.description}}</span>
+            </li>
+            <li class="list-group-item ">
+                <span class="glyphicon glyphicon-eye-open"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default ">Date de début</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text-center ">{{eventResponse.data.dateBegin.toString()}}</span>
+            </li>
+            <li class="list-group-item ">
+                <span class="glyphicon glyphicon-eye-close"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default ">Date de fin</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text-center ">{{eventResponse.data.dateEnd.toString()}}</span>
+            </li>
+            <li class="list-group-item ">
+                <div ng-repeat="recruteur in eventResponse.data.recruteurs">
+                    <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default ">Recruteur</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-center ">{{recruteur.email}}</span>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="panel-footer ">
+    </div>
+
+</div>

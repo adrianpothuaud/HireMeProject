@@ -15,8 +15,32 @@ Allow Recruteur to edit an Event(s)-->
 </nav>
 
 <form method="POST" action="/event/edit">
-    <input type="text" name="newEventName" id="newEventName">
-    <button type="submit">Envoyer</button>
-    <input type="hidden" name="recruteurId" value="{{id}}"/>
-    <input type="hidden" name="eventId" value="{{eventId}}"/>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="label label-default">Nom de l'évènement</span>
+            <br/><br/>{{userResponse.data.name}}<br/><br/>
+            <input type="text" class="form-control" placeholder="nom évènement" name="newEventName" id="newEventName">
+        </li>
+        <li class="list-group-item">
+            <span class="label label-default">Description</span>
+            <br/><br/>{{userResponse.data.description}}<br/><br/>
+            <textarea class="form-control" rows="5" id="description" name="newEventDescription" id="newEventDescription"></textarea>
+        </li>
+        <li class="list-group-item">
+            <span class="label label-default">Date de début</span>
+            <br/><br/>{{userResponse.data.dateBegin.toString()}}<br/><br/>
+            <input type="text" class="form-control" placeholder="date début YYYY-MM-DD" name="newEventDateBegin" id="newEventDateBegin">
+        </li>
+        <li class="list-group-item">
+            <span class="label label-default">Date de fin</span>
+            <br/><br/>{{userResponse.data.dateEnd.toString()}}<br/><br/>
+            <input type="text" class="form-control" placeholder="date fin YYYY-MM-DD" name="newEventDateEnd" id="newEventDateEnd">
+        </li>
+        <li class="list-group-item">
+            <button class="btn btn-default" type="submit">Envoyer</button>
+        </li>
+    </ul>
+
+    <input type="hidden" name="recruteurId" value="{{id}}" />
+    <input type="hidden" name="eventId" value="{{eventId}}" />
 </form>

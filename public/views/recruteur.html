@@ -60,7 +60,7 @@ Accessed should be restreined by login with a Recruteur User-->
                 <div class="caption">
                     <h4>{{event.name}}</h4>
                     <p class="text-center">
-                        <a href="/eventViewRecruteur?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                        <a href="/eventView?type=recruteur&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
                         <a href="/joinStreamRecruteur?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
                         <a href="/event/editform?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
                     </p>
@@ -82,7 +82,7 @@ Accessed should be restreined by login with a Recruteur User-->
                 <div class="caption">
                     <h4>{{event.name}}</h4>
                     <p class="text-center">
-                        <a href="/eventViewRecruteur?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                        <a href="/eventView?type=recruteur&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
                         <a href="/event/editform?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
                     </p>
                 </div>
