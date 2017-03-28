@@ -34,7 +34,7 @@ Hire-ME is a web Application intended to allow searching for a job and go to the
 
 ### Tech
 
-Hire Me uses a number of open source projects to work properly:
+Hire Me uses a number of technologies and projects to work properly:
 
 * [JavaScript - AngularJS] - HTML enhanced with dynamic content!
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps with responsive design
