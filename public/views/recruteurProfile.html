@@ -10,26 +10,16 @@ and add/remove Enterprise-->
             <a class="navbar-brand" href="/home">HireMe</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <!--<div ng-view>
-				to improve:
-				display signin/login if no session
-				display logout if session
-			</div>-->
+            <li><a href="/recruteur?id={{userResponse.data._id}}"><span class="glyphicon glyphicon-menu-left"></span> Retour</a></li>
             <li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
 
 <div class="jumbotron text-center">
-
     <h1>Profil Recruteur</h1>
-
 </div>
 
-<!--Print user information with the possibility to update them-->
-<!--lastname-->
-<!--firstname-->
-<!--email-->
 <!--Print user information with the possibility to update them-->
 <div class="panel panel-default">
 
@@ -43,40 +33,51 @@ and add/remove Enterprise-->
         <!--firstname-->
         <!--email-->
 
-        <ul class="list-group">
-            <li class="list-group-item">
-                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="label label-default">First name</span> {{candidat_firstname}}
-                <br/><br/>
-                <input type="text" class="form-control" placeholder="firstname" name="firstname">
-                <br/>
-                <button class="btn btn-default" type="submit">Go!</button>
-            </li>
-            <li class="list-group-item">
-                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="label label-default">Last name</span> {{candidat_lastname}}
-                <br/><br/>
-                <input type="text" class="form-control" placeholder="lastname" name="lastname">
-                <br/>
-                <button class="btn btn-default" type="submit">Go!</button>
-            </li>
-            <li class="list-group-item">
-                <span class="glyphicon glyphicon-envelope"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="label label-default">Email</span> {{candidat_email}}
-                <br/><br/>
-                <input type="text" class="form-control" placeholder="email" name="email">
-                <br/>
-                <button class="btn btn-default" type="submit">Go!</button>
-            </li>
-        </ul>
+        <form enctype="application/json" method="POST" action=" {{post_url}} ">
+            <input type="hidden" name="_METHOD" value="PUT" />
+            <ul class="list-group ">
+                <li class="list-group-item ">
+                    <span class="glyphicon glyphicon-user "></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default ">First name</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-center ">{{userResponse.data.firstname}}</span>
+                </li>
+                <li class="list-group-item ">
+                    <span class="glyphicon glyphicon-user "></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default ">Last name</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-center ">{{userResponse.data.lastname}}</span>
+                </li>
+                <li class="list-group-item ">
+                    <span class="glyphicon glyphicon-envelope "></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default ">Email</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-center ">{{userResponse.data.email}}</span>
+                    <br/><br/>
+                    <input type="text " class="form-control " placeholder="modify email " name="email ">
+                    <br/>
+                    <button class="btn btn-success " type="submit ">Change </button>
+                </li>
+                <li class="list-group-item ">
+                    <span class="glyphicon glyphicon-briefcase "></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="label label-default ">Entreprise</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-center ">{{userResponse.data.enterpriseName}}</span>
+                    <br/><br/>
+                    <input type="text " class="form-control " placeholder="changer entreprise" name="email ">
+                    <br/>
+                    <button class="btn btn-success " type="submit ">Change </button>
+                </li>
+            </ul>
+
+            <span class=" pull-right ">
+                <a href="# "><button class="btn btn-warning ">Change password</button></a>
+            </span>
+
+        </form>
 
     </div>
 
-    <div class="panel-footer">
+    <div class="panel-footer ">
         <p>Vous pouvez modifier vos informations personnelles autant que vous le souhaitez.</p>
     </div>
 
 </div>
-<!--Button change password-->
 <!--View enterprise-->
 <!--Change enterprise-->

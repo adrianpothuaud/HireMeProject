@@ -10,6 +10,7 @@ angular.module('RecruteurCtrl', []).controller('RecruteurController', function($
         .then(function(response) {
             // set $scope attribute with user informations
             $scope.userResponse = response;
+            console.log(response.data);
         }).then(function() {
             // Request the API to get Events informations
             $http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +

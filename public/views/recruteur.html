@@ -36,7 +36,7 @@ Accessed should be restreined by login with a Recruteur User-->
         <div class="progress">
             <div class="{{profile_progressbar_class}}" role="progressbar" aria-valuenow="{{profile_progressbar_valuenow_string}}" aria-valuemin="0" aria-valuemax="100" style="{{profile_progressbar_style}}"></div>
         </div>
-        <a href="/recruteur/profile"><button type="button" class="btn btn-default">Compléter</button></a>
+        <a href="/recruteur/profile?id={{userResponse.data._id}}"><button type="button" class="btn btn-default">Compléter</button></a>
     </div>
 </div>
 
@@ -46,7 +46,7 @@ Accessed should be restreined by login with a Recruteur User-->
 
 <div ng-if="profile_progressbar_valuenow >= 80">
 
-    <p><a href="/event/createform"><button class="btn btn-default">Créer un event</button></a></p>
+    <p><a href="/event/createform?id={{userResponse.data._id}}"><button class="btn btn-default">Créer un event</button></a></p>
 
     <div class="panel panel-success">
         <div class="panel-heading">
@@ -60,9 +60,9 @@ Accessed should be restreined by login with a Recruteur User-->
                 <div class="caption">
                     <h4>{{event.name}}</h4>
                     <p class="text-center">
-                        <a href="#" class="btn btn-primary" role="button">À propos</a>
-                        <a href="#" class="btn btn-success" role="button">Rejoindre</a>
-                        <a href="#" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
+                        <a href="/eventViewRecruteur?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                        <a href="/joinStreamRecruteur?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
+                        <a href="/event/editform?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
                     </p>
                 </div>
             </div>
@@ -82,9 +82,8 @@ Accessed should be restreined by login with a Recruteur User-->
                 <div class="caption">
                     <h4>{{event.name}}</h4>
                     <p class="text-center">
-                        <a href="#" class="btn btn-primary" role="button">À propos</a>
-                        <a href="#" class="btn btn-success" role="button">Rejoindre</a>
-                        <a href="#" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
+                        <a href="/eventViewRecruteur?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                        <a href="/event/editform?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
                     </p>
                 </div>
             </div>

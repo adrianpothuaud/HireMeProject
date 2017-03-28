@@ -51,7 +51,8 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'RecruteurProfileController'
         })
         .when('/event/createform', {
-            templateUrl: 'views/createEventForm.html'
+            templateUrl: 'views/createEventForm.html',
+            controller: 'CreateEventFormController'
         });
 
     $locationProvider.html5Mode(true);

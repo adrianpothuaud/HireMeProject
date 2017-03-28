@@ -63,8 +63,8 @@ Accessed should be restreined by login with a Candidat User-->
                         <h4>{{event.name}}</h4>
                         <p>{{event.description}}</p>
                         <p class="text-center">
-                            <a href="#"><button class="btn btn-info">En savoir plus</button></a>
-                            <a href="#"><button class="btn btn-success">Rejoindre</button></a>
+                            <a href="/eventViewCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                            <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
                         </p>
                     </div>
                 </div>
@@ -87,8 +87,8 @@ Accessed should be restreined by login with a Candidat User-->
                         <h4>{{event.name}}</h4>
                         <p>{{event.description}}</p>
                         <p class="text-center">
-                            <a href="#"><button class="btn btn-info">En savoir plus</button></a>
-                            <a href="#"><button class="btn btn-success">Rejoindre</button></a>
+                            <a href="/eventViewCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                            <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
                         </p>
                     </div>
                 </div>
@@ -111,7 +111,7 @@ Accessed should be restreined by login with a Candidat User-->
                         <h4>{{event.name}}</h4>
                         <p>{{event.description}}</p>
                         <p class="text-center">
-                            <a href="#"><button class="btn btn-info">En savoir plus</button></a>
+                            <a href="/eventViewCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
                         </p>
                     </div>
                 </div>
