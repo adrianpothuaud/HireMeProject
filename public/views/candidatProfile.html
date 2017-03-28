@@ -21,6 +21,16 @@ and add/remove Experiences/Connaissances-->
     <p>Complétez votre profil pour accéder aux évènements !</p>
 </div>
 
+<div ng-if="onEmailChange" class="alert alert-success">
+    <p>Email mis à jour avec succès !</p>
+</div>
+<div ng-if="onConAdded" class="alert alert-success">
+    <p>Une connaissance ajoutée avec succès !</p>
+</div>
+<div ng-if="onExpAdded" class="alert alert-success">
+    <p>Une expérience ajoutée avec succès !</p>
+</div>
+
 <!--Print user information with the possibility to update them-->
 <div class="panel panel-default">
     <div class="panel-heading">

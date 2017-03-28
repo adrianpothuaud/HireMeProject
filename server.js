@@ -34,7 +34,10 @@ app.use(pretty({ query: 'pretty' }));
 mongoose.Promise = global.Promise;
 mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', function() {
+    console.error.bind(console, 'connection error:')
+    mongoose.connect("mongodb://localhost:27017/hiremeproject");
+});
 db.once('open', function() {
     // routes ==================================================
     require('./app/routes')(app, db); // pass our application into our routes

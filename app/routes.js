@@ -298,7 +298,7 @@ module.exports = function(app, db) {
                 console.log(thing)
                 thing.save(function(err) {
                     if (err) console.log(err)
-                    res.redirect('/candidat/profile?id=' + req.body._id + '&conAdded=true')
+                    res.redirect('/candidat/profile?id=' + req.body._id + '&expAdded=true')
                 })
             });
         } else {

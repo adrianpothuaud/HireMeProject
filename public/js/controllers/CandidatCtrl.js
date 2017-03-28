@@ -2,8 +2,7 @@
 
 angular.module('CandidatCtrl', []).controller('CandidatController', function($scope, $http, $location) {
 
-    if ($location.search().emailChanged) $scope.onEmailChange = true;
-    if ($location.search().conAdded) $scope.onConAdded = true;
+
 
     // Request the API to get user informations
     $scope.$watch($http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +
