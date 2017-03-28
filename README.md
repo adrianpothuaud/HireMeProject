@@ -44,6 +44,10 @@ Hire Me uses a number of open source projects to work properly:
 * [MongoLab] - JSON & Object oriented database (hosted in mongoLab)
 * [heroku] - Web application deployment service for Node.js / Ruby / ...
 
+### App available OnLine
+
+@Heroku => GO and visit us online (https://limitless-escarpment-80567.herokuapp.com/home)
+
 ### Installation
 
 HireMe requires [Node.js](https://nodejs.org/) v4+ to run on your local environment.
