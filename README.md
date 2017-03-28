@@ -18,24 +18,37 @@ Hire-ME is a web Application intended to allow searching for a job and go to the
 # New Features!
 
   - Authentication system communicate with DB (not optimal, ongoing improvements)
+  - DataBase Population for tests 
+    - Candidat with uncomplete and complete profiles 
+    - Recruteurs from various enterprises
+    - Random Events (ongoing and upcoming)
+    - Connaissances (Info skills, Mechanical, Mathematics)
+    - Jobs examples
+  - Dynamic contentes added
+    - Candidat Profile
+    - About page
+    - Recruteur profile ongoing
+    - Dynamic loads of events in both Candidat/Recruteur pages
+    - Ongoing selected events (events that match Candidat's profile)
+  - FULL API with support of GET/POST/PUT/DELETE requests on DB Objects Candidat/Recruteur/Connaissances/Experiences/Events
 
 ### Tech
 
 Hire Me uses a number of open source projects to work properly:
 
-* [AngularJS] - HTML enhanced for web apps!
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
+* [JavaScript - AngularJS] - HTML enhanced with dynamic content!
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps with responsive design
+* [Node.js] - evented I/O for the backend
 * [Express] - fast node.js network app framework
 * [jQuery] - HTML DOM element selector
-* [MongoLab] - JSON & Object oriented database
+* [MongoLab] - JSON & Object oriented database (hosted in mongoLab)
 * [heroku] - Web application deployment service for Node.js / Ruby / ...
 
 ### Installation
 
-HireMe requires [Node.js](https://nodejs.org/) v4+ to run.
+HireMe requires [Node.js](https://nodejs.org/) v4+ to run on your local environment.
 
-Install the dependencies and devDependencies and start the server.
+Install the dependencies and start the server.
 
 ```sh
 $ cd HireMeProject
@@ -51,8 +64,8 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
 
  - [Write Tests]
  - Finish the views
- - Add api key to api routes
  - Password encryption method
+ - Use WebRTC to enable Candidat&Recruteur visio conference when joining an event
 
 ### Authors
 
