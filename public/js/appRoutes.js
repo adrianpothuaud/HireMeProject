@@ -29,12 +29,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         })
         // user home page
         .when('/recruteur', {
-            templateUrl: 'views/recruteur.html',
-            controller: 'RecruteurController'
+          templateUrl: 'views/recruteur.html',
+          controller: 'RecruteurController'
         })
         .when('/candidat', {
-            templateUrl: 'views/candidat.html',
-            controller: 'CandidatController'
+          templateUrl: 'views/candidat.html',
+          controller: 'CandidatController'
         })
         // admin connection
         .when('/admin', {
@@ -53,6 +53,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         .when('/event/createform', {
             templateUrl: 'views/createEventForm.html',
             controller: 'CreateEventFormController'
+        })
+        .when('/event/editform', {
+            templateUrl: 'views/editFormEvent.html',
+            controller: 'EditEventController'
         });
 
     $locationProvider.html5Mode(true);
