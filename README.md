@@ -69,6 +69,11 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
  - [Write Tests]
  - Finish the views
  - Password encryption method
+ - Implement forms 
+  - Candidat Profile edit
+  - Recruteur Profile edit
+  - Event creation
+  - Event edit
  - Use WebRTC to enable Candidat&Recruteur visio conference when joining an event
 
 ### Authors
