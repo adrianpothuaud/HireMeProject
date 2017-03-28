@@ -1,0 +1,22 @@
+<!--HTML Template for event edition page
+Allow Recruteur to edit an Event(s)-->
+
+<!--Nav bar-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">HireMe</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/recruteur?id={{id}}"><span class="glyphicon glyphicon-menu-left"></span> Retour</a></li>
+            <li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<form method="POST" action="/event/edit">
+    <input type="text" name="newEventName" id="newEventName">
+    <button type="submit">Envoyer</button>
+    <input type="hidden" name="recruteurId" value="{{id}}"/>
+    <input type="hidden" name="eventId" value="{{eventId}}"/>
+</form>

@@ -5,6 +5,7 @@ var passwordHash = require('password-hash');
 // DB Models =================================================
 var Candidat = require('./models/Candidat.js');
 var Recruteur = require('./models/Recruteur.js');
+var Event = require('./models/Event.js');
 var session = require('express-session');
 
 var sess
@@ -169,6 +170,50 @@ module.exports = function(app, db) {
     app.get('/event/createform', function(req, res) {
         if (req.session) {
             res.sendFile('index.html', { root: "public" });
+        } else {
+            console.log("Session not loaded when trying to access recruteur event creation page..");
+            res.redirect("/home");
+        }
+    });
+
+    app.get('/event/editform', function(req, res) {
+        if (req.session) {
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            console.log("Session not loaded when trying to access recruteur event creation page..");
+            res.redirect("/home");
+        }
+    });
+
+    app.post('/event/edit', function(req, res) {
+        if (req.session) {
+            // récupérer les données du formulaires edit event
+            var newEventName = req.body.newEventName;
+            var recruteurId = req.body.recruteurId;
+            var eventId = req.body.eventId;
+
+            // console.log(newEventName);
+
+            // récupérer le bon event avec son eventId
+            Event.findOne({"_id": eventId}, function(err, thing) {
+                if(err) console.log(err);
+                if(thing){
+                    // mettre à jour l'event avec les données
+                    // console.log(thing);
+                    thing.name = newEventName;
+                    console.log("new event name : " + thing.name);
+                    thing.save(function(err) {
+                        if (err) console.log(err);
+                        console.log("Update effectué (normalement), redirection...");
+                        // rediriger sur la page recruteur avec son id
+                        res.redirect('/recruteur?id=' + recruteurId);
+                    })
+
+                }
+                else{
+                    console.log("No Event found with _id : " + eventId);
+                }
+            });
         } else {
             console.log("Session not loaded when trying to access recruteur event creation page..");
             res.redirect("/home");
