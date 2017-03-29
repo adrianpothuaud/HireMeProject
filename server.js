@@ -36,7 +36,6 @@ mongoose.connect(db.url); // connect to our mongoDB database (commented out afte
 var db = mongoose.connection;
 db.on('error', function() {
     console.error.bind(console, 'connection error:')
-    mongoose.connect("mongodb://localhost:27017/hiremeproject");
 });
 db.once('open', function() {
     // routes ==================================================

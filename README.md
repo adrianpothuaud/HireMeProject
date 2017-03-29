@@ -67,14 +67,32 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
 ### Todos
 
  - [Write Tests]
- - Finish the views
- - Password encryption method
+ - Populer des events passés et vérifier les vues
+ - mettre les champs required dans les forms
+ - join event view
+ - Encrypt and hide passwords
+ - Refaire une passe de couverture du code par les commentaires
+ - Cleaner la documentation
  - Implement forms 
-    - Candidat Profile edit
+    - Create event
     - Recruteur Profile edit
-    - Event creation
-    - Event edit
+    - Reset password
  - Use WebRTC to enable Candidat&Recruteur visio conference when joining an event
+ - Selection des events par match avec candidat connaissance et/ou experience
+ - Candidat Profil 
+    - supprimer une connaissance
+    - monter/descendre le niveau d'une connaissance
+    - supprimer une expérience
+    - modifier les dates d'une expérience
+  - Profil 100% boutton "compléter" devient "modifier"
+  - Combiner chat et video stream sur join event 
+    - 1) le recruteur charge son flux caméra
+    - 2) le recruteur envois les informations pour la communication tcu dans le chat
+    - 3) le candidat utilise les infos reçus pour charger la vidéo
+    - 4) les deux utilisateurs devraient se voir
+  - Implémenter la logique "speed-recrutement"
+    - le recruteur devrait pouvoir switcher entre plusieurs candidats connectés
+    - gérer les timeouts et la queue entre les candidats connectés (bonjour la compléxitude :P)
 
 ### Authors
 

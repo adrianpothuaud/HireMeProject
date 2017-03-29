@@ -263,6 +263,24 @@ module.exports = function(app, db) {
         }
     });
 
+    app.get('/joinStreamRecruteur', function(req, res) {
+        var io = require('socket.io')
+        io.listen(app)
+        if (req.session) {
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            res.redirect("/home");
+        }
+    });
+
+    app.get('/joinStreamCandidat', function(req, res) {
+        if (req.session) {
+            res.sendFile('index.html', { root: "public" });
+        } else {
+            res.redirect("/home");
+        }
+    });
+
     app.post('/candidat/add/connaissance', function(req, res) {
         if (req.session) {
             var level = "Débutant";
@@ -305,6 +323,8 @@ module.exports = function(app, db) {
             res.redirect("/home");
         }
     });
+
+
 
     app.get('/logout', function(req, res) {
         req.session.destroy(function(err) {

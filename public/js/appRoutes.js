@@ -65,6 +65,14 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         .when('/resetpassword', {
             templateUrl: 'views/resetPassword.html',
             controller: 'ResetPWController'
+        })
+        .when('/joinStreamRecruteur', {
+            templateUrl: 'views/joinStreamRecruteur.html',
+            controller: 'joinStreamRecruteurController'
+        })
+        .when('/joinStreamCandidat', {
+            templateUrl: 'views/joinStreamCandidat.html',
+            controller: 'joinStreamCandidatController'
         });
 
     $locationProvider.html5Mode(true);
