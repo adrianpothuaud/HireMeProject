@@ -37,6 +37,24 @@ Allow Recruteur to edit an Event(s)-->
             <input type="text" class="form-control" placeholder="date fin YYYY-MM-DD" name="newEventDateEnd" id="newEventDateEnd">
         </li>
         <li class="list-group-item">
+            <span class="label label-default">Conaissances requises</span>
+            <div ng-repeat="connaissance in userresponse.data.connaissances">
+                <br/><br/>{{connaissance.name}}<br/><br/>
+                <div ng-if="connaissance.level">
+                    <span class="label label-default">{{connaissance.level}}</span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <span class="label label-default">Expérience requise</span>
+            <div ng-repeat="experience in userresponse.data.experiences">
+                <br/><br/>{{experience.jobName}}<br/><br/>
+                <div ng-if="experience.level">
+                    <span class="label label-default">{{connaissance.level}}</span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
             <button class="btn btn-default" type="submit">Envoyer</button>
         </li>
     </ul>
