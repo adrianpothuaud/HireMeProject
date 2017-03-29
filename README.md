@@ -6,7 +6,9 @@
 
 [![Heroku hosting](https://camo.githubusercontent.com/0114f89fa7abb867b1ce24bbcb83594bace70ac5/687474703a2f2f692e696d6775722e636f6d2f304962665275522e6a7067)](https://www.heroku.com/)
 
-### About the Application
+## About the Application
+
+### Challenging, Inovating speed-recruitment application
 
 Hire-ME is a web Application intended to allow searching for a job and go to the job interview @ the same place, from home, or in travel through web live video stream between candidates and human resources of great enterprises.
 
@@ -24,14 +26,15 @@ Hire-ME is a web Application intended to allow searching for a job and go to the
     - Random Events (ongoing and upcoming)
     - Connaissances (Info skills, Mechanical, Mathematics)
     - Jobs examples
-  - Dynamic contentes added
+  - Dynamic contents added
     - Candidat Profile
     - About page
-    - Recruteur profile ongoing
+    - Recruteur profile
     - Dynamic loads of events in both Candidat/Recruteur pages
     - Ongoing selected events (events that match Candidat's profile)
   - FULL API with support of GET/POST/PUT/DELETE requests on DB Objects Candidat/Recruteur/Connaissances/Experiences/Events
   - Edition des profils Recruteur/Candidat OK
+  - Ajout/Suppression/Edition de connaissances et compétences
   - Edition/Création d'évènement OK
 
 ### Tech
@@ -69,6 +72,7 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
 ### Todos
 
  - [Write Tests]
+ - moduler les routes du routes.js dans des sous parties comme les routes API
  - mettre les champs required dans les forms
  - Edit/Create Events : add connaissances/experiences requises
  - Encrypt and hide passwords
