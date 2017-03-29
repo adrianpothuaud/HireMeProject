@@ -70,6 +70,7 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
 
  - [Write Tests]
  - mettre les champs required dans les forms
+ - Edit/Create Events : add connaissances/experiences requises
  - Encrypt and hide passwords
  - Refaire une passe de couverture du code par les commentaires
  - Cleaner la documentation
