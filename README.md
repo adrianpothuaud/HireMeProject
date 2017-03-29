@@ -70,12 +70,11 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
 
  - [Write Tests]
  - mettre les champs required dans les forms
- - join event view
+ - Edit/Create Events : add connaissances/experiences requises
  - Encrypt and hide passwords
  - Refaire une passe de couverture du code par les commentaires
  - Cleaner la documentation
  - Implement forms 
-    - Recruteur Profile edit
     - Reset password
  - Use WebRTC to enable Candidat&Recruteur visio conference when joining an event
  - Selection des events par match avec candidat connaissance et/ou experience
@@ -84,7 +83,6 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
     - monter/descendre le niveau d'une connaissance
     - supprimer une expérience
     - modifier les dates d'une expérience
-  - Profil 100% boutton "compléter" devient "modifier"
   - Combiner chat et video stream sur join event 
     - 1) le recruteur charge son flux caméra
     - 2) le recruteur envois les informations pour la communication tcu dans le chat
