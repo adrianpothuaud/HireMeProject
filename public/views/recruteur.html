@@ -46,7 +46,7 @@ Accessed should be restreined by login with a Recruteur User-->
 
 <div ng-if="profile_progressbar_valuenow >= 80">
 
-    <p><a href="/event/createform?id={{userResponse.data._id}}"><button class="btn btn-default">Créer un event</button></a></p>
+    <p><a href="/event/createform?id={{userResponse.data._id}}&enterprise={{userResponse.data.enterpriseName}}"><button class="btn btn-default">Créer un event</button></a></p>
 
     <div class="panel panel-success">
         <div class="panel-heading">

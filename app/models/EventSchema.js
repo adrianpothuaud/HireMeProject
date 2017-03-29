@@ -3,6 +3,8 @@
 // Dependencies ================================================
 var mongoose = require('mongoose');
 var RecruteurSchema = require('./RecruteurSchema.js');
+var ConnaissanceSchema = require('./ConnaissanceSchema.js')
+var ExperienceSchema = require('./ExperienceSchema.js')
 
 // Basic Schema with attributes and collection spec
 var EventSchema = mongoose.Schema({
@@ -11,7 +13,9 @@ var EventSchema = mongoose.Schema({
     dateBegin: { type: Date },
     dateEnd: { type: Date },
     enterpriseName: String,
-    recruteurs: [RecruteurSchema]
+    recruteurs: [RecruteurSchema],
+    connaissancesRequises: [ConnaissanceSchema],
+    experiencesRequises: [ExperienceSchema]
 }, { collection: "events" });
 
 // Schema's methods =================================

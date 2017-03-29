@@ -35,22 +35,22 @@ Allow Recruteur to create new Event(s)-->
                         <li class="list-group-item">
                             <span class="label label-default">Nom de l'évènement</span>
                             <br/><br/>
-                            <input type="text" class="form-control" placeholder="nom évènement" name="name">
+                            <input type="text" required class="form-control" placeholder="nom évènement" name="name" id="name">
                         </li>
                         <li class="list-group-item">
                             <span class="label label-default">Description</span>
                             <br/><br/>
-                            <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+                            <textarea class="form-control" rows="5" id="description" required name="description"></textarea>
                         </li>
                         <li class="list-group-item">
                             <span class="label label-default">Date de début</span>
                             <br/><br/>
-                            <input type="text" class="form-control" placeholder="date début YYYY-MM-DD" name="dateBegin">
+                            <input type="text" required class="form-control" placeholder="date début YYYY-MM-DD" name="dateBegin" id="datebegin">
                         </li>
                         <li class="list-group-item">
                             <span class="label label-default">Date de fin</span>
                             <br/><br/>
-                            <input type="text" class="form-control" placeholder="date fin YYYY-MM-DD" name="dateEnd">
+                            <input type="text" required class="form-control" placeholder="date fin YYYY-MM-DD" name="dateEnd" id="dateEnd">
                         </li>
                     </ul>
                 </div>
@@ -71,7 +71,7 @@ Allow Recruteur to create new Event(s)-->
                     <div class="input-group input_fields_wrap">
                         <button class="btn btn-default add_field_button">Ajouter</button>
                         <br/><br/>
-                        <div><input type="text" name="mytext[]"></div>
+                        <div><input type="text" name="connaissanceRequise[]"></div>
                     </div>
                 </div>
 
@@ -92,12 +92,12 @@ Allow Recruteur to create new Event(s)-->
                         <li class="list-group-item">
                             <span class="label label-default">Nom du poste</span>
                             <br/><br/>
-                            <input type="text" class="form-control" placeholder="nom évènement" name="name">
+                            <input type="text" class="form-control" placeholder="nom de poste" name="experienceRequiseJobName">
                         </li>
                         <li class="list-group-item">
                             <span class="label label-default">Années de travail</span>
                             <br/><br/>
-                            <input type="number" min=0 max=5 class="form-control" name="name">
+                            <input type="number" min="0" max="5" class="form-control" name="experienceRequiseDuree">
                         </li>
                     </ul>
 
@@ -112,7 +112,8 @@ Allow Recruteur to create new Event(s)-->
     <!--Champs cachés avec id user pour pouvoir revenir 
     depuis le traitement du formulaire 
     (gérer dans le router express)-->
-    <input type="hidden" name="userId" value="{{id}}" />
+    <input type="hidden" name="_id" value="{{id}}" />
+    <input type="hidden" name="enterpriseName" value="{{enterpriseName}}" />
     <div class="text-center">
         <button type="input" class="btn btn-success">Créer</button>
     </div>

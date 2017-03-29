@@ -64,13 +64,22 @@ function signCheck(err, thing, usr, res) {
 }
 
 function lookForAccount(usrmail, pw, request, response) {
+    console.log("Trying to find one user that match " + usrmail + "...")
     Candidat.findOne({ email: usrmail }, function(err, thing) {
         if (thing) {
+            console.log("Thing found in Candidat")
             getAccount(err, thing, pw, request, response);
         } else {
-            Recruteur.findOne({ email: usrmail }, function(err, thing) {
-                getAccount(err, thing, pw, request, response);
-            });
+            console.log("No user found in Candidat")
+        }
+    });
+    Recruteur.findOne({ email: usrmail }, function(err, thing) {
+        if(thing){
+            console.log("Thing found in recruteur")
+            getAccount(err, thing, pw, request, response);
+        }
+        else{
+            console.log("No user found in Recruteur")
         }
     });
 }
@@ -90,6 +99,7 @@ function myDispatcher(myObject, request, res) {
 }
 
 function getAccount(err, thing, pw, request, response) {
+    console.log("Trying to dispatch  for thing : " + thing)
     if (thing) {
         myDispatcher({ 'type': thing.accountType, 'isPwOK': thing.password === pw, 'user': thing }, request, response);
     } else {
@@ -99,6 +109,7 @@ function getAccount(err, thing, pw, request, response) {
 }
 
 function isPasswordCorrect(user, request, response) {
+    console.log("Looking into accounts...")
     lookForAccount(user.email, user.password, request, response);
 }
 
@@ -131,6 +142,7 @@ module.exports = function(app, db) {
     });
     app.post('/login', function(req, res) {
         var formRes = req.body;
+        console.log("Trying to login with infos : " + req.body.email + " , " + req.body.password)
         isPasswordCorrect(formRes, req, res);
     });
 
@@ -229,6 +241,32 @@ module.exports = function(app, db) {
             res.redirect("/home");
         }
     });
+
+    app.post('/create/event', function(req, res) {
+        if (req.session) {
+            // get recruteur id for later redirection
+            var _id = req.body._id;
+
+            // create new event with form values
+            var newEvent = new Event();
+            newEvent.name = req.body.name
+            newEvent.description = req.body.description
+            newEvent.dateBegin = new Date(req.body.dateBegin)
+            newEvent.dateEnd = new Date(req.body.dateEnd)
+            newEvent.enterpriseName = req.body.enterpriseName
+            // connaissances
+            // experiences
+            // save event
+            newEvent.save(function(err) {
+                if(err)console.log(err)
+                res.redirect('/recruteur?id=' + _id)
+            })
+            // redirect to recruteur page with id
+        } else {
+            res.redirect("/home");
+        }
+    });
+
 
     app.post('/candidat/change/email', function(req, res) {
         if (req.session) {

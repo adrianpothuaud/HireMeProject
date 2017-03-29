@@ -5,4 +5,5 @@
 
 angular.module('CreateEventFormCtrl', []).controller('CreateEventFormController', function($scope, $http, $location) {
     $scope.id = $location.search().id;
+    $scope.enterpriseName = $location.search().enterprise;
 });
