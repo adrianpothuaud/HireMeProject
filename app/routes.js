@@ -245,54 +245,54 @@ module.exports = function(app, db) {
     });
 
 	app.post('/recruteur/change/email', function(req, res) {
-            if (req.session) {
-                // récupérer les données du formulaires edit recruteur email
-                var newEmail = req.body.newEmail;
-                var userId = req.body._id;
-                // récupérer le bon candidat avec son userID
-                Recruteur.findOne({ "_id": userId }, function(err, thing) {
-                    if (err) console.log(err);
-                    if (thing) {
-                        // mettre à jour l'email du candidat
-                        thing.email = newEmail;
-                        thing.save(function(err) {
-                            if (err) console.log(err);
-                            // rediriger sur la page recruteur avec son id
-                            res.redirect('/recruteur/profile?id=' + userId + "&emailChanged=true");
-                        })
-                    } else {
-                        console.log("No Recruteur found with _id : " + userId);
-                    }
-                });
-            } else {
-                res.redirect("/home");
-            }
-        });
+        if (req.session) {
+            // récupérer les données du formulaires edit recruteur email
+            var newEmail = req.body.newEmail;
+            var userId = req.body._id;
+            // récupérer le bon candidat avec son userID
+            Recruteur.findOne({ "_id": userId }, function(err, thing) {
+                if (err) console.log(err);
+                if (thing) {
+                    // mettre à jour l'email du candidat
+                    thing.email = newEmail;
+                    thing.save(function(err) {
+                        if (err) console.log(err);
+                        // rediriger sur la page recruteur avec son id
+                        res.redirect('/recruteur/profile?id=' + userId + "&emailChanged=true");
+                    })
+                } else {
+                    console.log("No Recruteur found with _id : " + userId);
+                }
+            });
+        } else {
+            res.redirect("/home");
+        }
+    });
 
-        app.post('/recruteur/change/entreprise', function(req, res) {
-                    if (req.session) {
-                        // récupérer les données du formulaires edit recruteur email
-                        var newEntreprise = req.body.newEntreprise;
-                        var userId = req.body._id;
-                        // récupérer le bon candidat avec son userID
-                        Recruteur.findOne({ "_id": userId }, function(err, thing) {
-                            if (err) console.log(err);
-                            if (thing) {
-                                // mettre à jour l'email du candidat
-                                thing.enterpriseName = newEntreprise;
-                                thing.save(function(err) {
-                                    if (err) console.log(err);
-                                    // rediriger sur la page recruteur avec son id
-                                    res.redirect('/recruteur/profile?id=' + userId + "&entrepriseChanged=true");
-                                })
-                            } else {
-                                console.log("No Recruteur found with _id : " + userId);
-                            }
-                        });
-                    } else {
-                        res.redirect("/home");
-                    }
-                });
+    app.post('/recruteur/change/entreprise', function(req, res) {
+        if (req.session) {
+            // récupérer les données du formulaires edit recruteur email
+            var newEntreprise = req.body.newEntreprise;
+            var userId = req.body._id;
+            // récupérer le bon candidat avec son userID
+            Recruteur.findOne({ "_id": userId }, function(err, thing) {
+                if (err) console.log(err);
+                if (thing) {
+                    // mettre à jour l'email du candidat
+                    thing.enterpriseName = newEntreprise;
+                    thing.save(function(err) {
+                        if (err) console.log(err);
+                        // rediriger sur la page recruteur avec son id
+                        res.redirect('/recruteur/profile?id=' + userId + "&entrepriseChanged=true");
+                    })
+                } else {
+                    console.log("No Recruteur found with _id : " + userId);
+                }
+            });
+        } else {
+            res.redirect("/home");
+        }
+    });
 
     app.post('/create/event', function(req, res) {
         if (req.session) {
@@ -414,7 +414,30 @@ module.exports = function(app, db) {
         }
     });
 
-
+    app.post('/candidat/remove/connaissance', function(req, res) {
+        if (req.session) {
+            // get data
+            var userId = req.body.candidatId
+            var conId = req.body.conId
+            console.log("candidat id : " + userId + " connaissance id : " + conId)
+            // remove connaissance from user's connaissances
+            Candidat.findOne({"_id":userId}, function(err, thing) {
+                if(err)console.log(err)
+                if(!thing)console.log("No match")
+                if(thing){
+                    thing.connaissances = thing.connaissances.filter(function(conn){
+                        return conn._id != conId
+                    })
+                    thing.save(function(err) {
+                        if(err)console.log(err)
+                        res.redirect('/candidat/profile?id='+userId)
+                    })
+                }
+            })
+        } else {
+            res.redirect("/home");
+        }
+    });
 
     app.get('/logout', function(req, res) {
         req.session.destroy(function(err) {
