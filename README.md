@@ -31,6 +31,8 @@ Hire-ME is a web Application intended to allow searching for a job and go to the
     - Dynamic loads of events in both Candidat/Recruteur pages
     - Ongoing selected events (events that match Candidat's profile)
   - FULL API with support of GET/POST/PUT/DELETE requests on DB Objects Candidat/Recruteur/Connaissances/Experiences/Events
+  - Edition des profils Recruteur/Candidat OK
+  - Edition/Création d'évènement OK
 
 ### Tech
 
@@ -67,14 +69,12 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
 ### Todos
 
  - [Write Tests]
- - Populer des events passés et vérifier les vues
  - mettre les champs required dans les forms
  - join event view
  - Encrypt and hide passwords
  - Refaire une passe de couverture du code par les commentaires
  - Cleaner la documentation
  - Implement forms 
-    - Create event
     - Recruteur Profile edit
     - Reset password
  - Use WebRTC to enable Candidat&Recruteur visio conference when joining an event
