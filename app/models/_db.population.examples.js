@@ -21,6 +21,7 @@ db.connaissances.insert([
     { name: "Scilab" },
     { name: "Mathematics" },
     { name: "Conception" },
+    { name: "PHP" }
 ]);
 
 db.experiences.insert([
