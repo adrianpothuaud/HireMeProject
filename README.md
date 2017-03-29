@@ -69,7 +69,6 @@ Want to contribute? Great! Contact us even on Twitter/Facebook/Google Plus or by
 ### Todos
 
  - [Write Tests]
- - Populer des events passés et vérifier les vues
  - mettre les champs required dans les forms
  - join event view
  - Encrypt and hide passwords
