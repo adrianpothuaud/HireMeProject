@@ -439,6 +439,30 @@ module.exports = function(app, db) {
         }
     });
 
+    app.post('/candidat/remove/experience', function(req, res) {
+        if (req.session) {
+            // get data
+            var userId = req.body.candidatId
+            var expId = req.body.expId
+            // remove connaissance from user's connaissances
+            Candidat.findOne({"_id":userId}, function(err, thing) {
+                if(err)console.log(err)
+                if(!thing)console.log("No match")
+                if(thing){
+                    thing.experiences = thing.experiences.filter(function(exp){
+                        return exp._id != expId
+                    })
+                    thing.save(function(err) {
+                        if(err)console.log(err)
+                        res.redirect('/candidat/profile?id='+userId)
+                    })
+                }
+            })
+        } else {
+            res.redirect("/home");
+        }
+    });
+
     app.get('/logout', function(req, res) {
         req.session.destroy(function(err) {
             if (err) {

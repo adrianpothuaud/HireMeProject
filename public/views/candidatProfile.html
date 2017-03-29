@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--HTML Template for candidat profile page
 Accessed should be restreined by login with a Candidat User
 Allow a Candidat to modify his informations
@@ -131,12 +132,16 @@ and add/remove Experiences/Connaissances-->
 
             <div class="panel-body ">
                 <div ng-repeat="experience in userResponse.data.experiences ">
-                    <p><strong>{{experience.jobName}}</strong><span ng-if="experience.enterpriseName"> @ {{experience.enterpriseName}}</span>
-                    <span class="pull-right"><a href="#"><i style="color:darkgreen">Editer</i></a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><i style="color:red">Supprimer</i></a></span></p>
+                    <strong>{{experience.jobName}}</strong>
+                    <span ng-if="experience.enterpriseName"> @ {{experience.enterpriseName}}</span>
+                    <form class="pull-right" style="display:inline" enctype="application/json" method="POST" action="candidat/remove/experience">
+                        <input type="hidden" name="candidatId" value="{{userResponse.data._id}}"/>
+                        <input type="hidden" name="expId" value="{{experience._id}}"/>
+                        <button type="submit" class="simpleBtn" ><i style="color:red">Supprimer</i></button>
+                    </form>
                 </div>
 
-                <form enctype='application/json' method="POST" action="candidat/add/experience">
+                <form enctype="application/json" method="POST" action="candidat/add/experience">
                     <fieldset>
                         <br/><br/>Ajouter une expérience<br/><br/>
                     </fieldset>
