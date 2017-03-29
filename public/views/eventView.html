@@ -47,6 +47,11 @@ Button to launch live stream session
                 <span class="text-center ">{{eventResponse.data.dateEnd.toString()}}</span>
             </li>
             <li class="list-group-item ">
+                <span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default ">Entreprise</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text-center ">{{eventResponse.data.enterpriseName}}</span>
+            </li>
+            <li class="list-group-item ">
                 <div ng-repeat="recruteur in eventResponse.data.recruteurs">
                     <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="label label-default ">Recruteur</span> &nbsp;&nbsp;&nbsp;&nbsp;

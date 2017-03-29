@@ -88,7 +88,11 @@ and add/remove Experiences/Connaissances-->
 
             <div class="panel-body ">
                 <div ng-repeat="connaissance in userResponse.data.connaissances ">
-                    <p><strong>{{connaissance.name}}</strong> <span ng-if="connaissance.level">: {{connaissance.level}}</span></p>
+                    <p><strong>{{connaissance.name}}</strong> 
+                        <span ng-if="connaissance.level">: {{connaissance.level}}</span>
+                        <span class="pull-right"><a href="#"><i style="color:darkgreen">Editer</i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><i style="color:red">Supprimer</i></a></span>
+                    </p>
                 </div>
 
                 <form enctype='application/json' method="POST" action="candidat/add/connaissance">
@@ -123,7 +127,9 @@ and add/remove Experiences/Connaissances-->
 
             <div class="panel-body ">
                 <div ng-repeat="experience in userResponse.data.experiences ">
-                    <p><strong>{{experience.jobName}}</strong><span ng-if="experience.enterpriseName"> @ {{experience.enterpriseName}}</span></p>
+                    <p><strong>{{experience.jobName}}</strong><span ng-if="experience.enterpriseName"> @ {{experience.enterpriseName}}</span>
+                    <span class="pull-right"><a href="#"><i style="color:darkgreen">Editer</i></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><i style="color:red">Supprimer</i></a></span></p>
                 </div>
 
                 <form enctype='application/json' method="POST" action="candidat/add/experience">
