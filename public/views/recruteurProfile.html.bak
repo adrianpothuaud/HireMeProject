@@ -20,13 +20,6 @@ and add/remove Enterprise-->
     <h1>Profil Recruteur</h1>
 </div>
 
-<div ng-if="onEmailChange" class="alert alert-success">
-    <p>Email mis à jour avec succès !</p>
-</div>
-<div ng-if="onEntAdded" class="alert alert-success">
-    <p>vous avez changer d'entreprise avec succès !</p>
-</div>
-
 <!--Print user information with the possibility to update them-->
 <div class="panel panel-default">
 
@@ -40,6 +33,7 @@ and add/remove Enterprise-->
         <!--firstname-->
         <!--email-->
 
+       
             <ul class="list-group ">
                 <li class="list-group-item ">
                     <span class="glyphicon glyphicon-user "></span> &nbsp;&nbsp;&nbsp;&nbsp;

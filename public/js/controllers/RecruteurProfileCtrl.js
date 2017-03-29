@@ -2,6 +2,9 @@
 
 angular.module('RecruteurProfileCtrl', []).controller('RecruteurProfileController', function($scope, $http, $location) {
 
+    if ($location.search().emailChanged) $scope.onEmailChange = true;
+    if ($location.search().entrepriseChanged) $scope.onEntAdded = true;
+
     // Request the API to get user informations
     $scope.$watch($http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +
             "onsiteactionskey4YHTE7" +

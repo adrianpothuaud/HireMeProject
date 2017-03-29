@@ -36,7 +36,10 @@ Accessed should be restreined by login with a Recruteur User-->
         <div class="progress">
             <div class="{{profile_progressbar_class}}" role="progressbar" aria-valuenow="{{profile_progressbar_valuenow_string}}" aria-valuemin="0" aria-valuemax="100" style="{{profile_progressbar_style}}"></div>
         </div>
-        <a href="/recruteur/profile?id={{userResponse.data._id}}"><button type="button" class="btn btn-default">Compléter</button></a>
+        <a href="/recruteur/profile?id={{userResponse.data._id}}">
+            <button ng-if="profile_progressbar_valuenow < 80" type="button" class="btn btn-default">Compléter</button>
+            <button ng-if="profile_progressbar_valuenow >= 80" type="button" class="btn btn-default">Modifier</button>
+        </a>
     </div>
 </div>
 
