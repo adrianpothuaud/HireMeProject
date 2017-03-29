@@ -15,44 +15,44 @@ var CandidatSchema = mongoose.Schema({
     accountType: String,
     experiences: [ExperienceSchema],
     connaissances: [ConnaissanceSchema]
-}, { collection : 'candidats'});
+}, { collection: 'candidats' });
 
 // Schema's methods =================================
 // Getters ==========================================
-CandidatSchema.methods.getLastName = function () {
+CandidatSchema.methods.getLastName = function() {
     return this.lastname;
 }
-CandidatSchema.methods.getFirstName = function () {
+CandidatSchema.methods.getFirstName = function() {
     return this.firstname;
 }
-CandidatSchema.methods.getEmail = function () {
+CandidatSchema.methods.getEmail = function() {
     return this.email;
 }
-CandidatSchema.methods.getPassword = function () {
-    // decryption method
-    return this.password;
-}
-// Setters ==========================================
-CandidatSchema.methods.setLastName = function (n) {
+CandidatSchema.methods.getPassword = function() {
+        // decryption method
+        return this.password;
+    }
+    // Setters ==========================================
+CandidatSchema.methods.setLastName = function(n) {
     this.lastname = n;
 }
-CandidatSchema.methods.setFirstName = function (n) {
+CandidatSchema.methods.setFirstName = function(n) {
     this.firstname = n;
 }
-CandidatSchema.methods.setEmail = function (n) {
+CandidatSchema.methods.setEmail = function(n) {
     this.email = n;
 }
-CandidatSchema.methods.setPassword = function (n) {
+CandidatSchema.methods.setPassword = function(n) {
     // encryption method for n
     this.password = n;
 }
 
 // Show Info method for logs ==================
-CandidatSchema.methods.showInfo = function () {
-  console.log("Candidat's Informations:");
-  console.log("Last name : " + this.lastname);
-  console.log("First name : " + this.firstname);
-  console.log("Email : " + this.email);
+CandidatSchema.methods.showInfo = function() {
+    console.log("Candidat's Informations:");
+    console.log("Last name : " + this.lastname);
+    console.log("First name : " + this.firstname);
+    console.log("Email : " + this.email);
 }
 
 // Export =====================

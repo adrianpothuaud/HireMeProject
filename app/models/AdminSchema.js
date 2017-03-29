@@ -1,30 +1,30 @@
 // MongoDB Schema for Admin User
 
 // Dependencies ==================
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
 // Basic Schema with attributes and collection spec
 var AdminSchema = mongoose.Schema({
     email: String,
     password: String
-}, { collection : 'admins'});
+}, { collection: 'admins' })
 
 // Schema's methods =================================
 // Getters ==========================================
-AdminSchema.methods.getEmail = function () {
-    return this.email;
+AdminSchema.methods.getEmail = function() {
+    return this.email
 }
-AdminSchema.methods.getHashedPassword = function () {
-    return this.password;
+AdminSchema.methods.getHashedPassword = function() {
+        return this.password
+    }
+    // Setterrs ====================================
+AdminSchema.methods.setEmail = function(n) {
+    this.email = n
 }
-// Setterrs ====================================
-AdminSchema.methods.setEmail = function (n) {
-    this.email = n;
-}
-AdminSchema.methods.setPassword = function (n) {
+AdminSchema.methods.setPassword = function(n) {
     // encryption
-    this.password = n;
+    this.password = n
 }
 
 // Export ==================
-module.exports = AdminSchema;
+module.exports = AdminSchema

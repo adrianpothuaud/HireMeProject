@@ -22,7 +22,7 @@ db.connaissances.insert([
     { name: "Mathematics" },
     { name: "Conception" },
     { name: "PHP" }
-]);
+])
 
 db.experiences.insert([
     { jobName: "Engineer" },
@@ -36,7 +36,7 @@ db.experiences.insert([
     { jobName: "Web Designer" },
     { jobName: "Web Developer" },
     { jobName: "QA Engineer" }
-]);
+])
 
 db.recruteurs.insert([{
         lastname: "ds",
@@ -118,7 +118,7 @@ db.recruteurs.insert([{
         accountType: "recruteur",
         enterpriseName: "Airbus"
     }
-]);
+])
 
 db.candidats.insert([{
         lastname: "javadev",
@@ -212,7 +212,7 @@ db.candidats.insert([{
             })
         ]
     }
-]);
+])
 
 db.events.insert([{
         name: "Concept Car Engineer - PSA",
@@ -250,4 +250,4 @@ db.events.insert([{
             })
         ]
     }
-]);
+])

@@ -37,22 +37,42 @@ Allow Recruteur to edit an Event(s)-->
             <input type="text" class="form-control" placeholder="date fin YYYY-MM-DD" name="newEventDateEnd" id="newEventDateEnd">
         </li>
         <li class="list-group-item">
-            <span class="label label-default">Conaissances requises</span>
+            <span class="label label-default">Connaissance requise</span>
+            <br/><br/>
             <div ng-repeat="connaissance in userresponse.data.connaissances">
-                <br/><br/>{{connaissance.name}}<br/><br/>
+                {{connaissance.name}}<br/><br/>
                 <div ng-if="connaissance.level">
                     <span class="label label-default">{{connaissance.level}}</span>
+                    <br/><br/>{{connaissance.level}}<br/><br/>
                 </div>
             </div>
+            <form>
+                <div class="input-group input_fields_wrap">
+                    <input type="text" name="connaissanceRequise">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-default add_field_button">Ajouter</button>
+                </div>
+            </form>
         </li>
         <li class="list-group-item">
             <span class="label label-default">Expérience requise</span>
+            <br/><br/>
             <div ng-repeat="experience in userresponse.data.experiences">
-                <br/><br/>{{experience.jobName}}<br/><br/>
-                <div ng-if="experience.level">
-                    <span class="label label-default">{{connaissance.level}}</span>
-                </div>
+                {{experience.jobName}}<br/><br/>
             </div>
+            <form>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="label label-default">Nom du poste</span>
+                        <br/><br/>
+                        <input type="text" class="form-control" placeholder="nom de poste" name="experienceRequiseJobName">
+                    </li>
+                    <li class="list-group-item">
+                        <span class="label label-default">Années de travail</span>
+                        <br/><br/>
+                        <input type="number" min="0" max="5" class="form-control" name="experienceRequiseDuree">
+                    </li>
+                </ul>
+            </form>
         </li>
         <li class="list-group-item">
             <button class="btn btn-default" type="submit">Envoyer</button>
@@ -62,3 +82,26 @@ Allow Recruteur to edit an Event(s)-->
     <input type="hidden" name="recruteurId" value="{{id}}" />
     <input type="hidden" name="eventId" value="{{eventId}}" />
 </form>
+
+<script>
+    $(document).ready(function() {
+        var max_fields = 10; //maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button"); //Add button ID
+
+        var x = 1; //initlal text box count
+        $(add_button).click(function(e) { //on add input button click
+            e.preventDefault();
+            if (x < max_fields) { //max input box allowed
+                x++; //text box increment
+                $(wrapper).append('<div><br/><br/><input type="text" name="mytext[]"/>&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-danger remove_field">Supprimer</a></div>'); //add input box
+            }
+        });
+
+        $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        })
+    });
+</script>

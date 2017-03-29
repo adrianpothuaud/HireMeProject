@@ -8,7 +8,8 @@ var ExperienceSchema = mongoose.Schema({
     jobName: { type: String, required: true, unique: true },
     enterpriseName: { type: String, default: undefined, required: false },
     dateBegin: { type: Date, default: undefined, required: false },
-    dateEnd: { type: Date, default: undefined, required: false }
+    dateEnd: { type: Date, default: undefined, required: false },
+    duree: { type: Number, default: undefined, required: false }
 }, { collection: "experiences" });
 
 // Schema's methods =================================
