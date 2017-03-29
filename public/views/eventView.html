@@ -52,6 +52,16 @@ Button to launch live stream session
                 <span class="text-center ">{{eventResponse.data.enterpriseName}}</span>
             </li>
             <li class="list-group-item ">
+                <span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default ">Connaissances requises</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span ng-repeat="connaissance in eventResponse.data.connaissances" class="text-center ">{{connaissance.name}}</span>
+            </li>
+            <li class="list-group-item ">
+                <span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default ">Expériences requises</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span ng-repeat="experience in eventResponse.data.experiences" class="text-center ">{{experience.jobName}}</span>
+            </li>
+            <li class="list-group-item ">
                 <div ng-repeat="recruteur in eventResponse.data.recruteurs">
                     <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="label label-default ">Recruteur</span> &nbsp;&nbsp;&nbsp;&nbsp;

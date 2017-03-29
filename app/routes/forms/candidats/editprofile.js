@@ -1,3 +1,5 @@
+var Candidat = require('../../../models/Candidat')
+
 module.exports = function(app, db) {
     app.post('/candidat/change/email', function(req, res) {
         if (req.session) {

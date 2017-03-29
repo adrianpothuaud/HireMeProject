@@ -4,6 +4,8 @@
 
 // View Controller for home.html HTML Template
 
+const INFO_LIMIT = 5;
+
 angular.module('AboutCtrl', []).controller('AboutController', function($scope, $http, $location) {
 
     $scope.Enterprises = new Array();
@@ -42,12 +44,14 @@ angular.module('AboutCtrl', []).controller('AboutController', function($scope, $
                                     $scope.$evalAsync(function() {
                                         $scope.Recruteurs.forEach(function(recruteur) {
                                             if (recruteur.enterpriseName) {
-                                                if ($.inArray(recruteur.enterpriseName, $scope.Enterprises) === -1) $scope.Enterprises.push(recruteur.enterpriseName);
+                                                if ($.inArray(recruteur.enterpriseName, $scope.Enterprises) === -1 &&
+                                                    $scope.Enterprises.length < INFO_LIMIT) $scope.Enterprises.push(recruteur.enterpriseName);
                                             }
                                         });
                                         $scope.Experiences.forEach(function(experience) {
                                             if (experience.jobName) {
-                                                if ($.inArray(experience.jobName, $scope.Jobs) === -1) $scope.Jobs.push(experience.jobName);
+                                                if ($.inArray(experience.jobName, $scope.Jobs) === -1 &&
+                                                    $scope.Jobs.length < INFO_LIMIT) $scope.Jobs.push(experience.jobName);
                                             }
                                         });
                                     });

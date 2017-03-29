@@ -2,6 +2,8 @@
 
 angular.module('RecruteurCtrl', []).controller('RecruteurController', function($scope, $http, $location) {
 
+    const INFO_LIMIT = 5
+
     // Request the API to get user informations
     $scope.$watch($http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +
             "onsiteactionskey4YHTE7" +
@@ -71,13 +73,19 @@ angular.module('RecruteurCtrl', []).controller('RecruteurController', function($
                                 element.dateEnd = new Date(element.dateEnd);
                                 if (beginD <= now.getTime() && now.getTime() <= endD) {
                                     $scope.onGoingEventsCpt += 1;
-                                    $scope.onGoingEvents = $scope.onGoingEvents.concat(element);
+                                    if ($scope.onGoingEvents.length < INFO_LIMIT) {
+                                        $scope.onGoingEvents = $scope.onGoingEvents.concat(element);
+                                    }
                                 } else if (now.getTime() <= beginD) {
                                     $scope.upComingEventsCpt += 1;
-                                    $scope.upComingEvents = $scope.upComingEvents.concat(element);
+                                    if ($scope.upComingEvents.length < INFO_LIMIT) {
+                                        $scope.upComingEvents = $scope.upComingEvents.concat(element);
+                                    }
                                 } else {
                                     $scope.passedEventsCpt += 1;
-                                    $scope.passedEvents = $scope.passedEvents.concat(element);
+                                    if ($scope.passedEvents.length < INFO_LIMIT) {
+                                        $scope.passedEvents = $scope.passedEvents.concat(element);
+                                    }
                                 }
                             }
                         }, this);

@@ -2,7 +2,7 @@
 
 angular.module('CandidatCtrl', []).controller('CandidatController', function($scope, $http, $location) {
 
-
+    const INFO_LIMIT = 5
 
     // Request the API to get user informations
     $scope.$watch($http.get($location.protocol() + '://' + $location.host() + ':' + $location.port() + "/api" +
@@ -50,7 +50,8 @@ angular.module('CandidatCtrl', []).controller('CandidatController', function($sc
                                 $scope.profile_progressbar_class = "progress-bar progress-bar-warning";
                             }
                         }
-
+                        // Selected events
+                        // ... ToDo
                         // Accessible events configuration
                         // initialize events ongoing/upcoming/passed
                         $scope.onGoingEventsCpt = 0;
@@ -72,20 +73,42 @@ angular.module('CandidatCtrl', []).controller('CandidatController', function($sc
                             element.dateEnd = new Date(element.dateEnd);
                             if (beginD <= now.getTime() && now.getTime() <= endD) {
                                 $scope.onGoingEventsCpt += 1;
-                                $scope.onGoingEvents = $scope.onGoingEvents.concat(element);
+                                if ($scope.onGoingEvents.length < INFO_LIMIT) {
+                                    $scope.onGoingEvents = $scope.onGoingEvents.concat(element);
+                                }
                             } else if (now.getTime() <= beginD) {
                                 $scope.upComingEventsCpt += 1;
-                                $scope.upComingEvents = $scope.upComingEvents.concat(element);
+                                if ($scope.upComingEvents.length < INFO_LIMIT) {
+                                    $scope.upComingEvents = $scope.upComingEvents.concat(element);
+                                }
                             } else {
-                                $scope.passedEventsCpt += 1;
-                                $scope.passedEvents = $scope.passedEvents.concat(element);
+                                if ($scope.passedEvents.length < INFO_LIMIT) {
+                                    $scope.passedEventsCpt += 1;
+                                    if ($scope.passedEvents.length < INFO_LIMIT) {
+                                        $scope.passedEvents = $scope.passedEvents.concat(element);
+                                    }
+                                }
                             }
-
-                            // Compare Event required skills and user's ones
-                            // store selected events to put them in front of the candidat page
-                            // ............ ToDo ......................
+                            // build selectedEvents
+                            element.connaissances.forEach(function(eventConnaissance) {
+                                $scope.userResponse.data.connaissances.forEach(function(userConnaissance) {
+                                    if (eventConnaissance.name == userConnaissance.name) {
+                                        if ($.inArray(element, $scope.selectedEvents) === -1) {
+                                            $scope.selectedEvents = $scope.selectedEvents.concat([element])
+                                        }
+                                    }
+                                })
+                            })
+                            element.experiences.forEach(function(eventExperience) {
+                                $scope.userResponse.data.experiences.forEach(function(userExperience) {
+                                    if (eventConnaissance.jobName == userConnaissance.jobName) {
+                                        if ($.inArray(element, $scope.selectedEvents) === -1) {
+                                            $scope.selectedEvents = $scope.selectedEvents.concat([element])
+                                        }
+                                    }
+                                })
+                            })
                         }, this);
-
                         // use events in ng-repeat on HTML template candidat.html
                     });
                 })

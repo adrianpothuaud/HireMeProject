@@ -89,13 +89,15 @@ and add/remove Experiences/Connaissances-->
 
             <div class="panel-body ">
                 <div ng-repeat="connaissance in userResponse.data.connaissances ">
-                    <strong>{{connaissance.name}}</strong> 
+                    <strong>{{connaissance.name}}</strong>
                     <span ng-if="connaissance.level">: {{connaissance.level}}</span>
 
                     <form class="pull-right" style="display:inline" enctype="application/json" method="POST" action="candidat/remove/connaissance">
-                        <input type="hidden" name="candidatId" value="{{userResponse.data._id}}"/>
-                        <input type="hidden" name="conId" value="{{connaissance._id}}"/>
-                        <button type="submit" class="simpleBtn" ><i style="color:red">Supprimer</i></button>
+                        <input type="hidden" name="candidatId" value="{{userResponse.data._id}}" />
+                        <input type="hidden" name="conId" value="{{connaissance._id}}" />
+                        <span class="glyphicon glyphicon-arrow-down" ng-click=""></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-click=""></span>
+                        <button type="submit" class="simpleBtn"><i style="color:red">Supprimer</i></button>
                     </form>
                     <br/><br/>
                 </div>
@@ -135,9 +137,9 @@ and add/remove Experiences/Connaissances-->
                     <strong>{{experience.jobName}}</strong>
                     <span ng-if="experience.enterpriseName"> @ {{experience.enterpriseName}}</span>
                     <form class="pull-right" style="display:inline" enctype="application/json" method="POST" action="candidat/remove/experience">
-                        <input type="hidden" name="candidatId" value="{{userResponse.data._id}}"/>
-                        <input type="hidden" name="expId" value="{{experience._id}}"/>
-                        <button type="submit" class="simpleBtn" ><i style="color:red">Supprimer</i></button>
+                        <input type="hidden" name="candidatId" value="{{userResponse.data._id}}" />
+                        <input type="hidden" name="expId" value="{{experience._id}}" />
+                        <button type="submit" class="simpleBtn"><i style="color:red">Supprimer</i></button>
                     </form>
                 </div>
 
