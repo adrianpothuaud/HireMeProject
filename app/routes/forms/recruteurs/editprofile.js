@@ -1,3 +1,5 @@
+var Recruteur = require('../../../models/Recruteur')
+
 module.exports = function(app, db) {
     app.post('/recruteur/change/email', function(req, res) {
         if (req.session) {

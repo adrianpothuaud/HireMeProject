@@ -1,3 +1,5 @@
+var Event = require('../../../models/Event')
+
 module.exports = function(app, db) {
     app.post('/event/edit', function(req, res) {
         if (req.session) {

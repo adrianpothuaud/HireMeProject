@@ -14,8 +14,8 @@ var EventSchema = mongoose.Schema({
     dateEnd: { type: Date },
     enterpriseName: String,
     recruteurs: [RecruteurSchema],
-    connaissancesRequises: [ConnaissanceSchema],
-    experiencesRequises: [ExperienceSchema]
+    connaissancesRequises: [],
+    experiencesRequises: []
 }, { collection: "events" });
 
 // Schema's methods =================================

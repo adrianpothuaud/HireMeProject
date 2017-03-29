@@ -1,3 +1,5 @@
+var Event = require('../../../models/Event')
+
 module.exports = function(app, db) {
     app.post('/create/event', function(req, res) {
         if (req.session) {
@@ -12,8 +14,15 @@ module.exports = function(app, db) {
             newEvent.dateEnd = new Date(req.body.dateEnd)
             newEvent.enterpriseName = req.body.enterpriseName
                 // connaissances
-                // experiences
-                // save event
+            if (req.body.connaissanceRequise) {
+                console.log(req.body.connaissanceRequise)
+                newEvent.connaissancesRequises = req.body.connaissancesRequises
+            }
+            // experiences
+            if (req.body.experienceRequise) {
+
+            }
+            // save event
             newEvent.save(function(err) {
                     if (err) console.log(err)
                     res.redirect('/recruteur?id=' + _id)

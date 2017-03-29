@@ -71,7 +71,7 @@ Allow Recruteur to create new Event(s)-->
                     <div class="input-group input_fields_wrap">
                         <button class="btn btn-default add_field_button">Ajouter</button>
                         <br/><br/>
-                        <div><input type="text" name="connaissanceRequise[]"></div>
+                        <div><input type="text" name="connaissancesRequises[]"></div>
                     </div>
                 </div>
 
@@ -130,7 +130,7 @@ Allow Recruteur to create new Event(s)-->
             e.preventDefault();
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><br/><br/><input type="text" name="mytext[]"/>&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-danger remove_field">Supprimer</a></div>'); //add input box
+                $(wrapper).append('<div><br/><br/><input type="text" name="connaissancesRequises[]"/>&nbsp;&nbsp;&nbsp;<a href="#" class="btn btn-danger remove_field">Supprimer</a></div>'); //add input box
             }
         });
 
