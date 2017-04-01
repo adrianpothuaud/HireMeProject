@@ -25,7 +25,6 @@ module.exports = function(app, db) {
                 if (err) {
                     console.log(err);
                 }
-                thing.onGoing = thing.isOnGoing();
                 res.json(thing); // prints event infos in json format to the response page
             });
         });

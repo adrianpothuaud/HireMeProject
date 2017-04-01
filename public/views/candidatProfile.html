@@ -94,7 +94,7 @@ and add/remove Experiences/Connaissances-->
 
                     <form class="pull-right" style="display:inline" enctype="application/json" method="POST" action="candidat/remove/connaissance">
                         <input type="hidden" name="candidatId" value="{{userResponse.data._id}}" />
-                        <input type="hidden" name="conId" value="{{connaissance._id}}" />
+                        <input type="hidden" name="conName" value="{{connaissance.name}}" />
                         <span class="glyphicon glyphicon-arrow-down" ng-click=""></span>
                         <span class="glyphicon glyphicon-arrow-up" ng-click=""></span>
                         <button type="submit" class="simpleBtn"><i style="color:red">Supprimer</i></button>
@@ -134,13 +134,16 @@ and add/remove Experiences/Connaissances-->
 
             <div class="panel-body ">
                 <div ng-repeat="experience in userResponse.data.experiences ">
-                    <strong>{{experience.jobName}}</strong>
-                    <span ng-if="experience.enterpriseName"> @ {{experience.enterpriseName}}</span>
+                    <p style="display:inline"><strong>{{experience.jobName}}</strong> @ {{experience.enterpriseName}}</p>
                     <form class="pull-right" style="display:inline" enctype="application/json" method="POST" action="candidat/remove/experience">
                         <input type="hidden" name="candidatId" value="{{userResponse.data._id}}" />
-                        <input type="hidden" name="expId" value="{{experience._id}}" />
+                        <input type="hidden" name="exp" value="{{experience.jobName}}" />
+                        <input type="hidden" name="ent" value="{{experience.enterpriseName}}" />
                         <button type="submit" class="simpleBtn"><i style="color:red">Supprimer</i></button>
                     </form>
+                    <p><span class="glyphicon glyphicon-import"></span>&nbsp;&nbsp;{{experience.dateBegin.split('T')[0]}}&nbsp;
+                        <span ng-show="{{experience.dateEnd}}"><span class="glyphicon glyphicon-export"></span>&nbsp;&nbsp;{{experience.dateEnd}}</span>
+                    </p>
                 </div>
 
                 <form enctype="application/json" method="POST" action="candidat/add/experience">

@@ -78,15 +78,20 @@ function myDispatcher(myObject, request, res) {
     sess._id = myObject.user._id;
 
     if (myObject.type === 'candidat') {
+        console.log("redirect to candidat page")
         res.redirect('/candidat?id=' + sess._id);
-    } else {
+    } else if (myObject.type === 'recruteur') {
+        console.log("redirect to recruteur page")
         res.redirect('/recruteur?id=' + sess._id);
+    } else {
+        console.log("type undefined in dispatcher")
     }
 }
 
 function getAccount(err, thing, pw, request, response) {
     console.log("Trying to dispatch  for thing : " + thing)
     if (thing) {
+        console.log("Go dispatcher...")
         myDispatcher({ 'type': thing.accountType, 'isPwOK': thing.password === pw, 'user': thing }, request, response);
     } else {
         console.log("user is undefined");

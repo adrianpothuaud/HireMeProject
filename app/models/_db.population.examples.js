@@ -1,5 +1,16 @@
-db.connaissances.insert([
-    { name: "AngularJS" },
+// these instructions should be succesfull on MongoDB
+// allow validation for models and application processes
+
+db.keys.insert([
+    { key: "testkey1234" },
+    { key: "adrian2205" },
+    { key: "onsiteactionskey4YHTE7" }
+])
+
+db.connaissances.insert([{
+        name: "AngularJS",
+        description: "Framework JavaScript libre et open-source développé par Google pour étendre le language HTML."
+    },
     { name: "C" },
     { name: "C++" },
     { name: "C#" },
@@ -47,14 +58,6 @@ db.recruteurs.insert([{
         enterpriseName: "Dassault Systèmes"
     },
     {
-        lastname: "thales",
-        firstname: "thales",
-        email: "thales@hireme.test",
-        password: "thales",
-        accountType: "recruteur",
-        enterpriseName: "Thalès"
-    },
-    {
         lastname: "psa",
         firstname: "psa",
         email: "psa@hireme.test",
@@ -63,28 +66,12 @@ db.recruteurs.insert([{
         enterpriseName: "PSA Peugeot Citroen"
     },
     {
-        lastname: "csc",
-        firstname: "csc",
-        email: "csc@hireme.test",
-        password: "csc",
-        accountType: "recruteur",
-        enterpriseName: "CSC"
-    },
-    {
         lastname: "google",
         firstname: "google",
         email: "google@hireme.test",
         password: "google",
         accountType: "recruteur",
         enterpriseName: "Google"
-    },
-    {
-        lastname: "microsoft",
-        firstname: "microsoft",
-        email: "microsoft@hireme.test",
-        password: "microsoft",
-        accountType: "recruteur",
-        enterpriseName: "Microsoft"
     },
     {
         lastname: "total",
@@ -103,14 +90,6 @@ db.recruteurs.insert([{
         enterpriseName: "Club Med"
     },
     {
-        lastname: "piaggio",
-        firstname: "piaggio",
-        email: "piaggio@hireme.test",
-        password: "piaggio",
-        accountType: "recruteur",
-        enterpriseName: "Piaggio"
-    },
-    {
         lastname: "airbus",
         firstname: "airbus",
         email: "airbus@hireme.test",
@@ -125,30 +104,37 @@ db.candidats.insert([{
         firstname: "javadev",
         email: "javadev@hireme.test",
         password: "javadev",
-        experiences: [
-            db.experiences.findOne({
-                "jobName": "Developer"
-            })
-        ],
-        connaissances: [
-            db.connaissances.findOne({
-                "name": "Java"
-            })
-        ]
+        accountType: "candidat",
+        experiences: [{
+            "jobName": "Developer",
+            "enterpriseName": "Oracle",
+            "dateBegin": new Date("2012-09-01"),
+            "dateEnd": new Date("2015-08-31")
+        }],
+        connaissances: [{
+            "name": "Java",
+            "level": "Bon"
+        }]
     },
     {
         lastname: "c#dev",
         firstname: "c#dev",
         email: "c#dev@hireme.test",
         password: "c#dev",
-        experiences: [
-            db.experiences.findOne({
-                "jobName": "Developer"
-            })
-        ],
+        accountType: "candidat",
+        experiences: [{
+            "jobName": "Developer",
+            "enterpriseName": "Microsoft",
+            "dateBegin": new Date("2010-02-16"),
+            "dateEnd": new Date("2016-01-30")
+        }],
         connaissances: [
             db.connaissances.findOne({
-                "name": "C#"
+                "name": "C#",
+                "level": "Expert"
+            }, {
+                "name": "ASP.Net",
+                "level": "Expert"
             })
         ]
     },
@@ -157,39 +143,18 @@ db.candidats.insert([{
         firstname: "meca",
         email: "meca@hireme.test",
         password: "meca",
+        accountType: "candidat",
         experiences: [
             db.experiences.findOne({
-                "jobName": "Engineer"
+                "jobName": "Engineer",
+                "enterpriseName": "Citroen",
+                "dateBegin": new Date()
             })
         ],
         connaissances: [
             db.connaissances.findOne({
-                "name": "Mechanical"
-            })
-        ]
-    },
-    {
-        lastname: "webdev",
-        firstname: "webdev",
-        email: "webdev@hireme.test",
-        password: "webdev",
-        experiences: [
-            db.experiences.findOne({
-                "jobName": "Web Developer"
-            })
-        ],
-        connaissances: [
-            db.connaissances.findOne({
-                "name": "HTML"
-            }),
-            db.connaissances.findOne({
-                "name": "CSS"
-            }),
-            db.connaissances.findOne({
-                "name": "JavaScript"
-            }),
-            db.connaissances.findOne({
-                "name": "NodeJS"
+                "name": "Mechanical",
+                "level": "Novice"
             })
         ]
     },
@@ -198,56 +163,211 @@ db.candidats.insert([{
         firstname: "webdesign",
         email: "webdesign@hireme.test",
         password: "webdesign",
+        accountType: "candidat",
         experiences: [
             db.experiences.findOne({
-                "jobName": "Web Designer"
+                "jobName": "Web Designer",
+                "enterpriseName": "CSC",
+                "dateBegin": new Date("2015-09-01")
             })
         ],
         connaissances: [
             db.connaissances.findOne({
-                "name": "HTML"
+                "name": "HTML",
+                "level": "Avancé"
             }),
             db.connaissances.findOne({
-                "name": "CSS"
+                "name": "CSS",
+                "level": "Avancé"
             })
         ]
     }
 ])
 
-db.events.insert([{
-        name: "Concept Car Engineer - PSA",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
-        dateBegin: new Date("2017-01-01"),
-        dateEnd: new Date("2017-09-01"),
-        enterpriseName: "PSA Peugeot Citroen",
-        recruteurs: [
-            db.recruteurs.findOne({
+db.events.insert(
+    // (1 ongoing + 1 upcoming event + 1 passed event) /recruteur for tests
+    [
+        // ds@hireme.test =============================================================================================================
+        {
+            name: "3DEXPERIENCE Platform Web Developer - Dassault Systèmes",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-03-01"),
+            dateEnd: new Date("2017-07-01"),
+            enterpriseName: "Dassault Systèmes",
+            recruteurs: [{
+                "email": "ds@hireme.test"
+            }],
+            connaissancesRequises: [
+                { name: 'HTML' },
+                { name: 'CSS' },
+                { name: 'JavaScript' },
+                { name: 'NodeJS' }
+            ],
+            experiencesRequises: [{
+                jobName: "Web Developer",
+                duration: 3
+            }]
+        },
+        {
+            name: "3DEXPERIENCE Mechanical Simulation Engineer - Dassault Systèmes",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-06-01"),
+            dateEnd: new Date("2017-07-01"),
+            enterpriseName: "Dassault Systèmes",
+            recruteurs: [{
+                "email": "ds@hireme.test"
+            }],
+            connaissancesRequises: [
+                { name: 'Mechanical' },
+                { name: 'Mathematics' }
+            ],
+            experiencesRequises: [{
+                jobName: "Engineer",
+                duration: 3
+            }]
+        },
+        {
+            name: "3DEXPERIENCE QA Engineer - Dassault Systèmes",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-03-01"),
+            dateEnd: new Date("2017-03-12"),
+            enterpriseName: "Dassault Systèmes",
+            recruteurs: [{
+                "email": "ds@hireme.test"
+            }],
+            connaissancesRequises: [
+                { name: 'Quality' },
+                { name: 'Engineering' }
+            ],
+            experiencesRequises: [{
+                jobName: "QA Engineer",
+                duration: 3
+            }]
+        },
+
+        // psa@hireme.test=============================================================================================================
+        {
+            name: "Crossbrand Web Application Designer - PSA",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-03-01"),
+            dateEnd: new Date("2017-07-01"),
+            enterpriseName: "PSA",
+            recruteurs: [{
                 "email": "psa@hireme.test"
-            })
-        ]
-    },
-    {
-        name: "Web Developer - Google",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
-        dateBegin: new Date("2017-01-01"),
-        dateEnd: new Date("2017-09-01"),
-        enterpriseName: "Google",
-        recruteurs: [
-            db.recruteurs.findOne({
+            }],
+            connaissancesRequises: [
+                { name: 'HTML' },
+                { name: 'CSS' },
+                { name: 'JavaScript' },
+                { name: 'NodeJS' }
+            ],
+            experiencesRequises: [{
+                jobName: "Web Developer",
+                duration: 3
+            }]
+        },
+        {
+            name: "Motor Engineer - PSA",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-06-01"),
+            dateEnd: new Date("2017-07-01"),
+            enterpriseName: "PSA",
+            recruteurs: [{
+                "email": "psa@hireme.test"
+            }],
+            connaissancesRequises: [
+                { name: 'Mechanical' },
+                { name: 'Mathematics' },
+                { name: 'CAO' }
+            ],
+            experiencesRequises: [{
+                jobName: "Engineer",
+                duration: 3
+            }]
+        },
+        {
+            name: "Mechanical Simulation Engineer - PSA",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-03-01"),
+            dateEnd: new Date("2017-03-12"),
+            enterpriseName: "PSA",
+            recruteurs: [{
+                "email": "psa@hireme.test"
+            }],
+            connaissancesRequises: [
+                { name: 'Mechanical' },
+                { name: 'Mathematics' }
+            ],
+            experiencesRequises: [{
+                jobName: "Engineer",
+                duration: 3
+            }]
+        },
+
+        // google@hireme.test
+        {
+            name: "JavaScript Evangelist - Google AngularJS",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-03-01"),
+            dateEnd: new Date("2017-07-01"),
+            enterpriseName: "Google",
+            recruteurs: [{
                 "email": "google@hireme.test"
-            })
-        ]
-    },
-    {
-        name: "Web Designer - Club Med",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
-        dateBegin: new Date("2017-01-01"),
-        dateEnd: new Date("2017-09-01"),
-        enterpriseName: "Club Med",
-        recruteurs: [
-            db.recruteurs.findOne({
-                "email": "clubmed@hireme.test"
-            })
-        ]
-    }
-])
+            }],
+            connaissancesRequises: [
+                { name: 'JavaScript' },
+                { name: 'CSS' },
+                { name: 'HJTML' },
+                { name: 'NodeJS' }
+            ],
+            experiencesRequises: [{
+                jobName: "Web Developer",
+                duration: 3
+            }]
+        },
+        {
+            name: "Data Scientist - Google",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-06-01"),
+            dateEnd: new Date("2017-07-01"),
+            enterpriseName: "Google",
+            recruteurs: [{
+                "email": "google@hireme.test"
+            }],
+            connaissancesRequises: [
+                { name: 'Big Data' },
+                { name: 'Algorithmic' },
+                { name: 'Data Structures' }
+            ],
+            experiencesRequises: [{
+                jobName: "Data Scientist",
+                duration: 3
+            }]
+        },
+        {
+            name: "Android OS Designer - Google",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et metus ut odio suscipit commodo facilisis eget lectus. Nullam a felis ut lectus ornare gravida. Proin viverra dolor a libero tempor, eu tincidunt elit auctor. Quisque eget tempor risus. Fusce pretium ut nibh nec tincidunt. ",
+            dateBegin: new Date("2017-03-01"),
+            dateEnd: new Date("2017-03-12"),
+            enterpriseName: "Google",
+            recruteurs: [{
+                "email": "google@hireme.test"
+            }],
+            connaissancesRequises: [
+                { name: 'Design' },
+                { name: 'Android' }
+            ],
+            experiencesRequises: [{
+                jobName: "Designer",
+                duration: 3
+            }]
+        }
+
+        // total@hireme.test
+
+        // clubmed@hieme.test
+
+        // airbus@hireme.test
+
+    ]
+)

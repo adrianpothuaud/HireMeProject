@@ -1,8 +1,27 @@
-// exports mongoDB Candidat Model
+// MongoDB Schema for Candidat User
 
-// Dependencies ===================================
+// Dependencies ================================================
 var mongoose = require('mongoose');
-var CandidatSchema = require('./CandidatSchema.js');
+// var extend = require('mongoose-schema-extend'); // unused yet
 
-// Export =================================================
+// Basic Schema with attributes and collection spec
+var CandidatSchema = mongoose.Schema({
+    lastname: String,
+    firstname: String,
+    email: String,
+    password: String,
+    accountType: String,
+    experiences: [{
+        jobName: String,
+        enterpriseName: String,
+        dateBegin: Date,
+        dateEnd: Date
+    }],
+    connaissances: [{
+        name: String,
+        level: String
+    }]
+}, { collection: 'candidats' });
+
+// Export =====================
 module.exports = mongoose.model('Candidat', CandidatSchema);

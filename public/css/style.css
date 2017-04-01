@@ -84,12 +84,54 @@ body {
     }
 }
 
+.baseTarget {
+    color: darkcyan;
+}
+
+.viewControls {
+    margin: 20px;
+}
+
+.eventView {
+    margin: 20px;
+}
+
 .simpleBtn {
-    background: none!important;
-    color: inherit;
+    background: none;
+    padding: 0;
     border: none;
-    padding: 0!important;
-    font: inherit;
-    /*border is optional*/
-    cursor: pointer;
+}
+
+.activedBtn {
+    color: green;
+}
+
+.unactivedBtn {
+    color: lightgray;
+}
+
+.invisible {
+    display: none;
+}
+
+.inline {
+    display: inline;
+}
+
+.smallTitle {
+    font-size: medium;
+    margin-right: 15px;
+}
+
+.smallDesc {
+    font-size: small;
+}
+
+.spaced {
+    padding: 5px;
+}
+
+.BIG {
+    padding: 15px;
+    font-size: xx-large;
 }

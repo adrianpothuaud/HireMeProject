@@ -19,6 +19,7 @@ module.exports = function(app, db) {
                     })
                 } else {
                     console.log("No Candidat found with _id : " + eventId);
+                    res.redirect("/home");
                 }
             });
         } else {
@@ -28,12 +29,16 @@ module.exports = function(app, db) {
     app.post('/candidat/add/connaissance', function(req, res) {
         if (req.session) {
             var level = "Débutant";
+            if (req.body.level > 3) level = "Novice"
             if (req.body.level > 5) level = "Bon"
-            if (req.body.level > 8) level = "Très bon"
+            if (req.body.level > 8) level = "Avancé"
             if (req.body.level == 10) level = "Master"
             Candidat.findOne({ "_id": req.body._id }, function(err, thing) {
                 if (err) console.log(err)
-                if (!thing) console.log("No Candidat with _id : " + req.body._id)
+                if (!thing) {
+                    console.log("No Candidat with _id : " + req.body._id)
+                    res.redirect("/home");
+                }
                 thing.connaissances = thing.connaissances.concat([{ "name": req.body.name, "level": level }])
                 console.log(thing)
                 thing.save(function(err) {
@@ -45,7 +50,6 @@ module.exports = function(app, db) {
             res.redirect("/home");
         }
     });
-
     app.post('/candidat/add/experience', function(req, res) {
         if (req.session) {
             var newExp = new Object();
@@ -67,20 +71,19 @@ module.exports = function(app, db) {
             res.redirect("/home");
         }
     });
-
     app.post('/candidat/remove/connaissance', function(req, res) {
         if (req.session) {
             // get data
             var userId = req.body.candidatId
-            var conId = req.body.conId
-            console.log("candidat id : " + userId + " connaissance id : " + conId)
+            var conName = req.body.conName
+            console.log("candidat id : " + userId + " connaissance : " + conName)
                 // remove connaissance from user's connaissances
             Candidat.findOne({ "_id": userId }, function(err, thing) {
                 if (err) console.log(err)
                 if (!thing) console.log("No match")
                 if (thing) {
                     thing.connaissances = thing.connaissances.filter(function(conn) {
-                        return conn._id != conId
+                        return conn.name != conName
                     })
                     thing.save(function(err) {
                         if (err) console.log(err)
@@ -92,19 +95,19 @@ module.exports = function(app, db) {
             res.redirect("/home");
         }
     });
-
     app.post('/candidat/remove/experience', function(req, res) {
         if (req.session) {
             // get data
             var userId = req.body.candidatId
-            var expId = req.body.expId
+            var jobName = req.body.exp
+            var entName = req.body.ent
                 // remove connaissance from user's connaissances
             Candidat.findOne({ "_id": userId }, function(err, thing) {
                 if (err) console.log(err)
                 if (!thing) console.log("No match")
                 if (thing) {
                     thing.experiences = thing.experiences.filter(function(exp) {
-                        return exp._id != expId
+                        return exp.jobName != jobName && exp.enterpriseName != entName
                     })
                     thing.save(function(err) {
                         if (err) console.log(err)
