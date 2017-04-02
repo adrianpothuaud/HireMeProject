@@ -15,6 +15,11 @@ module.exports = function(app, db) {
                 if (err) {
                     console.log(err);
                 }
+                var i
+                var len = thing.length
+                for (i = 0; i < len; i++) {
+                    thing[i].password = 'we keep it secret ;)'
+                }
                 res.json(thing); // prints all candidats in json format to the response page
             });
         });
@@ -26,6 +31,7 @@ module.exports = function(app, db) {
                 if (err) {
                     console.log(err);
                 }
+                thing.password = 'we keep it secret ;)'
                 res.json(thing); // prints candidat infos in json format to the response page
             });
         });
