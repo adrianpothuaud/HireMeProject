@@ -66,16 +66,17 @@ Accessed should be restreined by login with a Candidat User-->
         </div>
         <div class="panel-body" id="FirstChoiceView">
             <br/><br/>
-            <div ng-repeat="event in selectedEvents" class="event col-md-6">
-                <div class="thumbnail eventImg">
-                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            <div ng-repeat="event in selectedEvents" class="event card col-md-6">
+                <div class="card-img-top eventImg text-center">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6" width="80%" height="45%">
                 </div>
-                <div class="caption eventInfos">
-                    <h4 class="eventTitle">{{event.name}}</h4>
-                    <p class="eventDescription">{{event.description.substring( 0, 160)}}...</p>
-                    <p class="text-center">
-                        <a href="/eventViewCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
-                        <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
+                <div class="card-block eventInfos">
+                    <!--add largeTxt class if content > 45 chars-->
+                    <h4 class="card-title eventTitle largeTxt text-center">{{event.name}}</h4>
+                    <p class="card-text eventDescription">{{event.description.substring( 0, 160)}}...</p>
+                    <p class="eventBtns text-center">
+                        <a href="/eventViewCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary aboutEventBtn" role="button">À propos</a>
+                        <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success joinEventBtn" role="button">Rejoindre</a>
                     </p>
                 </div>
             </div>
@@ -89,17 +90,16 @@ Accessed should be restreined by login with a Candidat User-->
             <h3 style="display: inline; margin-left: 20px;" class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
         </div>
         <div class="panel-body hidden" id="OnGoingView">
-            <br/><br/>
-            <div ng-repeat="event in onGoingEvents" class="event col-md-6">
-                <div class="thumbnail eventImg">
-                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            <div ng-repeat="event in onGoingEvents" class="event card col-md-6">
+                <div class="card-img-top eventImg text-center">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6" width="80%" height="45%">
                 </div>
-                <div class="caption eventInfos">
-                    <h4 class="eventTitle">{{event.name}}</h4>
-                    <p class="eventDescription">{{event.description.substring( 0, 160)}}...</p>
-                    <p class="text-center">
-                        <a href="/eventView?type=candidat&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
-                        <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
+                <div class="card-block eventInfos">
+                    <h4 class="card-title eventTitle largeTxt text-center">{{event.name}}</h4>
+                    <p class="card-text eventDescription">{{event.description.substring( 0, 160)}}...</p>
+                    <p class="eventBtns text-center">
+                        <a href="/eventView?type=candidat&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary aboutEventBtn" role="button">À propos</a>
+                        <a href="/joinStreamCandidat?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success joinEventBtn" role="button">Rejoindre</a>
                     </p>
                 </div>
             </div>
@@ -113,16 +113,15 @@ Accessed should be restreined by login with a Candidat User-->
             <h3 style="display: inline; margin-left: 20px;" class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
         </div>
         <div class="panel-body hidden" id="UpComingView">
-            <br/><br/>
-            <div ng-repeat="event in upComingEvents" class="event col-md-6">
-                <div class="thumbnail eventImg">
-                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            <div ng-repeat="event in upComingEvents" class="event card col-md-6">
+                <div class="card-img-top eventImg text-center">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6" width="80%" height="45%">
                 </div>
-                <div class="caption eventInfos">
-                    <h4 class="eventTitle">{{event.name}}</h4>
-                    <p class="eventDescription">{{event.description.substring( 0, 160)}}...</p>
-                    <p class="text-center">
-                        <a href="/eventView?type=candidat&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
+                <div class="card-block eventInfos">
+                    <h4 class="card-title eventTitle largeTxt text-center">{{event.name}}</h4>
+                    <p class="card-text eventDescription">{{event.description.substring( 0, 160)}}...</p>
+                    <p class="eventBtns text-center">
+                        <a href="/eventView?type=candidat&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary aboutEventBtn" role="button">À propos</a>
                     </p>
                 </div>
             </div>
@@ -136,14 +135,13 @@ Accessed should be restreined by login with a Candidat User-->
             <h3 style="display: inline; margin-left: 20px;" class="panel-title">Evènements passés<span class="badge pull-right">{{ passedEventsCpt }}</span></h3>
         </div>
         <div class="panel-body hidden" id="PassedView">
-            <br/><br/>
-            <div ng-repeat="event in passedEvents" class="event col-md-6">
-                <div class="thumbnail eventImg">
-                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+            <div ng-repeat="event in passedEvents" class="event card col-md-6">
+                <div class="card-img-top eventImg text-center">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6" width="80%" height="45%">
                 </div>
-                <div class="caption eventInfos">
-                    <h4 class="eventTitle">{{event.name}}</h4>
-                    <p class="eventDescription">{{event.description}}</p>
+                <div class="card-block eventInfos">
+                    <h4 class="card-title eventTitle text-center">{{event.name}}</h4>
+                    <p class="card-text eventDescription">{{event.description.substring( 0, 160)}}...</p>
                 </div>
             </div>
         </div>

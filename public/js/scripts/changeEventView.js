@@ -16,13 +16,42 @@ function onLargeViewBtnClick() {
         // perform actions on events[i]
         console.log(events[i])
         console.log(events[i].className)
-        events[i].className = 'event col-md-6'
+        events[i].className = 'event card col-md-6'
         console.log(events[i].getElementsByClassName('eventImg'))
-        events[i].getElementsByClassName('eventImg')[0].className = "thumbnail eventImg"
+        events[i].getElementsByClassName('eventImg')[0].className = "card-img-top eventImg text-center"
         console.log(events[i].getElementsByClassName('eventTitle'))
-        events[i].getElementsByClassName('eventTitle')[0].className = "eventTitle"
+        events[i].getElementsByClassName('eventTitle')[0].className = "card-title eventTitle largeTxt text-center"
         console.log(events[i].getElementsByClassName('eventDescription'))
-        events[i].getElementsByClassName('eventDescription')[0].className = "eventDescription"
+        events[i].getElementsByClassName('eventDescription')[0].className = "card-text eventDescription"
+    }
+
+    var eventBtns = document.getElementsByClassName('eventBtns')
+    var j
+    var len2 = eventBtns.length
+    for (j = 0; j < len2; j++) {
+        eventBtns[j].className = "eventBtns text-center"
+    }
+
+    var aboutBtns = document.getElementsByClassName('aboutEventBtn')
+    var k
+    var len3 = aboutBtns.length
+    for (k = 0; k < len3; k++) {
+        aboutBtns[k].className = "btn btn-primary aboutEventBtn "
+    }
+
+    var joinBtns = document.getElementsByClassName('joinEventBtn')
+    var l
+    var len4 = joinBtns.length
+    for (l = 0; l < len4; l++) {
+        joinBtns[l].className = "btn btn-success joinEventBtn"
+    }
+
+
+    var editBtns = document.getElementsByClassName('editEventBtn')
+    var m
+    var len5 = editBtns.length
+    for (m = 0; m < len5; m++) {
+        editBtns[m].className = "btn btn-warning editEventBtn"
     }
 }
 
@@ -46,11 +75,39 @@ function onSmallViewBtnClick() {
         console.log(events[i].className)
         events[i].className = 'event col-md-4'
         console.log(events[i].getElementsByClassName('eventImg'))
-        events[i].getElementsByClassName('eventImg')[0].className = "thumbnail eventImg"
+        events[i].getElementsByClassName('eventImg')[0].className = "card-img text-center eventImg"
         console.log(events[i].getElementsByClassName('eventTitle'))
-        events[i].getElementsByClassName('eventTitle')[0].className = "eventTitle"
+        events[i].getElementsByClassName('eventTitle')[0].className = "card-title eventTitle smallTitle text-center"
         console.log(events[i].getElementsByClassName('eventDescription'))
-        events[i].getElementsByClassName('eventDescription')[0].className = "eventDescription invisible"
+        events[i].getElementsByClassName('eventDescription')[0].className = "card-text eventDescription invisible"
+    }
+
+    var eventBtns = document.getElementsByClassName('eventBtns')
+    var j
+    var len2 = eventBtns.length
+    for (j = 0; j < len2; j++) {
+        eventBtns[j].className = "eventBtns text-center"
+    }
+
+    var aboutBtns = document.getElementsByClassName('aboutEventBtn')
+    var k
+    var len3 = aboutBtns.length
+    for (k = 0; k < len3; k++) {
+        aboutBtns[k].className = "btn btn-primary aboutEventBtn "
+    }
+
+    var joinBtns = document.getElementsByClassName('joinEventBtn')
+    var l
+    var len4 = joinBtns.length
+    for (l = 0; l < len4; l++) {
+        joinBtns[l].className = "btn btn-success joinEventBtn"
+    }
+
+    var editBtns = document.getElementsByClassName('editEventBtn')
+    var m
+    var len5 = editBtns.length
+    for (m = 0; m < len5; m++) {
+        editBtns[m].className = "btn btn-warning editEventBtn"
     }
 }
 
@@ -74,11 +131,39 @@ function onListViewBtnClick() {
         console.log(events[i].className)
         events[i].className = 'event spaced'
         console.log(events[i].getElementsByClassName('eventImg'))
-        events[i].getElementsByClassName('eventImg')[0].className = "thumbnail eventImg invisible"
+        events[i].getElementsByClassName('eventImg')[0].className = "eventImg invisible"
         console.log(events[i].getElementsByClassName('eventTitle'))
-        events[i].getElementsByClassName('eventTitle')[0].className = "eventTitle inline smallTitle"
+        events[i].getElementsByClassName('eventTitle')[0].className = "card-title eventTitle smallTitle text-align-left left inline"
         console.log(events[i].getElementsByClassName('eventDescription'))
-        events[i].getElementsByClassName('eventDescription')[0].className = "eventDescription inline smallDesc"
+        events[i].getElementsByClassName('eventDescription')[0].className = "card-text eventDescription invisible"
+    }
+
+    var eventBtns = document.getElementsByClassName('eventBtns')
+    var j
+    var len2 = eventBtns.length
+    for (j = 0; j < len2; j++) {
+        eventBtns[j].className = "eventBtns pull-right inline"
+    }
+
+    var aboutBtns = document.getElementsByClassName('aboutEventBtn')
+    var k
+    var len3 = aboutBtns.length
+    for (k = 0; k < len3; k++) {
+        aboutBtns[k].className = "aboutEventBtn simpleBtn margin-10 inline"
+    }
+
+    var joinBtns = document.getElementsByClassName('joinEventBtn')
+    var l
+    var len4 = joinBtns.length
+    for (l = 0; l < len4; l++) {
+        joinBtns[l].className = "joinEventBtn simpleBtn margin-10 inline"
+    }
+
+    var editBtns = document.getElementsByClassName('editEventBtn')
+    var m
+    var len5 = editBtns.length
+    for (m = 0; m < len5; m++) {
+        editBtns[m].className = "editEventBtn simpleBtn margin-10 inline"
     }
 }
 

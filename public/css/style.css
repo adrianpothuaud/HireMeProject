@@ -135,3 +135,40 @@ body {
     padding: 15px;
     font-size: xx-large;
 }
+
+.largeTxt {
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    /* Required to make ellipsis work */
+    text-overflow: ellipsis;
+    /* Starting transition */
+    left: 0%;
+    width: 100%;
+    /* Tweak 'till your heart's content */
+    -webkit-transition: left 3s, width 3s;
+    -moz-transition: left 3s, width 3s;
+    transition: left 3s, width 3s;
+}
+
+
+/* The magic! */
+
+.largeTxt:hover {
+    /* This is not completely accurate. It resizes to 2x the current width. */
+    left: -50%;
+    width: 150%;
+}
+
+.eventImg {
+    width: "80%";
+    height: "45%";
+}
+
+.margin-10 {
+    margin: 10px;
+}
+
+.align-right {
+    text-align: right;
+}

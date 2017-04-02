@@ -61,17 +61,21 @@ Accessed should be restreined by login with a Recruteur User-->
 
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h3 class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
+            <button class="simpleBtn" id="onGoingHideShowBtn" onclick="collapseOnGoing()"><span class="glyphicon glyphicon-minus" id="onGoingHideShow"></span></button>
+            <h3 style="display: inline; margin-left: 20px;" class="panel-title">Evènements en cours<span class="badge pull-right">{{ onGoingEventsCpt }}</span></h3>
         </div>
-        <div class="panel-body">
-            <div ng-repeat="event in onGoingEvents" class="event ongoing col-md-6 card">
-                <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="eventImg card-img-top">
-                <div class="card-block">
-                    <h4 class="eventTile card-title">{{event.name}}</h4>
-                    <p class="eventInfos text-center card-text">
-                        <a href="/eventView?type=recruteur&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
-                        <a href="/joinStreamRecruteur?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success" role="button">Rejoindre</a>
-                        <a href="/event/editform?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
+        <div class="panel-body" id="OnGoingView">
+            <div ng-repeat="event in onGoingEvents" class="event card col-md-6">
+                <div class="card-img-top eventImg text-center">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6" width="80%" height="45%">
+                </div>
+                <div class="card-block eventInfos">
+                    <h4 class="card-title eventTitle largeTxt text-center">{{event.name}}</h4>
+                    <p class="card-text eventDescription">{{event.description.substring( 0, 160)}}...</p>
+                    <p class="eventBtns text-center">
+                        <a href="/eventView?type=recruteur&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary aboutEventBtn" role="button">À propos</a>
+                        <a href="/joinStreamRecruteur?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-success joinEventBtn" role="button">Rejoindre</a>
+                        <a href="/event/editform?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-warning editEventBtn" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
                     </p>
                 </div>
             </div>
@@ -79,20 +83,22 @@ Accessed should be restreined by login with a Recruteur User-->
     </div>
 
     <!-- Upcoming events -->
-    <div class="panel panel-info">
+    <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
+            <button class="simpleBtn" id="upComingHideShowBtn" onclick="expandUpComing()"><span class="glyphicon glyphicon-plus" id="upComingHideShow"></span></button>
+            <h3 style="display: inline; margin-left: 20px;" class="panel-title">Evènements à venir<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
         </div>
-        <div class="panel-body">
-            <div ng-repeat="event in upComingEvents" class="col-6 col-md-6 col-sm-6">
-                <div class="thumbnail">
-                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+        <div class="panel-body hidden" id="UpComingView">
+            <div ng-repeat="event in upComingEvents" class="event card col-md-6">
+                <div class="card-img-top eventImg text-center">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6" width="80%" height="45%">
                 </div>
-                <div class="caption">
-                    <h4>{{event.name}}</h4>
-                    <p class="text-center">
-                        <a href="/eventView?type=recruteur&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary" role="button">À propos</a>
-                        <a href="/event/editform?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-warning" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
+                <div class="card-block cardInfos">
+                    <h4 class="card-title eventTitle largeTxt text-center">{{event.name}}</h4>
+                    <p class=" card-text eventDescription ">{{event.description.substring( 0, 160)}}...</p>
+                    <p class="eventBtns text-center">
+                        <a href="/eventView?type=recruteur&id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-primary aboutEventBtn" role="button">À propos</a>
+                        <a href="/event/editform?id={{userResponse.data._id}}&eventId={{event._id}}" class="btn btn-warning editEventBtn" role="button">&nbsp;&nbsp;Éditer&nbsp;&nbsp;</a>
                     </p>
                 </div>
             </div>
@@ -100,17 +106,19 @@ Accessed should be restreined by login with a Recruteur User-->
     </div>
 
     <!-- Passed events -->
-    <div class="panel panel-warning">
+    <div class="panel panel-warning ">
         <div class="panel-heading">
-            <h3 class="panel-title">Evènements passés<span class="badge pull-right">{{ upComingEventsCpt }}</span></h3>
+            <button class="simpleBtn" id="passedHideShowBtn" onclick="expandPassed()"><span class="glyphicon glyphicon-plus" id="passedHideShow"></span></button>
+            <h3 style="display: inline; margin-left: 20px;" class="panel-title">Evènements passés<span class="badge pull-right">{{ passedEventsCpt }}</span></h3>
         </div>
-        <div class="panel-body">
-            <div ng-repeat="event in passedEvents" class="col-6 col-md-6 col-sm-6">
-                <div class="thumbnail">
-                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6">
+        <div class="panel-body hidden" id="PassedView">
+            <div ng-repeat="event in passedEvents" class="event card col-md-6">
+                <div class="card-img-top eventImg text-center">
+                    <img src="https://static.lexpress.fr/medias_8867/w_640,h_358,c_fill,g_center/v1393343940/recrutement-1_4540056.jpg" alt="Flat design Idea" class="pres-img-6" width="80%" height="45%">
                 </div>
-                <div class="caption">
-                    <h4>{{event.name}}</h4>
+                <div class="card-block eventInfos">
+                    <h4 class="card-title eventTitle text-center">{{event.name}}</h4>
+                    <p class="card-text eventDescription">{{event.description.substring( 0, 160)}}...</p>
                 </div>
             </div>
         </div>
