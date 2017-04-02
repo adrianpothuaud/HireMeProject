@@ -139,10 +139,12 @@ and add/remove Experiences/Connaissances-->
                         <input type="hidden" name="candidatId" value="{{userResponse.data._id}}" />
                         <input type="hidden" name="exp" value="{{experience.jobName}}" />
                         <input type="hidden" name="ent" value="{{experience.enterpriseName}}" />
+                        <input type="hidden" name="db" value="{{experience.dateBegin}}" />
+                        <input type="hidden" name="de" value="{{experience.dateEnd}}" />
                         <button type="submit" class="simpleBtn"><i style="color:red">Supprimer</i></button>
                     </form>
                     <p><span class="glyphicon glyphicon-import"></span>&nbsp;&nbsp;{{experience.dateBegin.split('T')[0]}}&nbsp;
-                        <span ng-show="{{experience.dateEnd}}"><span class="glyphicon glyphicon-export"></span>&nbsp;&nbsp;{{experience.dateEnd}}</span>
+                        <span ng-show="{{experience.dateEnd}}"><span class="glyphicon glyphicon-export"></span>&nbsp;&nbsp;{{experience.dateEnd.split('T')[0]}}</span>
                     </p>
                 </div>
 

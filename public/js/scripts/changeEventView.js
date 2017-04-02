@@ -81,3 +81,91 @@ function onListViewBtnClick() {
         events[i].getElementsByClassName('eventDescription')[0].className = "eventDescription inline smallDesc"
     }
 }
+
+function expandFirstChoice() {
+    var FirstChoiceView = document.getElementById('FirstChoiceView')
+    FirstChoiceView.className = 'panel-body'
+
+    var firstChoiceHideShowBtn = document.getElementById('firstChoiceHideShowBtn')
+    firstChoiceHideShowBtn.onclick = collapseFirstChoice
+
+    var firstChoiceHideShow = document.getElementById('firstChoiceHideShow')
+    firstChoiceHideShow.className = 'glyphicon glyphicon-minus'
+}
+
+function collapseFirstChoice() {
+    var FirstChoiceView = document.getElementById('FirstChoiceView')
+    FirstChoiceView.className = 'panel-body hidden'
+
+    var firstChoiceHideShowBtn = document.getElementById('firstChoiceHideShowBtn')
+    firstChoiceHideShowBtn.onclick = expandFirstChoice
+
+    var firstChoiceHideShow = document.getElementById('firstChoiceHideShow')
+    firstChoiceHideShow.className = 'glyphicon glyphicon-plus'
+}
+
+function expandOnGoing() {
+    var OnGoingView = document.getElementById('OnGoingView')
+    OnGoingView.className = 'panel-body'
+
+    var onGoingHideShowBtn = document.getElementById('onGoingHideShowBtn')
+    onGoingHideShowBtn.onclick = collapseOnGoing
+
+    var onGoingHideShow = document.getElementById('onGoingHideShow')
+    onGoingHideShow.className = 'glyphicon glyphicon-minus'
+}
+
+function collapseOnGoing() {
+    var OnGoingView = document.getElementById('OnGoingView')
+    OnGoingView.className = 'panel-body hidden'
+
+    var onGoingHideShowBtn = document.getElementById('onGoingHideShowBtn')
+    onGoingHideShowBtn.onclick = expandOnGoing
+
+    var onGoingHideShow = document.getElementById('onGoingHideShow')
+    onGoingHideShow.className = 'glyphicon glyphicon-plus'
+}
+
+function expandUpComing() {
+    var UpComingView = document.getElementById('UpComingView')
+    UpComingView.className = 'panel-body'
+
+    var upComingHideShowBtn = document.getElementById('upComingHideShowBtn')
+    upComingHideShowBtn.onclick = collapseUpComing
+
+    var upComingHideShow = document.getElementById('upComingHideShow')
+    upComingHideShow.className = 'glyphicon glyphicon-minus'
+}
+
+function collapseUpComing() {
+    var UpComingView = document.getElementById('UpComingView')
+    UpComingView.className = 'panel-body hidden'
+
+    var upComingHideShowBtn = document.getElementById('upComingHideShowBtn')
+    upComingHideShowBtn.onclick = expandUpComing
+
+    var upComingHideShow = document.getElementById('upComingHideShow')
+    upComingHideShow.className = 'glyphicon glyphicon-plus'
+}
+
+function expandPassed() {
+    var PassedView = document.getElementById('PassedView')
+    PassedView.className = 'panel-body'
+
+    var passedHideShowBtn = document.getElementById('passedHideShowBtn')
+    passedHideShowBtn.onclick = collapsePassed
+
+    var passedHideShow = document.getElementById('passedHideShow')
+    passedHideShow.className = 'glyphicon glyphicon-minus'
+}
+
+function collapsePassed() {
+    var PassedView = document.getElementById('PassedView')
+    PassedView.className = 'panel-body hidden'
+
+    var passedHideShowBtn = document.getElementById('passedHideShowBtn')
+    passedHideShowBtn.onclick = expandFirstChoice
+
+    var passedHideShow = document.getElementById('passedHideShow')
+    passedHideShow.className = 'glyphicon glyphicon-plus'
+}

@@ -101,13 +101,18 @@ module.exports = function(app, db) {
             var userId = req.body.candidatId
             var jobName = req.body.exp
             var entName = req.body.ent
+            var dbeg = req.body.db
+            var dend = req.body.de
                 // remove connaissance from user's connaissances
             Candidat.findOne({ "_id": userId }, function(err, thing) {
                 if (err) console.log(err)
                 if (!thing) console.log("No match")
                 if (thing) {
                     thing.experiences = thing.experiences.filter(function(exp) {
-                        return exp.jobName != jobName && exp.enterpriseName != entName
+                        return exp.jobName != jobName &&
+                            exp.enterpriseName != entName &&
+                            exp.dateBegin != dbeg &&
+                            exp.dateEnd != dend
                     })
                     thing.save(function(err) {
                         if (err) console.log(err)

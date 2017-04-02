@@ -90,22 +90,24 @@ angular.module('CandidatCtrl', []).controller('CandidatController', function($sc
                                 }
                             }
                             // build selectedEvents
-                            if (element.connaissances) {
-                                element.connaissances.forEach(function(eventConnaissance) {
+                            if (element.connaissancesRequises) {
+                                element.connaissancesRequises.forEach(function(eventConnaissance) {
                                     $scope.userResponse.data.connaissances.forEach(function(userConnaissance) {
                                         if (eventConnaissance.name == userConnaissance.name) {
                                             if ($.inArray(element, $scope.selectedEvents) === -1) {
+                                                $scope.selectedEventsCpt += 1
                                                 $scope.selectedEvents = $scope.selectedEvents.concat([element])
                                             }
                                         }
                                     })
                                 })
                             }
-                            if (element.experiences) {
-                                element.experiences.forEach(function(eventExperience) {
+                            if (element.experiencesRequises) {
+                                element.experiencesRequises.forEach(function(eventExperience) {
                                     $scope.userResponse.data.experiences.forEach(function(userExperience) {
-                                        if (eventConnaissance.jobName == userConnaissance.jobName) {
+                                        if (eventExperience.jobName == userExperience.jobName) {
                                             if ($.inArray(element, $scope.selectedEvents) === -1) {
+                                                $scope.selectedEventsCpt += 1
                                                 $scope.selectedEvents = $scope.selectedEvents.concat([element])
                                             }
                                         }
@@ -113,6 +115,7 @@ angular.module('CandidatCtrl', []).controller('CandidatController', function($sc
                                 })
                             }
                         }, this);
+
                         // use events in ng-repeat on HTML template candidat.html
                     });
                 })
