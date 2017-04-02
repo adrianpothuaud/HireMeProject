@@ -9,113 +9,99 @@ var session = require('express-session');
 
 var sess
 
-// Look for account with same email in both candidats and recruteurs collections
-// hacked witch callback for synch
-function lookForEmail(usr, res, callback) {
-    var Account;
-    if (usr.accountType === 'candidat') {
-        Account = Candidat;
-    } else if (usr.accountType === 'recruteur') {
-        Account = Recruteur;
-    } else {
-        console.log("ERROR Undefined accountType");
-    }
-    Account.findOne({ email: usr.email }, function(err, thing) {
-        callback(err, thing, usr, res);
-    });
-}
-// callback to complete getCandidatWithEmail
-// enforce synchronization
-// if email found previously redirect to signin
-// else save data and go to login
-function signCheck(err, thing, usr, res) {
-    if (thing) {
-        res.redirect('/signin');
-    } else {
-        if (usr.accountType === "candidat") {
-            usr.experiences = new Array();
-            usr.connaissances = new Array();
-            newUsr = new Candidat(usr);
-            newUsr.save();
-            res.redirect('/login');
-        } else if (usr.accountType === "recruteur") {
-            usr.enterprisename = undefined;
-            newUsr = new Recruteur(usr);
-            newUsr.save();
-            res.redirect('/login');
-        } else {
-            console.log("Problem incompatible accountType");
-            res.redirect("/signin");
-        }
-    }
-}
-
-function lookForAccount(usrmail, pw, request, response) {
-    console.log("Trying to find one user that match " + usrmail + "...")
-    Candidat.findOne({ email: usrmail }, function(err, thing) {
-        if (thing) {
-            console.log("Thing found in Candidat")
-            getAccount(err, thing, pw, request, response);
-        } else {
-            console.log("No user found in Candidat")
-        }
-    });
-    Recruteur.findOne({ email: usrmail }, function(err, thing) {
-        if (thing) {
-            console.log("Thing found in recruteur")
-            getAccount(err, thing, pw, request, response);
-        } else {
-            console.log("No user found in Recruteur")
-        }
-    });
-}
-
-function myDispatcher(myObject, request, res) {
-
-    if (request.session) sess = request.session;
-    else sess = new Object();
-
-    sess._id = myObject.user._id;
-
-    if (myObject.type === 'candidat') {
-        console.log("redirect to candidat page")
-        res.redirect('/candidat?id=' + sess._id);
-    } else if (myObject.type === 'recruteur') {
-        console.log("redirect to recruteur page")
-        res.redirect('/recruteur?id=' + sess._id);
-    } else {
-        console.log("type undefined in dispatcher")
-    }
-}
-
-function getAccount(err, thing, pw, request, response) {
-    console.log("Trying to dispatch  for thing : " + thing)
-    if (thing) {
-        console.log("Go dispatcher...")
-        myDispatcher({ 'type': thing.accountType, 'isPwOK': thing.password === pw, 'user': thing }, request, response);
-    } else {
-        console.log("user is undefined");
-        response.sendFile('index.html', { root: "public" });
-    }
-}
-
-function isPasswordCorrect(user, request, response) {
-    console.log("Looking into accounts...")
-    lookForAccount(user.email, user.password, request, response);
-}
-
 module.exports = function(app, db) {
     // server routes ===========================================================
     // signin routes
     app.post('/signin', function(req, res) {
         var formRes = req.body;
-        lookForEmail(formRes, res, signCheck);
+        // lookForEmail(formRes, res, signCheck);
+        // look for email
+        Candidat.findOne({ "email": req.body.email }, function(err, thing) {
+            if (err) console.log(err)
+            if (!thing) {
+                console.log('no user matching in Candidats...')
+                Recruteur.findOne({ 'email': req.body.email }, function(err, thin) {
+                    if (err) console.log(err)
+                    if (!thing) {
+                        console.log('no user matching in Recruteurs...')
+                            // register new user
+                            // ...
+                        var newUser
+                        if (req.body.accountType === 'candidat') {
+                            newUser = new Candidat()
+                            newUser.lastname = req.body.lastname
+                            newUser.firstname = req.body.firstname
+                            newUser.email = req.body.email
+                            newUser.accountType = req.body.accountType
+                            newUser.password = req.body.password
+                            newUser.save(function(err) {
+                                if (err) console.log(err)
+                                console.log('Candidat registered successfuly')
+                                res.redirect('/login')
+                            })
+                        } else if (req.body.accountType === 'recruteur') {
+                            newUser = new Recruteur()
+                            newUser.lastname = req.body.lastname
+                            newUser.firstname = req.body.firstname
+                            newUser.email = req.body.email
+                            newUser.accountType = req.body.accountType
+                            newUser.password = req.body.password
+                            newUser.save(function(err) {
+                                if (err) console.log(err)
+                                console.log('Recruteur registered successfuly')
+                                res.redirect('/login')
+                            })
+                        } else {
+                            console.log('account type is not valid...')
+                            res.redirect('/signin')
+                        }
+                    } else {
+                        console.log('user already exists in Recruteurs')
+                        res.redirect('/signin')
+                    }
+                })
+            } else {
+                console.log('user already exists in Candidats')
+                res.redirect('/signin')
+            }
+        })
     });
     // authentication routes
     app.post('/login', function(req, res) {
         var formRes = req.body;
         console.log("Trying to login with infos : " + req.body.email + " , " + req.body.password)
-        isPasswordCorrect(formRes, req, res);
+            // isPasswordCorrect(formRes, req, res);
+        Candidat.findOne({ 'email': req.body.email }, function(err, thing) {
+            if (err) console.log(err)
+            if (!thing) {
+                console.log("user not found in Candidats")
+                Recruteur.findOne({ 'email': req.body.email }, function(err, thing) {
+                    if (err) console.log(err)
+                    if (!thing) {
+                        console.log("user not found in Recruteurs")
+                        res.redirect('/login')
+                    } else {
+                        console.log("user found in Recruteurs")
+                        if (thing.password === req.body.password) {
+                            console.log("password match")
+                            res.redirect('/recruteur?id=' + thing._id)
+                        } else {
+                            console.log("password is not correct")
+                            res.redirect('/login')
+                        }
+                    }
+                })
+            } else {
+                console.log("user found in Candidats")
+                if (thing.password === req.body.password) {
+                    console.log("password match")
+                    res.redirect('/candidat?id=' + thing._id)
+                } else {
+                    console.log("password is not correct")
+                    res.redirect('/login')
+                }
+            }
+        })
     });
 
     // frontend routes =========================================================
