@@ -10,7 +10,7 @@ Button to launch live stream session
             <a class="navbar-brand" href="/home">HireMe</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/{{accountType}}?id={{id}}"><span class="glyphicon glyphicon-menu-left"></span> Retour</a></li>
+            <li><a ng-href="/{{accountType}}?id={{id}}"><span class="glyphicon glyphicon-menu-left"></span> Retour</a></li>
             <li><a href="/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
@@ -29,44 +29,48 @@ Button to launch live stream session
             <li class="list-group-item ">
                 <span class="glyphicon glyphicon-info-sign"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="label label-default ">Nom</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="text-center ">{{eventResponse.data.name}}</span>
+                <p style="text-align: right" class="BIG">{{eventResponse.data.name}}</p>
             </li>
             <li class="list-group-item ">
                 <span class="glyphicon glyphicon-info-sign"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="label label-default ">Description</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="text-center ">{{eventResponse.data.description}}</span>
+                <p style="padding: 25px;">{{eventResponse.data.description}}</p>
             </li>
             <li class="list-group-item ">
                 <span class="glyphicon glyphicon-eye-open"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="label label-default ">Date de début</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="text-center ">{{eventResponse.data.dateBegin.toString()}}</span>
+                <p style="text-align: right" class="BIG">{{eventResponse.data.dateBegin.split('T')[0].toString()}}</p>
             </li>
             <li class="list-group-item ">
                 <span class="glyphicon glyphicon-eye-close"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="label label-default ">Date de fin</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="text-center ">{{eventResponse.data.dateEnd.toString()}}</span>
+                <p style="text-align: right" class="BIG">{{eventResponse.data.dateEnd.split('T')[0].toString()}}</p>
             </li>
             <li class="list-group-item ">
                 <span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="label label-default ">Entreprise</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="text-center ">{{eventResponse.data.enterpriseName}}</span>
+                <p style="text-align: right" class="BIG">{{eventResponse.data.enterpriseName}}</p>
+            </li>
+            <li class="list-group-item ">
+                <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="label label-default ">Recruteur(s)</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <ul>
+                    <li ng-repeat="recruteur in eventResponse.data.recruteurs" class="margin-10">{{recruteur.email}}</li>
+                </ul>
             </li>
             <li class="list-group-item ">
                 <span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="label label-default ">Connaissances requises</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span ng-repeat="connaissance in eventResponse.data.connaissancesRequises" class="text-center ">{{connaissance}}</span>
+                <ul>
+                    <li ng-repeat="connaissance in eventResponse.data.connaissancesRequises" class="margin-10">{{connaissance.name}}</li>
+                </ul>
             </li>
             <li class="list-group-item ">
                 <span class="glyphicon glyphicon-lock"></span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="label label-default ">Expériences requises</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span ng-repeat="experience in eventResponse.data.experiencesRequises" class="text-center ">{{experience.jobName}}</span>
-            </li>
-            <li class="list-group-item ">
-                <div ng-repeat="recruteur in eventResponse.data.recruteurs">
-                    <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="label label-default ">Recruteur</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="text-center ">{{recruteur.email}}</span>
-                </div>
+                <ul>
+                    <li ng-repeat="experience in eventResponse.data.experiencesRequises" class="margin-10">{{experience.jobName}}</li>
+                </ul>
             </li>
         </ul>
 

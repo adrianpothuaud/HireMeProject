@@ -103,19 +103,34 @@ module.exports = function(app, db) {
             var entName = req.body.ent
             var dbeg = req.body.db
             var dend = req.body.de
+            console.log('removing experience for candidat : ' + req.body.exp + ' @ ' + req.body.ent)
+            console.log('debut : ' + req.body.db)
+            console.log('fin : ' + req.body.de)
                 // remove connaissance from user's connaissances
             Candidat.findOne({ "_id": userId }, function(err, thing) {
                 if (err) console.log(err)
                 if (!thing) console.log("No match")
                 if (thing) {
+                    console.log('candidat found...')
+                    console.log('experiences du candidat : ')
+                    console.log(thing.experiences)
                     thing.experiences = thing.experiences.filter(function(exp) {
-                        return exp.jobName != jobName &&
-                            exp.enterpriseName != entName &&
-                            exp.dateBegin != dbeg &&
-                            exp.dateEnd != dend
+                        if (exp.dateEnd) {
+                            return exp.jobName != jobName &&
+                                exp.enterpriseName != entName &&
+                                exp.dateBegin != dbeg &&
+                                exp.dateEnd != dend
+                        } else {
+                            return exp.jobName != jobName &&
+                                exp.enterpriseName != entName &&
+                                exp.dateBegin != dbeg
+                        }
                     })
+                    console.log('experiences après filtre :')
+                    console.log(thing.experiences)
                     thing.save(function(err) {
                         if (err) console.log(err)
+                        console.log('candidat saved')
                         res.redirect('/candidat/profile?id=' + userId)
                     })
                 }

@@ -46,27 +46,40 @@ Kind of jobs offered-->
         <h3 class="panel-title">Statistics</h3>
     </div>
     <div class="panel-body">
-        <div class="col-4 col-md-4 col-sm-4">
-            <p>Quelques chiffres...</p>
-            <br/><br/><br/>
-            <div class="text-center">
-                <p><span class="badge">{{nbCandidats}}</span> Candidats </p><br>
-                <p><span class="badge">{{nbRecruteurs}}</span> Recruteurs </p><br>
-                <p><span class="badge">{{nbEvents}} </span> Évènements </p>
+        <div class="card col-md-4">
+            <div class="card-block">
+                <div class="card-title">
+                    <h4>Quelques chiffres</h4>
+                </div>
+                <div class="card-text" style="padding: 20px;">
+                    <p><span class="badge">{{nbCandidats}}</span> Candidats </p>
+                    <p><span class="badge">{{nbRecruteurs}}</span> Recruteurs </p>
+                    <p><span class="badge">{{nbEvents}} </span> Évènements </p>
+                </div>
             </div>
         </div>
-        <div class="col-4 col-md-4 col-sm-4">
-            <p>Quelques noms d'entreprise...</p>
-            <br/><br/><br/>
-            <div class="text-center" ng-repeat="enterprise in Enterprises">
-                <p>{{enterprise}}</p>
+        <div class="card col-md-4">
+            <div class="card-block">
+                <div class="card-title">
+                    <h4>Quelques noms d'entreprises</h4>
+                </div>
+                <div class="card-text" style="padding: 20px;">
+                    <div ng-repeat="enterprise in Enterprises">
+                        <p>{{enterprise}}</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-4 col-md-4 col-sm-4">
-            <p>Quelques postes...</p>
-            <br/><br/><br/>
-            <div class="text-center" ng-repeat="job in Jobs">
-                <p>{{job}}</p>
+        <div class="card col-md-4">
+            <div class="card-block">
+                <div class="card-title">
+                    <h4>Quelques noms de poste</h4>
+                </div>
+                <div class="card-text" style="padding: 20px;">
+                    <div ng-repeat="job in Jobs">
+                        <p>{{job}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
